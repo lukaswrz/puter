@@ -1,0 +1,1 @@
+{ services.avahi.enable = true; }
