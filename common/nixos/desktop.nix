@@ -14,15 +14,13 @@
     ./features/fonts.nix
     ./features/fwupd.nix
     ./features/geoclue.nix
-    ./features/greetd.nix
     ./features/opengl.nix
     ./features/openssh.nix
     ./features/pipewire.nix
+    ./features/plasma.nix
     ./features/sops.nix
     ./features/sudo.nix
-    ./features/swaylock.nix
     ./features/users.nix
-    ./features/xdpw.nix
   ];
 
   fileSystems = {
@@ -115,10 +113,7 @@
 
   programs.dconf.enable = true;
 
-  # TODO
-  # xdg.portal.xdgOpenUsePortal = true;
+  xdg.portal.xdgOpenUsePortal = true;
 
-  environment.systemPackages = with pkgs; [
-    bibata-cursors
-  ];
+  programs.kdeconnect.enable = true;
 }

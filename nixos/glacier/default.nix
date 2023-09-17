@@ -42,12 +42,4 @@
   ];
 
   services.mullvad-vpn.enable = true;
-
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    libinput.enable = true;
-    windowManager.i3.enable = true;
-    displayManager.startx.enable = true;
-  };
 }

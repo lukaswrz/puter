@@ -37,11 +37,9 @@
 
       config.bind("td", "config-cycle colors.webpage.darkmode.enabled;; restart")
 
-      c.tabs.show = "multiple"
-
-      c.tabs.tabs_are_windows = True
-
       c.content.local_content_can_access_remote_urls = True
+
+      c.tabs.show = "multiple"
 
       c.url.default_page = Path("${./start.html}").as_uri()
 
