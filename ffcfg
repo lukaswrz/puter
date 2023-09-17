@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+set -eu
+shopt -s nullglob
+
+for dir in ~/.mozilla/firefox/*.default ~/.mozilla/firefox/*.default-release ~/.mozilla/firefox/*.dev-edition-default ~/.var/app/org.mozilla.firefox/.mozilla/firefox/*.default ~/.var/app/org.mozilla.firefox/.mozilla/firefox/*.default-release ~/.var/app/org.mozilla.firefox/.mozilla/firefox/*.dev-edition-default; do
+    cat <<EOF > $dir/user.js
+user_pref('signon.prefillForms', false);
+user_pref('signon.rememberSignons', false);
+user_pref('privacy.webrtc.legacyGlobalIndicator', false);
+user_pref('browser.compactmode.show', true);
+user_pref('toolkit.legacyUserProfileCustomizations.stylesheets', true);
+user_pref('signon.autofillForms', false);
+user_pref('signon.formlessCapture.enabled', false);
+user_pref('browser.formfill.enable', false);
+user_pref('extensions.pocket.enabled', false);
+user_pref('browser.newtabpage.activity-stream.showSponsored', false);
+user_pref('browser.newtabpage.activity-stream.showSponsoredTopSites', false);
+user_pref('browser.newtabpage.activity-stream.feeds.section.topstories', false);
+user_pref('browser.newtabpage.activity-stream.feeds.topsites', false);
+user_pref('browser.newtabpage.activity-stream.section.highlights.includeBookmarks', false);
+user_pref('browser.newtabpage.activity-stream.section.highlights.includeDownloads', false);
+user_pref('browser.newtabpage.activity-stream.section.highlights.includeVisited', false);
+user_pref('media.ffmpeg.vaapi.enabled', true);
+user_pref('media.rdd-vpx.enabled', true);
+user_pref('toolkit.telemetry.unified', false);
+user_pref('toolkit.telemetry.enabled', false);
+user_pref('toolkit.telemetry.server', 'data:,');
+user_pref('toolkit.telemetry.archive.enabled', false);
+user_pref('toolkit.telemetry.newProfilePing.enabled', false);
+user_pref('toolkit.telemetry.shutdownPingSender.enabled', false);
+user_pref('toolkit.telemetry.updatePing.enabled', false);
+user_pref('toolkit.telemetry.bhrPing.enabled', false);
+user_pref('toolkit.telemetry.firstShutdownPing.enabled', false);
+user_pref('toolkit.telemetry.coverage.opt-out', true);
+user_pref('toolkit.coverage.opt-out', true);
+user_pref('toolkit.coverage.endpoint.base', '');
+user_pref('browser.ping-centre.telemetry', false);
+user_pref('app.shield.optoutstudies.enabled', false);
+user_pref('app.normandy.enabled', false);
+user_pref('app.normandy.api_url', '');
+user_pref('breakpad.reportURL', '');
+user_pref('browser.tabs.crashReporting.sendReport', false);
+user_pref('browser.crashReports.unsubmittedCheck.autoSubmit2', false);
+user_pref("network.http.referer.XOriginPolicy", 1);
+user_pref("network.http.referer.XOriginTrimmingPolicy", 0);
+EOF
+done

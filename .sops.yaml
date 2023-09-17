@@ -1,0 +1,17 @@
+keys:
+- &admin_lukas age17nt4yca38wrlptapekwmkrjx232cruygty82qhvz3t7g7z4jq9fshdglks
+- &host_glacier age190zn56uqtemazc4fjtc649h7634hl9zh6jzrmq478y2t94x8vswqv5q3j8
+- &host_flamingo age1p55v299rqjg7ltz3h3suq2efrgsntn2ej9lzljw9prkx50x7hd4s7cnfcc
+- &host_scenery age1nxr8lyst9eleuu9dyrnlwps8xschps42tfzwxfyvyy32n75rssfsayj52j
+- &host_abacus age15hmzz0mdrrtlrxwdyv7wfwfs58vzcyg3esnf5ccu5vlg83a8aq6sqp95dv
+- &host_vessel age1fvn3rex66xczhard8dcx0s38xdegvguyaepytu6kh9hndhheqqwqcgnc3y
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_lukas
+      - *host_glacier
+      - *host_flamingo
+      - *host_scenery
+      - *host_abacus
+      - *host_vessel

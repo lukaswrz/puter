@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>start</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #202020;
+      padding: 0;
+      margin: 0;
+      font-family: Iosevka Nerd Font, monospace;
+      letter-spacing: .1em;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    main {
+      margin: 2em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      justify-content: center;
+    }
+
+    #search {
+      border: none;
+      height: 2em;
+      font-family: inherit;
+      font-size: inherit;
+      background-color: #eaeaea;
+      color: #2c2c2c;
+      width: 60%;
+    }
+
+    #search:focus {
+      outline: none;
+    }
+
+    #search::placeholder {
+      color: #ababab;
+    }
+
+    .lists {
+      display: grid;
+      gap: .5em;
+      grid: auto-flow / 1fr;
+    }
+
+    .lists .list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lists .list ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .lists .list ul li {
+      background-color: #565e65;
+      color: #dadcde;
+    }
+
+    .lists .list ul li:hover {
+      background-color: #343c43;
+    }
+
+    .lists .list ul li a {
+      display: block;
+      padding: .5em 2em;
+      text-decoration: none;
+      color: #ababab;
+    }
+
+    .lists .list .heading {
+      padding: .7em 2em;
+    }
+
+    .lists .list:nth-of-type(1) .heading {
+      background: #95c7ae;
+      color: #565e65;
+    }
+
+    .lists .list:nth-of-type(2) .heading {
+      background-color: #c7ae95;
+      color: #565e65;
+    }
+
+    .lists .list:nth-of-type(3) .heading {
+      background-color: #c795ae;
+      color: #565e65;
+    }
+
+    .lists .list:nth-of-type(4) .heading {
+      background-color: #95aec7;
+      color: #565e65;
+    }
+
+    .lists .list:nth-of-type(5) .heading {
+      background-color: #aec795;
+      color: #565e65;
+    }
+
+    .lists .list:nth-of-type(6) .heading {
+      background-color: #ae95c7;
+      color: #565e65;
+    }
+
+    @media (min-width: 768px) {
+      .lists {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .lists {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1450px) {
+      main {
+        margin: auto;
+      }
+
+      .lists {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <form action="https://www.google.com/search" method="GET">
+      <input id="search" name="q" type="text" placeholder="search" required autocomplete="off" onload="this.focus()">
+    </form>
+
+    <div class="lists">
+      <div class="list">
+        <div class="heading">social</div>
+        <ul>
+          <li><a href="https://mail.tutanota.com/">tutanota</a></li>
+          <li><a href="https://web.whatsapp.com/">whatsapp</a></li>
+          <li><a href="https://discord.com/login">discord</a></li>
+        </ul>
+      </div>
+
+      <div class="list">
+        <div class="heading">google</div>
+        <ul>
+          <li><a href="https://www.youtube.com/">youtube</a></li>
+          <li><a href="https://www.google.com/maps">maps</a></li>
+          <li><a href="https://translate.google.com/">translate</a></li>
+        </ul>
+      </div>
+
+      <div class="list">
+        <div class="heading">nix</div>
+        <ul>
+          <li><a href="https://nixos.org/manual/nix/unstable/">manual</a></li>
+          <li><a href="https://search.nixos.org/packages">packages</a></li>
+          <li><a href="https://search.nixos.org/options">options</a></li>
+          <li><a href="https://nix-community.github.io/home-manager/options.html">hm options</a></li>
+          <li><a href="https://nix-community.github.io/home-manager/index.html">hm manual</a></li>
+          <li><a href="https://noogle.dev/">noogle</a></li>
+          <li><a href="https://github.com/the-nix-way/dev-templates">templates</a></li>
+        </ul>
+      </div>
+
+      <div class="list">
+        <div class="heading">personal</div>
+        <ul>
+          <li><a href="https://defenestrated.systems/">site</a></li>
+          <li><a href="https://git.defenestrated.systems/">git</a></li>
+          <li><a href="https://music.defenestrated.systems/">music</a></li>
+          <li><a href="https://share.defenestrated.systems/">share</a></li>
+          <li><a href="https://vault.defenestrated.systems/">vault</a></li>
+        </ul>
+      </div>
+
+      <div class="list">
+        <div class="heading">dev</div>
+        <ul>
+          <li><a href="https://github.com/">github</a></li>
+          <li><a href="https://developer.mozilla.org/">mdn</a></li>
+          <li><a href="https://stackoverflow.com/">stackoverflow</a></li>
+          <li><a href="https://www.php.net/docs.php">php</a></li>
+          <li><a href="https://pkg.go.dev/std">go std</a></li>
+          <li><a href="https://docs.python.org/3/library/index.html">python std</a></li>
+        </ul>
+      </div>
+
+      <div class="list">
+        <div class="heading">misc</div>
+        <ul>
+          <li><a href="https://lobste.rs/">lobsters</a></li>
+          <li><a href="https://mullvad.net/">mullvad</a></li>
+          <li><a href="https://www.protondb.com/">protondb</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
