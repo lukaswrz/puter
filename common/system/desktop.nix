@@ -74,7 +74,9 @@
   environment.persistence."/persist" = {
     directories = [
       "/var/lib"
+      "/var/cache"
       "/etc/NetworkManager"
+      "/etc/mullvad-vpn"
     ];
     files = [
       "/etc/machine-id"

@@ -63,6 +63,7 @@
   environment.persistence."/persist" = {
     directories = [
       "/var/lib"
+      "/var/cache"
       "/srv"
     ];
     files = [
