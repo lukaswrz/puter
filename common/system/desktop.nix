@@ -12,7 +12,7 @@
     ./features/flatpak.nix
     ./features/fonts.nix
     ./features/fwupd.nix
-    ./features/geoclue.nix
+    ./features/location.nix
     ./features/mullvad.nix
     ./features/opengl.nix
     ./features/openssh.nix
@@ -111,7 +111,6 @@
   networking.networkmanager.enable = true;
   users.users.lukas.extraGroups = ["networkmanager"];
 
-  time.timeZone = lib.mkDefault "Europe/Berlin";
   i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
   console.keyMap = lib.mkDefault "us";
   services.xserver.layout = lib.mkDefault "us";

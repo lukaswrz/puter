@@ -96,7 +96,7 @@
               (./common/system + "/${class}.nix")
 
               home-manager.nixosModules.home-manager
-    (impermanence + "/nixos.nix")
+              (impermanence + "/nixos.nix")
               (sops-nix + "/modules/sops")
             ];
         });
