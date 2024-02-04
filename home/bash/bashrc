@@ -1,0 +1,42 @@
+source /etc/bashrc
+
+if [[ $- != *i* ]]; then
+  return
+fi
+
+alias cpr='cp --recursive'
+
+alias df='df --human-readable'
+
+alias du='du --human-readable'
+
+alias gia='git add'
+alias gic='git commit'
+alias gico='git checkout'
+alias gid='git diff'
+alias gidh='git diff HEAD'
+alias gi='git'
+alias gin='grep --ignore-case --line-number'
+alias gis='git status'
+
+alias g='grep'
+alias gn='grep --line-number'
+alias grep='grep --color'
+alias grin='grep --recursive --ignore-case --line-number'
+
+alias la='ls --all'
+alias lla='ls -l --all'
+alias ll='ls -l'
+alias l='ls'
+alias lsa='ls --all'
+alias lsla='ls -l --all'
+alias lsl='ls -l'
+alias ls='ls --color --classify'
+
+alias rmr='rm --recursive'
+alias rr='rm --recursive'
+
+alias s='sudo'
+
+alias ffmpeg='ffmpeg -hide_banner'
+alias ffprobe='ffprobe -hide_banner'
