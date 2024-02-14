@@ -2,6 +2,12 @@
   inherit (config.networking) domain;
   virtualHostName = "vault.${domain}";
 in {
+  age.secrets.vaultwarden = {
+    file = ../../secrets/vaultwarden.age;
+    owner = config.systemd.services.vaultwarden.serviceConfig.User;
+    group = config.systemd.services.vaultwarden.serviceConfig.Group;
+  };
+
   services.vaultwarden = {
     enable = true;
 
@@ -23,6 +29,8 @@ in {
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8000;
     };
+
+    environmentFile = config.age.secrets.vaultwarden.path;
   };
 
   services.nginx.virtualHosts.${virtualHostName} = {
