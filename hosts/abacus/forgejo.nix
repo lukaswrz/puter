@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   virtualHostName = "tea.${config.networking.domain}";
 in {
   services.forgejo = {
@@ -35,4 +39,6 @@ in {
 
     locations."/".proxyPass = "http://${config.services.forgejo.settings.server.HTTP_ADDR}:${builtins.toString config.services.forgejo.settings.server.HTTP_PORT}";
   };
+
+  environment.systemPackages = [pkgs.forgejo];
 }
