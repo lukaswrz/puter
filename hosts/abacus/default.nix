@@ -2,12 +2,13 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
 
+    ./conduit.nix
+    ./forgejo.nix
     ./mailserver.nix
+    ./navidrome.nix
     ./nextcloud.nix
     ./nginx.nix
-    ./static.nix
     ./vaultwarden.nix
-    # TODO: dendrite/conduit, gitea/forgejo
   ];
 
   nixpkgs.hostPlatform = "aarch64-linux";

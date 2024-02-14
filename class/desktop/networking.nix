@@ -2,7 +2,6 @@
   environment.persistence."/persist".directories = ["/etc/NetworkManager"];
 
   services.resolved.enable = true;
-  services.opensnitch.enable = true;
 
   networking = {
     networkmanager = {

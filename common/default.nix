@@ -6,6 +6,8 @@
     ./dbus.nix
     ./fs.nix
     ./fwupd.nix
+    ./git.nix
+    ./helix.nix
     ./nix.nix
     ./opengl.nix
     ./openssh.nix

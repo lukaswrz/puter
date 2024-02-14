@@ -1,6 +1,16 @@
-{config, ...}: let
-  inherit (config.networking) domain;
-  inherit (config.networking) fqdn;
+{
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (config.networking) domain fqdn;
+
+  wellKnownMtaSts = pkgs.writeText "" ''
+    version: STSv1
+    mode: enforce
+    mx: ${fqdn}
+    max_age: 86400
+  '';
 in {
   age.secrets.mail-lukas.file = ../../secrets/mail-lukas.age;
 
@@ -19,7 +29,7 @@ in {
     loginAccounts = {
       "lukas@${domain}" = {
         hashedPasswordFile = config.age.secrets.mail-lukas.path;
-        aliases = ["postmaster@${domain}"];
+        aliases = ["postmaster@${domain}" "vault@${domain}"];
       };
     };
 
@@ -30,9 +40,20 @@ in {
   services.dovecot2.sieve.extensions = ["fileinto"];
 
   services.nginx.virtualHosts."mta-sts.${domain}" = {
-    locations."= /.well-known/mta-sts.txt".return = ''200 "version: STSv1\nmode: enforce\nmx: ${fqdn}\nmax_age: 86400"'';
     enableACME = true;
     forceSSL = true;
     quic = true;
+
+    locations = {
+      "/".return = "404";
+
+      "=/.well-known/mta-sts.txt" = {
+        alias = wellKnownMtaSts;
+
+        extraConfig = ''
+          default_type text/plain;
+        '';
+      };
+    };
   };
 }

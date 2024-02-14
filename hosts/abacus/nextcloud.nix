@@ -2,9 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  hostName = "cloud.${config.networking.domain}";
-in {
+}: {
   age.secrets.nextcloud-lukas = {
     file = ../../secrets/nextcloud-lukas.age;
     owner = "nextcloud";
@@ -29,7 +27,7 @@ in {
     enable = true;
     package = pkgs.nextcloud28;
 
-    inherit hostName;
+    hostName = "cloud.${config.networking.domain}";
     https = true;
 
     configureRedis = true;
@@ -61,7 +59,7 @@ in {
     };
   };
 
-  services.nginx.virtualHosts.${hostName} = {
+  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     enableACME = true;
     forceSSL = true;
     quic = true;

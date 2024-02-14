@@ -1,6 +1,5 @@
 {
   imports = [
-    ./codium.nix
     ./compatibility.nix
     ./docker.nix
     ./fish.nix
@@ -17,5 +16,6 @@
     ./plasma.nix
     ./printing.nix
     ./syncthing.nix
+    ./vscode.nix
   ];
 }

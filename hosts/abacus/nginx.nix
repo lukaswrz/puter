@@ -15,6 +15,36 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     recommendedZstdSettings = true;
-    commonHttpConfig = "access_log syslog:server=unix:/dev/log;";
+    commonHttpConfig = ''
+      error_log stderr;
+      access_log /var/log/nginx/access.log;
+    '';
+
+    virtualHosts = let
+      inherit (config.networking) domain;
+    in {
+      "~.*" = {
+        default = true;
+        rejectSSL = true;
+
+        globalRedirect = domain;
+      };
+
+      ${domain} = {
+        enableACME = true;
+        forceSSL = true;
+        quic = true;
+
+        root = "/var/www/${domain}";
+      };
+
+      "log.${domain}" = {
+        enableACME = true;
+        forceSSL = true;
+        quic = true;
+
+        root = "/var/www/log.${domain}";
+      };
+    };
   };
 }

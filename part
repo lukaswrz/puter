@@ -92,7 +92,7 @@ while true; do
     mainfs=$mainblkdev
     break
     ;;
-  *) printf '%s\n' 'Please answer with yes or no' 1>&2 ;;
+  *) printf 'Please answer with yes or no\n' 1>&2 ;;
   esac
 done
 

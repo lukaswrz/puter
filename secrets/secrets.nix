@@ -15,5 +15,6 @@ let
 in {
   "user-lukas.age".publicKeys = (builtins.attrValues users) ++ (builtins.attrValues hosts);
   "mail-lukas.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
+  "vaultwarden.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
   "nextcloud-lukas.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
 }
