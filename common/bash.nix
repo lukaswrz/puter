@@ -31,4 +31,6 @@
       '';
     };
   };
+
+  environment.systemPackages = [pkgs.comma];
 }
