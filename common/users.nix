@@ -13,7 +13,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAztZgcRBHqX8Wb2nAlP1qCKF205M3un/D1YnREcO7Dy lukas@flamingo"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMC6vIcPgOHiAnG1be8IQVePlrsxN/X9PEFJghS6EcOb lukas@scenery"
         ];
-        extraGroups = ["wheel" "networkmanager" "gamemode" "syncthing"];
+        extraGroups = ["wheel" "networkmanager" "gamemode"];
         linger = true;
       };
     };
