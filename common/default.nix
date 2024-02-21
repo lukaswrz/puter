@@ -1,16 +1,13 @@
 {
   imports = [
     ./avahi.nix
-    ./bash.nix
     ./boot.nix
+    ./cli.nix
     ./dbus.nix
     ./fs.nix
     ./fwupd.nix
-    ./git.nix
-    ./helix.nix
     ./nix.nix
     ./opengl.nix
-    ./openssh.nix
     ./readline.nix
     ./ssh.nix
     ./sudo.nix

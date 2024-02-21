@@ -1,11 +1,23 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: {
   programs = {
-    direnv.enable = true;
     command-not-found.enable = false;
+
+    git = {
+      enable = true;
+      lfs.enable = true;
+    };
+
+    nix-index = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+
+    direnv.enable = true;
 
     bash = {
       promptInit = ''
@@ -27,10 +39,21 @@
 
         shopt -s checkwinsize
 
-        eval "$(${lib.getExe pkgs.direnv} hook bash)"
+        eval "$(${lib.getExe config.programs.direnv.package} hook bash)"
       '';
     };
   };
 
-  environment.systemPackages = [pkgs.comma];
+  environment = {
+    systemPackages = [
+      pkgs.bottom
+      pkgs.comma
+      pkgs.helix
+    ];
+
+    variables = {
+      EDITOR = lib.getExe pkgs.helix;
+      VISUAL = lib.getExe pkgs.helix;
+    };
+  };
 }

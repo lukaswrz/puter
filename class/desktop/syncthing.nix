@@ -4,4 +4,6 @@
     overrideDevices = false;
     overrideFolders = false;
   };
+
+  systemd.user.services.syncthing.wantedBy = ["default.target"];
 }

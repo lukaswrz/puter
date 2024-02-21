@@ -205,7 +205,3 @@ if chose helix; then
   rm --recursive --force -- "$helixdir"
   ln --force --symbolic -- "$PWD/home/helix" "$helixdir"
 fi
-
-if chose syncthing; then
-  systemctl --user enable syncthing.service
-fi
