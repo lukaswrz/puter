@@ -27,6 +27,7 @@
   environment = {
     systemPackages = [
       pkgs.discover
+      pkgs.kate
       pkgs.sddm-kcm
     ];
     sessionVariables = {
