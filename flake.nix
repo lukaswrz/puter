@@ -2,7 +2,7 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:K900/nixpkgs/plasma-6";
     hardware.url = "github:NixOS/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
@@ -16,7 +16,7 @@
       nixpkgs.lib.genAttrs supportedSystems (system: f (import nixpkgs {inherit system;}));
 
     mkSystem = name: class:
-      inputs.nixpkgs.lib.nixosSystem {
+      nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           inputs.impermanence.nixosModules.impermanence

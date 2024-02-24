@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   environment.persistence."/persist".files = [
     "/etc/ssh/ssh_host_ed25519_key"
     "/etc/ssh/ssh_host_ed25519_key.pub"
@@ -21,7 +25,10 @@
     };
   };
 
-  programs.ssh.startAgent = true;
+  programs.ssh = {
+    startAgent = true;
+    askPassword = lib.getExe' pkgs.ksshaskpass "ksshaskpass";
+  };
 
   environment.etc."ssh/ssh_config".text = lib.mkAfter ''
     Compression yes
