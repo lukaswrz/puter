@@ -11,6 +11,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./backup.nix
+    ./blocky.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
