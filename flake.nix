@@ -17,7 +17,10 @@
 
     mkSystem = name: class:
       nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          attrName = name;
+        };
         modules = [
           inputs.impermanence.nixosModules.impermanence
           inputs.agenix.nixosModules.default

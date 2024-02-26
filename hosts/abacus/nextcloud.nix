@@ -9,20 +9,6 @@
     group = "nextcloud";
   };
 
-  system.fsPackages = [pkgs.sshfs];
-  fileSystems."${config.services.nextcloud.home}/data/${config.services.nextcloud.config.adminuser}/files/remote" = {
-    device = "u385962@u385962.your-storagebox.de:/";
-    fsType = "sshfs";
-    options = [
-      "allow_other"
-      "IdentityFile=/persist/etc/ssh/ssh_host_ed25519_key"
-      "_netdev"
-      "reconnect"
-      "ServerAliveInterval=15"
-      "x-systemd.automount"
-    ];
-  };
-
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud28;

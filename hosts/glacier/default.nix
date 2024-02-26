@@ -1,4 +1,5 @@
 {
+  attrName,
   inputs,
   modulesPath,
   ...

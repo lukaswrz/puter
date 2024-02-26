@@ -17,4 +17,5 @@ in {
   "mail-lukas.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
   "vaultwarden.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
   "nextcloud-lukas.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
+  "restic-vessel.age".publicKeys = (builtins.attrValues users) ++ [hosts.vessel];
 }
