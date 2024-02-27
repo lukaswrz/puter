@@ -10,8 +10,8 @@
     inputs.hardware.nixosModules.common-gpu-intel
     inputs.hardware.nixosModules.common-pc-ssd
 
-    # ./backup.nix
-    # ./blocky.nix
+    ./backup.nix
+    ./blocky.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
