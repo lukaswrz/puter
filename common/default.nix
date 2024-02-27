@@ -1,5 +1,6 @@
 {
   imports = [
+    ./atuin.nix
     ./avahi.nix
     ./boot.nix
     ./cli.nix
@@ -10,6 +11,7 @@
     ./opengl.nix
     ./readline.nix
     ./ssh.nix
+    ./starship.nix
     ./sudo.nix
     ./swap.nix
     ./users.nix

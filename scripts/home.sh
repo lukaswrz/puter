@@ -27,13 +27,13 @@ choices=("$@")
 shift "$#"
 
 function chose() {
-  if [[ ''${#choices[@]} == 0 ]]; then
+  if [[ ${#choices[@]} == 0 ]]; then
     return 0
   fi
   local arg
   for arg in "$@"; do
     local choice
-    for choice in "''${choices[@]}"; do
+    for choice in "${choices[@]}"; do
       if [[ "$arg" == "$choice" ]]; then
         return 0
       fi
@@ -43,7 +43,7 @@ function chose() {
 }
 
 if chose git; then
-  gitconfig=''${XDG_CONFIG_HOME:-$HOME/.config}/git/config
+  gitconfig=${XDG_CONFIG_HOME:-$HOME/.config}/git/config
 
   if [[ -n $name ]]; then
     GIT_CONFIG_GLOBAL=$gitconfig git config --global -- user.name "$name"
@@ -52,7 +52,7 @@ if chose git; then
     GIT_CONFIG_GLOBAL=$gitconfig git config --global -- user.email "$email"
   fi
 
-  gitignore=$(GIT_CONFIG_GLOBAL=$gitconfig git config --global --get core.excludesFile 2>/dev/null || printf '%s\n' "''${XDG_CONFIG_HOME:-$HOME/.config}/git/ignore")
+  gitignore=$(GIT_CONFIG_GLOBAL=$gitconfig git config --global --get core.excludesFile 2>/dev/null || printf '%s\n' "${XDG_CONFIG_HOME:-$HOME/.config}/git/ignore")
   mkdir --parents -- "$(dirname -- "$gitignore")"
   cat <<EOF >"$gitignore"
 .idea/
@@ -172,12 +172,12 @@ user_pref('toolkit.telemetry.bhrPing.enabled', false);
 user_pref('toolkit.telemetry.firstShutdownPing.enabled', false);
 user_pref('toolkit.telemetry.coverage.opt-out', true);
 user_pref('toolkit.coverage.opt-out', true);
-user_pref('toolkit.coverage.endpoint.base', ''');
+user_pref('toolkit.coverage.endpoint.base', '');
 user_pref('browser.ping-centre.telemetry', false);
 user_pref('app.shield.optoutstudies.enabled', false);
 user_pref('app.normandy.enabled', false);
-user_pref('app.normandy.api_url', ''');
-user_pref('breakpad.reportURL', ''');
+user_pref('app.normandy.api_url', '');
+user_pref('breakpad.reportURL', '');
 user_pref('browser.tabs.crashReporting.sendReport', false);
 user_pref('browser.crashReports.unsubmittedCheck.autoSubmit2', false);
 

@@ -24,4 +24,6 @@
   system.stateVersion = "24.05";
 
   powerManagement.cpuFreqGovernor = "powersave";
+
+  environment.persistence."/persist".directories = ["/srv/storage"];
 }
