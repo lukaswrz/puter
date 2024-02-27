@@ -36,7 +36,7 @@ in {
   age.secrets."restic-${attrName}".file = ../../secrets/restic-lukas.age;
 
   services.restic.backups.${attrName} = {
-    repostiory = "sftp:u385962@u385962.your-storagebox.de:/restic/${attrName}";
+    repository = "sftp:u385962@u385962.your-storagebox.de:/restic/${attrName}";
     initialize = true;
     paths = [safePath];
     passwordFile = config.age.secrets."restic-${attrName}".path;
