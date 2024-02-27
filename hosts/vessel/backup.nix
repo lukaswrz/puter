@@ -33,7 +33,7 @@ in {
     options = ["subvol=main" "compress=zstd" "noatime"];
   };
 
-  age.secrets."restic-${attrName}".file = ../../secrets/restic-lukas.age;
+  age.secrets."restic-${attrName}".file = ../../secrets/restic-${attrName}.age;
 
   services.restic.backups.${attrName} = {
     repository = "sftp:u385962@u385962.your-storagebox.de:/restic/${attrName}";
