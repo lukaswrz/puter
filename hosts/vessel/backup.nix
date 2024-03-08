@@ -7,23 +7,33 @@
 }: let
   safePath = "/srv/storage/safe";
 in {
-  systemd.timers.local-backup = {
-    description = "Local rsync Backup";
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "*-*-* 00:00:00";
-      Persistent = true;
-      Unit = "local-backup.service";
+  systemd = {
+    timers.local-backup = {
+      description = "Local rsync Backup";
+      wantedBy = ["timers.target"];
+      timerConfig = {
+        OnCalendar = "*-*-* 03:00:00";
+        Persistent = true;
+        Unit = "local-backup.service";
+      };
     };
-  };
 
-  systemd.services.local-backup = {
-    description = "Local rsync Backup";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete /srv/storage/ /srv/backup/";
-      User = "root";
-      Group = "root";
+    services.local-backup = {
+      description = "Local rsync Backup";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete /srv/storage/ /srv/backup/";
+        User = "root";
+        Group = "root";
+      };
+    };
+
+    tmpfiles.settings = {
+      "10-storage-safe".${safePath}.d = {
+        user = "root";
+        group = "root";
+        mode = "0755";
+      };
     };
   };
 
@@ -41,14 +51,10 @@ in {
     paths = [safePath];
     passwordFile = config.age.secrets."restic-${attrName}".path;
     pruneOpts = ["--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12"];
-    extraOptions = ["sftp.args='-i /etc/ssh/ssh_host_ed25519_key'"];
-  };
-
-  systemd.tmpfiles.settings = {
-    "10-storage-safe".${safePath}.d = {
-      user = "root";
-      group = "root";
-      mode = "0755";
+    timerConfig = {
+      OnCalendar = "*-*-* 03:00:00";
+      Persistent = true;
     };
+    extraOptions = ["sftp.args='-i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'"];
   };
 }

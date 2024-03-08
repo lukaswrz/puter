@@ -1,8 +1,8 @@
 {
   imports = [
+    ./clipboard.nix
     ./compatibility.nix
     ./docker.nix
-    ./fish.nix
     ./flatpak.nix
     ./fonts.nix
     ./fs.nix
@@ -11,11 +11,12 @@
     ./hardware.nix
     ./location.nix
     ./mullvad.nix
+    ./neovide.nix
     ./networking.nix
     ./pipewire.nix
     ./plasma.nix
     ./printing.nix
     ./syncthing.nix
-    ./vscode.nix
+    ./users.nix
   ];
 }

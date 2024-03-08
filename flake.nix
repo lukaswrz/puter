@@ -2,65 +2,62 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:K900/nixpkgs/plasma-6";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     hardware.url = "github:NixOS/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
     mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+    myvim.url = "github:lukaswrz/myvim";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
-    supportedSystems = ["x86_64-linux" "aarch64-linux"];
+  outputs = {
+    nixpkgs,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux"];
 
-    forEachSystem = f:
-      nixpkgs.lib.genAttrs supportedSystems (system: f (import nixpkgs {inherit system;}));
+      flake = let
+        commonNixosSystem = name: class:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              attrName = name;
+            };
+            modules = [
+              inputs.impermanence.nixosModules.impermanence
+              inputs.agenix.nixosModules.default
+              inputs.mailserver.nixosModule
 
-    mkSystem = name: class:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          attrName = name;
-        };
-        modules = [
-          inputs.impermanence.nixosModules.impermanence
-          inputs.agenix.nixosModules.default
-          inputs.mailserver.nixosModule
+              ./common
+              ./class/${class}
+              ./hosts/${name}
 
-          ./common
-          (./class + "/${class}")
-          (./hosts + "/${name}")
-
-          ({lib, ...}: {networking.hostName = lib.mkDefault name;})
-        ];
-      };
-
-    hosts = {
-      glacier = "desktop";
-      flamingo = "desktop";
-      scenery = "desktop";
-      abacus = "server";
-      vessel = "server";
-    };
-  in {
-    nixosConfigurations = builtins.mapAttrs mkSystem hosts;
-
-    devShells = forEachSystem (pkgs: {
-      default = pkgs.mkShellNoCC {
-        packages = [
-          pkgs.nil
-          inputs.agenix.packages.${pkgs.system}.agenix
-          (pkgs.writeShellApplication {
-            name = "home";
-            runtimeInputs = [
-              pkgs.git
-              pkgs.flatpak
+              ({lib, ...}: {networking.hostName = lib.mkDefault name;})
             ];
-            text = builtins.readFile ./scripts/home.sh;
-          })
-        ];
+          };
+      in {
+        nixosConfigurations = builtins.mapAttrs commonNixosSystem {
+          glacier = "desktop";
+          flamingo = "desktop";
+          scenery = "desktop";
+          abacus = "server";
+          vessel = "server";
+        };
       };
-    });
 
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
-  };
+      perSystem = {
+        inputs',
+        pkgs,
+        ...
+      }: {
+        devShells.default = pkgs.mkShellNoCC {
+          packages = [inputs'.agenix.packages.agenix];
+        };
+
+        formatter = pkgs.alejandra;
+      };
+    };
 }

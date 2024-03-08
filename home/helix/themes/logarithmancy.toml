@@ -1,5 +1,0 @@
-inherits = "github_dark_high_contrast"
-"ui.background" = "none"
-
-["ui.virtual.indent-guide"]
-fg = "#2d3640"

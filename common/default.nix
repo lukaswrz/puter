@@ -2,11 +2,15 @@
   imports = [
     ./atuin.nix
     ./avahi.nix
+    ./bash.nix
     ./boot.nix
-    ./cli.nix
+    ./bottom.nix
     ./dbus.nix
+    ./direnv.nix
     ./fs.nix
     ./fwupd.nix
+    ./git.nix
+    ./myvim.nix
     ./nix.nix
     ./opengl.nix
     ./readline.nix

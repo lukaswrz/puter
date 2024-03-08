@@ -3,6 +3,9 @@
 
   users = {
     mutableUsers = false;
+
+    groups.lukas = {};
+
     users = {
       root.hashedPassword = "!";
       lukas = {

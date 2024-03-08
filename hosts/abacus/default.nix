@@ -2,6 +2,7 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
 
+    ./atuin.nix
     ./conduit.nix
     ./forgejo.nix
     ./mailserver.nix

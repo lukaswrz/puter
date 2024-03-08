@@ -1,27 +1,16 @@
 {pkgs, ...}: {
-  # TODO
-  # displayManager = {
-  #   defaultSession = "plasmawayland";
-  #   sddm = {
-  #     enable = true;
-  #     autoNumlock = true;
-  #     settings = {
-  #       Theme = {
-  #         CursorTheme = "breeze_cursors";
-  #       };
-  #     };
-  #   };
-  # };
-
-  services = {
-    xserver = {
-      enable = true;
-      desktopManager.plasma6.enable = true;
-      displayManager.sddm.enable = true;
-      excludePackages = with pkgs; [
-        xterm
-      ];
+  services.xserver = {
+    enable = true;
+    desktopManager.plasma6.enable = true;
+    displayManager = {
+      defaultSession = "plasma";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        settings.Theme.CursorTheme = "breeze_cursors";
+      };
     };
+    excludePackages = [pkgs.xterm];
   };
 
   environment = {
@@ -31,11 +20,11 @@
       pkgs.sddm-kcm
     ];
     sessionVariables = {
-      "SUDO_ASKPASS" = pkgs.writeShellScript "kdialogaskpass" ''
+      SUDO_ASKPASS = pkgs.writeShellScript "kdialogaskpass" ''
         exec ${pkgs.kdialog} --password Askpass
       '';
-      "MOZ_USE_XINPUT2" = "1";
-      "GDK_SCALE" = "1";
+      MOZ_USE_XINPUT2 = "1";
+      GDK_SCALE = "1";
     };
   };
 
