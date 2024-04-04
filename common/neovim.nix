@@ -1,6 +1,6 @@
 {
-  lib,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -8,11 +8,6 @@
     package = inputs.myvim.packages.${pkgs.system}.default;
   in {
     systemPackages = [package];
-    variables = let
-      name = builtins.baseNameOf (lib.getExe package);
-    in {
-      EDITOR = name;
-      VISUAL = name;
-    };
+    variables = lib.genAttrs ["EDITOR" "VISUAL"] (_: lib.getExe package);
   };
 }

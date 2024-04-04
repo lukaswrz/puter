@@ -1,37 +1,39 @@
-{pkgs, ...}: {
-  services.xserver = {
-    enable = true;
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  services = {
     desktopManager.plasma6.enable = true;
-    displayManager = {
-      defaultSession = "plasma";
-      sddm = {
+    xserver = {
+      enable = true;
+      excludePackages = [pkgs.xterm];
+      displayManager.sddm = {
         enable = true;
         wayland.enable = true;
-        settings.Theme.CursorTheme = "breeze_cursors";
       };
     };
-    excludePackages = [pkgs.xterm];
   };
 
   environment = {
-    systemPackages = [
-      pkgs.discover
-      pkgs.kate
-      pkgs.sddm-kcm
-    ];
+    systemPackages = with pkgs.kdePackages; [discover kate];
     sessionVariables = {
       SUDO_ASKPASS = pkgs.writeShellScript "kdialogaskpass" ''
-        exec ${pkgs.kdialog} --password Askpass
+        exec ${lib.getExe' pkgs.kdialog "kdialog"} --password Askpass
       '';
       MOZ_USE_XINPUT2 = "1";
       GDK_SCALE = "1";
     };
   };
 
-  xdg.portal.xdgOpenUsePortal = true;
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
 
   programs = {
     kdeconnect.enable = true;
     partition-manager.enable = true;
+    dconf.enable = true;
   };
 }

@@ -31,6 +31,7 @@
               inputs.agenix.nixosModules.default
               inputs.mailserver.nixosModule
 
+              ./modules
               ./common
               ./class/${class}
               ./hosts/${name}

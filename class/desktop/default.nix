@@ -7,7 +7,6 @@
     ./fonts.nix
     ./fs.nix
     ./gamemode.nix
-    ./gtk.nix
     ./hardware.nix
     ./location.nix
     ./mullvad.nix

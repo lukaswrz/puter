@@ -10,7 +10,7 @@
     ./fs.nix
     ./fwupd.nix
     ./git.nix
-    ./myvim.nix
+    ./neovim.nix
     ./nix.nix
     ./opengl.nix
     ./readline.nix
