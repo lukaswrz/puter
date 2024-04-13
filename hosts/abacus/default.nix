@@ -1,6 +1,6 @@
 {modulesPath, ...}: {
   imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
+    "${modulesPath}/profiles/qemu-guest.nix"
 
     ./atuin.nix
     ./conduit.nix

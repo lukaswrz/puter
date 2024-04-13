@@ -31,7 +31,6 @@
               inputs.agenix.nixosModules.default
               inputs.mailserver.nixosModule
 
-              ./modules
               ./common
               ./class/${class}
               ./hosts/${name}
@@ -43,7 +42,6 @@
         nixosConfigurations = builtins.mapAttrs commonNixosSystem {
           glacier = "desktop";
           flamingo = "desktop";
-          scenery = "desktop";
           abacus = "server";
           vessel = "server";
         };

@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
+    "${modulesPath}/installer/scan/not-detected.nix"
 
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-gpu-amd

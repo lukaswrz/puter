@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
+    "${modulesPath}/installer/scan/not-detected.nix"
 
     inputs.hardware.nixosModules.lenovo-thinkpad-t480
   ];

@@ -5,13 +5,9 @@
 }: {
   services = {
     desktopManager.plasma6.enable = true;
-    xserver = {
+    displayManager.sddm = {
       enable = true;
-      excludePackages = [pkgs.xterm];
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
+      wayland.enable = true;
     };
   };
 
