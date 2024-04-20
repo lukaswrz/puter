@@ -5,9 +5,7 @@
     ./atuin.nix
     ./conduit.nix
     ./forgejo.nix
-    ./mailserver.nix
     ./navidrome.nix
-    ./nextcloud.nix
     ./nginx.nix
     ./vaultwarden.nix
   ];
@@ -38,7 +36,7 @@
   };
 
   security.acme = {
-    defaults.email = "lukasatwrzdotone@gmail.com";
+    defaults.email = "lukas@wrz.one";
     acceptTerms = true;
   };
 }

@@ -10,7 +10,7 @@ let
     vessel = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKkYcOb1JPNLTJtob1TcuC08cH9P2APAhLR26RYd573d";
     flamingo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIInV+UpCZhoTwgkgnCzCPEu3TD5b5mu6tagRslljrFJ/";
   };
-in  {
+in {
   inherit users hosts;
 
   desktops = {

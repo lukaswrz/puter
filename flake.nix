@@ -7,7 +7,6 @@
     hardware.url = "github:NixOS/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
-    mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     myvim.url = "github:lukaswrz/myvim";
   };
 
@@ -29,7 +28,6 @@
             modules = [
               inputs.impermanence.nixosModules.impermanence
               inputs.agenix.nixosModules.default
-              inputs.mailserver.nixosModule
 
               ./common
               ./class/${class}

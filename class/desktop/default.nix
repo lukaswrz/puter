@@ -1,7 +1,5 @@
 {
   imports = [
-    ./clipboard.nix
-    ./docker.nix
     ./flatpak.nix
     ./fonts.nix
     ./fs.nix
@@ -15,7 +13,6 @@
     ./plasma.nix
     ./printing.nix
     ./syncthing.nix
-    ./users.nix
     ./vm.nix
     ./wine.nix
   ];
