@@ -55,6 +55,19 @@
         };
 
         formatter = pkgs.alejandra;
+
+        packages.disk = pkgs.writeShellApplication {
+          name = "disk";
+
+          runtimeInputs = with pkgs; [
+            util-linux
+            jq
+            btrfs-progs
+            dosfstools
+          ];
+
+          text = builtins.readFile ./disk;
+        };
       };
     };
 }
