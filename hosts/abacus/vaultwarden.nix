@@ -15,16 +15,7 @@ in {
       DOMAIN = "https://${virtualHostName}";
 
       SIGNUPS_ALLOWED = false;
-      INVITATIONS_ALLOWED = true;
-      INVITATION_ORG_NAME = domain;
-
-      SMTP_HOST = config.mailserver.fqdn;
-      SMTP_PORT = 587;
-      SMTP_SECURITY = "force_tls";
-      SMTP_TIMEOUT = 15;
-
-      SMTP_FROM = "vault@${domain}";
-      SMTP_FROM_NAME = "Vaultwarden";
+      INVITATIONS_ALLOWED = false;
 
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8000;
