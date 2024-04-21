@@ -1,5 +1,6 @@
 {
   imports = [
+    ./clipboard.nix
     ./flatpak.nix
     ./fonts.nix
     ./fs.nix

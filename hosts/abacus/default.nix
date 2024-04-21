@@ -2,10 +2,6 @@
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
 
-    ./atuin.nix
-    ./conduit.nix
-    ./forgejo.nix
-    ./navidrome.nix
     ./nginx.nix
     ./vaultwarden.nix
   ];

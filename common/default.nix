@@ -1,8 +1,8 @@
 {
   imports = [
-    ./atuin.nix
-    ./avahi.nix
     ./bash.nix
+    ./cnf.nix
+    ./fish.nix
     ./boot.nix
     ./bottom.nix
     ./dbus.nix
