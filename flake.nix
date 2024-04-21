@@ -66,7 +66,7 @@
             dosfstools
           ];
 
-          text = builtins.readFile ./disk;
+          text = builtins.readFile ./disk.sh;
         };
       };
     };
