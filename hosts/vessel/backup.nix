@@ -40,7 +40,7 @@ in {
   fileSystems."/srv/backup" = {
     device = "/dev/disk/by-label/backup";
     fsType = "btrfs";
-    options = ["subvol=main" "compress=zstd" "noatime"];
+    options = ["subvol=/" "compress=zstd" "noatime"];
   };
 
   age.secrets."restic-${attrName}".file = ../../secrets/restic-${attrName}.age;
