@@ -91,37 +91,9 @@ while true; do
   esac
 done
 
-mkfs.btrfs --force --quiet --label "$mainlbl" -- "$mainfs"
+mkfs.ext4 -q -F -L "$mainlbl" -- "$mainfs"
 mkdir --parents -- "$root"
-mount -- "$mainfs" "$root"
-
-declare -A vols
-while true; do
-  read -r -p 'Add a subvolume: ' vol
-  if [[ "$vol" == '' ]]; then
-    break
-  fi
-
-  read -r -p 'Add a subvolume path: ' path
-  if [[ "$path" == '' ]]; then
-    path="$vol"
-  fi
-
-  vols["$vol"]="$path"
-done
-
-for vol in "${!vols[@]}"; do
-  btrfs --quiet subvolume create -- "$root/$vol"
-done
-
-umount -- "$root"
-
-mount -t tmpfs -o size=2G,mode=755 tmpfs -- "$root"
-
-for vol in "${!vols[@]}"; do
-  mkdir --parents -- "$root/${vols["$vol"]}"
-  mount --options "subvol=$vol,compress=zstd,noatime" -- "$mainfs" "$root/${vols["$vol"]}"
-done
+mount --options noatime -- "$mainfs" "$root"
 
 mkdir -- "$root/boot"
 mount -- "$bootfs" "$root/boot"

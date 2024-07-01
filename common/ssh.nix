@@ -3,12 +3,7 @@
   pkgs,
   ...
 }: {
-  environment.persistence."/persist".files = [
-    "/etc/ssh/ssh_host_ed25519_key"
-    "/etc/ssh/ssh_host_ed25519_key.pub"
-  ];
-
-  age.identityPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
+  age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
   services.openssh = {
     enable = true;
@@ -27,6 +22,7 @@
 
   programs.ssh = {
     startAgent = true;
+    enableAskPassword = true;
     askPassword = lib.getExe' pkgs.ksshaskpass "ksshaskpass";
   };
 

@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     hardware.url = "github:NixOS/nixos-hardware";
-    impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
     myvim.url = "github:lukaswrz/myvim";
   };
@@ -26,7 +25,6 @@
               attrName = name;
             };
             modules = [
-              inputs.impermanence.nixosModules.impermanence
               inputs.agenix.nixosModules.default
 
               ./common
@@ -62,7 +60,7 @@
           runtimeInputs = with pkgs; [
             util-linux
             jq
-            btrfs-progs
+            e2fsprogs
             dosfstools
           ];
 

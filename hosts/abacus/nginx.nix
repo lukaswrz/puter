@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  environment.persistence."/persist".directories = ["/var/www"];
-
   services.nginx = {
     enable = true;
     package = pkgs.nginxQuic;

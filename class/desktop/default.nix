@@ -14,6 +14,7 @@
     ./plasma.nix
     ./printing.nix
     ./syncthing.nix
+    ./users.nix
     ./vm.nix
     ./wine.nix
   ];

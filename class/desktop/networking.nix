@@ -1,6 +1,4 @@
 {
-  environment.persistence."/persist".directories = ["/etc/NetworkManager"];
-
   services.resolved.enable = true;
 
   networking = {

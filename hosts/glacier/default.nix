@@ -24,7 +24,9 @@
     binfmt.emulatedSystems = ["aarch64-linux"];
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   powerManagement.cpuFreqGovernor = "performance";
+
+  networking.firewall.enable = false;
 }
