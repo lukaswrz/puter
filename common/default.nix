@@ -12,7 +12,6 @@
     ./git.nix
     ./neovim.nix
     ./nix.nix
-    ./opengl.nix
     ./readline.nix
     ./ssh.nix
     ./starship.nix
