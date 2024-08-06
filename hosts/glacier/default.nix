@@ -11,7 +11,6 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./printing.nix
-    ./vm.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -28,6 +27,4 @@
   system.stateVersion = "24.11";
 
   powerManagement.cpuFreqGovernor = "performance";
-
-  networking.firewall.enable = false;
 }
