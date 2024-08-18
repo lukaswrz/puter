@@ -5,7 +5,7 @@ in {
     enable = true;
     systemService = true;
     openDefaultPorts = true;
-    guiAddress = "0.0.0.0:${builtins.toString guiPort}";
+    guiAddress = "127.0.0.1:${builtins.toString guiPort}";
   };
 
   networking.firewall.allowedTCPPorts = [guiPort];
