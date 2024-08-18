@@ -12,6 +12,7 @@
 
     ./backup.nix
     ./blocky.nix
+    ./fs.nix
     ./storage.nix
     ./syncthing.nix
   ];

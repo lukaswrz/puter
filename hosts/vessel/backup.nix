@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: let
-  backupPath = "/srv/backup";
   backups = {
     storage = "/srv/storage";
     safe = "/srv/safe";
@@ -34,17 +33,11 @@ in {
           Group = "root";
         };
         script = ''
-          ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath ${backups.${backupName}} ${backupPath}/${backupName}/
+          ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath ${backups.${backupName}} /srv/backup/${backupName}/
         '';
       };
     }
   ) (lib.attrNames backups));
-
-  fileSystems.${backupPath} = {
-    label = "backup";
-    fsType = "ext4";
-    options = ["noatime"];
-  };
 
   age.secrets."restic-${attrName}".file = ../../secrets/restic-${attrName}.age;
 
