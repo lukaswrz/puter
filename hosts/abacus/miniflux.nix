@@ -1,15 +1,21 @@
 {config, ...}: let
   inherit (config.networking) domain;
-  virtualHostName = "bin.${domain}";
+  virtualHostName = "flux.${domain}";
 in {
+  age.secrets.miniflux = {
+    file = ../../secrets/miniflux.age;
+    owner = config.systemd.services.miniflux.serviceConfig.User;
+  };
+
   services.miniflux = {
     enable = true;
     createDatabaseLocally = true;
-    adminCredentialsFile = "";
+    adminCredentialsFile = config.age.secrets.miniflux.path;
     config = {
-      LISTEN_ADDR = "localhost:8040";
+      LISTEN_ADDR = "localhost:8030";
       BASE_URL = "https://${virtualHostName}";
-      WEBAUTHN = true;
+      CREATE_ADMIN = 1;
+      WEBAUTHN = 1;
     };
   };
 

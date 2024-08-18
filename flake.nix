@@ -6,7 +6,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hardware.url = "github:NixOS/nixos-hardware";
     agenix.url = "github:ryantm/agenix";
-    myvim.url = "github:lukaswrz/myvim";
   };
 
   outputs = {
@@ -18,30 +17,29 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux" "aarch64-linux"];
 
-      flake = let
-        commonNixosSystem = name: class:
-          nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-              attrName = name;
+      flake = {
+        nixosConfigurations = let
+          commonNixosSystem = name:
+            nixpkgs.lib.nixosSystem {
+              specialArgs = {
+                inherit inputs;
+                attrName = name;
+              };
+              modules = [
+                inputs.agenix.nixosModules.default
+
+                ./common
+                ./hosts/${name}
+
+                ({lib, ...}: {networking.hostName = lib.mkDefault name;})
+              ];
             };
-            modules = [
-              inputs.agenix.nixosModules.default
-
-              ./common
-              ./class/${class}
-              ./hosts/${name}
-
-              ({lib, ...}: {networking.hostName = lib.mkDefault name;})
-            ];
-          };
-      in {
-        nixosConfigurations = builtins.mapAttrs commonNixosSystem {
-          glacier = "desktop";
-          flamingo = "desktop";
-          abacus = "server";
-          vessel = "server";
-        };
+        in
+          nixpkgs.lib.genAttrs [
+            "abacus"
+            "vessel"
+          ]
+          commonNixosSystem;
       };
 
       perSystem = {

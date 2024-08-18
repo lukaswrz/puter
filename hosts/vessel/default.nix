@@ -23,7 +23,7 @@
     kernelModules = ["kvm-intel"];
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   powerManagement.cpuFreqGovernor = "powersave";
 }

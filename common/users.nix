@@ -2,6 +2,8 @@
   age.secrets.user-lukas.file = ../secrets/user-lukas.age;
 
   users = {
+    mutableUsers = false;
+
     groups.lukas.gid = 1000;
 
     users = {

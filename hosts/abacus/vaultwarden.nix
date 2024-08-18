@@ -1,6 +1,7 @@
 {config, ...}: let
   inherit (config.networking) domain;
   virtualHostName = "vault.${domain}";
+  backupDir = "/srv/backup/vaultwarden";
 in {
   age.secrets.vaultwarden = {
     file = ../../secrets/vaultwarden.age;
@@ -10,6 +11,10 @@ in {
 
   services.vaultwarden = {
     enable = true;
+
+    dbBackend = "sqlite";
+
+    inherit backupDir;
 
     config = {
       DOMAIN = "https://${virtualHostName}";
@@ -23,6 +28,8 @@ in {
 
     environmentFile = config.age.secrets.vaultwarden.path;
   };
+
+  systemd.timers.backup-vaultwarden.timerConfig.OnCalendar = "*-*-* 02:00:00";
 
   services.nginx.virtualHosts.${virtualHostName} = {
     enableACME = true;

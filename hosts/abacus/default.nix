@@ -12,7 +12,7 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "virtio_pci" "virtio_scsi" "usbhid" "sr_mod"];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   powerManagement.cpuFreqGovernor = "performance";
 

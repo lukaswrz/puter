@@ -8,7 +8,11 @@
   services.restic.backups.${attrName} = {
     repository = "sftp:u385962@u385962.your-storagebox.de:/restic/${attrName}";
     initialize = true;
-    paths = [config.services.syncthing.dataDir];
+    paths = [
+      config.services.vaultwarden.backupDir
+      # TODO
+      # config.services.syncthing.dataDir
+    ];
     passwordFile = config.age.secrets."restic-${attrName}".path;
     pruneOpts = ["--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12"];
     timerConfig = {

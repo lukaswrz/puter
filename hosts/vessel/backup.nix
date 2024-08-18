@@ -6,39 +6,39 @@
   ...
 }: let
   backupPath = "/srv/backup";
-    backups = {
-      storage = "/srv/storage";
-      safe = "/srv/safe";
-      sync = config.services.syncthing.dataDir;
-    };
+  backups = {
+    storage = "/srv/storage";
+    safe = "/srv/safe";
+    sync = config.services.syncthing.dataDir;
+  };
 in {
   systemd = lib.mkMerge (map (
-      backupName: let
-        systemdName = "${backupName}-backup";
-      in {
-        timers.${systemdName} = {
-          description = "Local rsync Backup ${backupName}";
-          wantedBy = ["timers.target"];
-          timerConfig = {
-            OnCalendar = "*-*-* 03:00:00";
-            Persistent = true;
-            Unit = "${systemdName}.service";
-          };
+    backupName: let
+      systemdName = "${backupName}-backup";
+    in {
+      timers.${systemdName} = {
+        description = "Local rsync Backup ${backupName}";
+        wantedBy = ["timers.target"];
+        timerConfig = {
+          OnCalendar = "*-*-* 03:00:00";
+          Persistent = true;
+          Unit = "${systemdName}.service";
         };
+      };
 
-        services.${systemdName} = {
-          description = "Local rsync Backup ${backupName}";
-          serviceConfig = {
-            Type = "oneshot";
-            User = "root";
-            Group = "root";
-          };
-          script = ''
-            ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath ${backups.${backupName}} ${backupPath}/${backupName}/
-          '';
+      services.${systemdName} = {
+        description = "Local rsync Backup ${backupName}";
+        serviceConfig = {
+          Type = "oneshot";
+          User = "root";
+          Group = "root";
         };
-      }
-    ) (lib.attrNames backups));
+        script = ''
+          ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath ${backups.${backupName}} ${backupPath}/${backupName}/
+        '';
+      };
+    }
+  ) (lib.attrNames backups));
 
   fileSystems.${backupPath} = {
     label = "backup";
@@ -51,7 +51,10 @@ in {
   services.restic.backups.${attrName} = {
     repository = "sftp:u385962@u385962.your-storagebox.de:/restic/${attrName}";
     initialize = true;
-    paths = [backups.safe backups.sync];
+    paths = [
+      backups.safe
+      backups.sync
+    ];
     passwordFile = config.age.secrets."restic-${attrName}".path;
     pruneOpts = ["--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12"];
     timerConfig = {

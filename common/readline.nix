@@ -12,6 +12,7 @@
     Control-a: beginning-of-line
     Tab: menu-complete
     "\e[Z": complete
+
     set keymap vi-insert
     Control-l: clear-screen
     Control-a: beginning-of-line
