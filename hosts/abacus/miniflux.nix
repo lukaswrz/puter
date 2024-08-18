@@ -4,8 +4,8 @@
 in {
   age.secrets.miniflux = {
     file = ../../secrets/miniflux.age;
-    owner = config.systemd.services.miniflux.serviceConfig.User;
-    group = "root";
+    # owner = config.systemd.services.miniflux.serviceConfig.User;
+    # group = "root";
   };
 
   services.miniflux = {
