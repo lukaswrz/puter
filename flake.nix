@@ -34,12 +34,14 @@
                 ({lib, ...}: {networking.hostName = lib.mkDefault name;})
               ];
             };
+
+          genHosts = (nixpkgs.lib.pipe (builtins.readDir ./hosts) [
+            (nixpkgs.lib.filterAttrs (name: type: type == "directory" && name != "default.nix"))
+            builtins.attrNames
+            nixpkgs.lib.genAttrs
+          ]);
         in
-          nixpkgs.lib.genAttrs [
-            "abacus"
-            "vessel"
-          ]
-          commonNixosSystem;
+          genHosts commonNixosSystem;
       };
 
       perSystem = {

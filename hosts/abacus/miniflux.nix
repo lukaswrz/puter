@@ -2,11 +2,7 @@
   inherit (config.networking) domain;
   virtualHostName = "flux.${domain}";
 in {
-  age.secrets.miniflux = {
-    file = ../../secrets/miniflux.age;
-    # owner = config.systemd.services.miniflux.serviceConfig.User;
-    # group = "root";
-  };
+  age.secrets.miniflux.file = ../../secrets/miniflux.age;
 
   services.miniflux = {
     enable = true;

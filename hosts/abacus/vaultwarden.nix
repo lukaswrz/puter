@@ -3,11 +3,7 @@
   virtualHostName = "vault.${domain}";
   backupDir = "/srv/backup/vaultwarden";
 in {
-  age.secrets.vaultwarden = {
-    file = ../../secrets/vaultwarden.age;
-    owner = config.systemd.services.vaultwarden.serviceConfig.User;
-    group = config.systemd.services.vaultwarden.serviceConfig.Group;
-  };
+  age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
 
   services.vaultwarden = {
     enable = true;
