@@ -60,11 +60,10 @@ in {
         "/".return = "404";
 
         "/_matrix/" = {
-          proxyPass = "http://${config.services.matrix-conduit.settings.global.address}:${toString config.services.matrix-conduit.settings.global.port}$request_uri";
+          proxyPass = "http://${config.services.matrix-conduit.settings.global.address}:${toString config.services.matrix-conduit.settings.global.port}";
           proxyWebsockets = true;
 
           extraConfig = ''
-            proxy_set_header Host $host;
             proxy_buffering off;
           '';
         };

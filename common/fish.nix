@@ -5,7 +5,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      fish = prev.fish.overrideAttrs (oldAttrs: {
+      fish = prev.fish.overrideAttrs (_: {
         postInstall = ''
           rm $out/share/applications/fish.desktop
         '';

@@ -7,7 +7,7 @@
       options = ["noatime"];
     };
     "/boot" = {
-      device = "/dev/disk/by-label/BOOT";
+      label = "BOOT";
       fsType = "vfat";
     };
   };

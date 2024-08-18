@@ -1,3 +1,3 @@
 {
-  fileSystems."/".device = "/dev/disk/by-label/main";
+  fileSystems."/".label = "main";
 }

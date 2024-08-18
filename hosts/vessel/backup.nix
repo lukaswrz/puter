@@ -5,42 +5,45 @@
   pkgs,
   ...
 }: let
-  safePath = "/srv/storage/safe";
+  backupPath = "/srv/backup";
+    backups = {
+      storage = "/srv/storage";
+      safe = "/srv/safe";
+      sync = config.services.syncthing.dataDir;
+    };
 in {
-  systemd = {
-    timers.local-backup = {
-      description = "Local rsync Backup";
-      wantedBy = ["timers.target"];
-      timerConfig = {
-        OnCalendar = "*-*-* 03:00:00";
-        Persistent = true;
-        Unit = "local-backup.service";
-      };
-    };
+  systemd = lib.mkMerge (map (
+      backupName: let
+        systemdName = "${backupName}-backup";
+      in {
+        timers.${systemdName} = {
+          description = "Local rsync Backup ${backupName}";
+          wantedBy = ["timers.target"];
+          timerConfig = {
+            OnCalendar = "*-*-* 03:00:00";
+            Persistent = true;
+            Unit = "${systemdName}.service";
+          };
+        };
 
-    services.local-backup = {
-      description = "Local rsync Backup";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete /srv/storage/ /srv/backup/";
-        User = "root";
-        Group = "root";
-      };
-    };
+        services.${systemdName} = {
+          description = "Local rsync Backup ${backupName}";
+          serviceConfig = {
+            Type = "oneshot";
+            User = "root";
+            Group = "root";
+          };
+          script = ''
+            ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath ${backups.${backupName}} ${backupPath}/${backupName}/
+          '';
+        };
+      }
+    ) (lib.attrNames backups));
 
-    tmpfiles.settings = {
-      "10-storage-safe".${safePath}.d = {
-        user = "root";
-        group = "root";
-        mode = "0755";
-      };
-    };
-  };
-
-  fileSystems."/srv/backup" = {
-    device = "/dev/disk/by-label/backup";
-    fsType = "btrfs";
-    options = ["subvol=/" "compress=zstd" "noatime"];
+  fileSystems.${backupPath} = {
+    label = "backup";
+    fsType = "ext4";
+    options = ["noatime"];
   };
 
   age.secrets."restic-${attrName}".file = ../../secrets/restic-${attrName}.age;
@@ -48,7 +51,7 @@ in {
   services.restic.backups.${attrName} = {
     repository = "sftp:u385962@u385962.your-storagebox.de:/restic/${attrName}";
     initialize = true;
-    paths = [safePath];
+    paths = [backups.safe backups.sync];
     passwordFile = config.age.secrets."restic-${attrName}".path;
     pruneOpts = ["--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12"];
     timerConfig = {

@@ -12,6 +12,8 @@
 
     ./backup.nix
     ./blocky.nix
+    ./storage.nix
+    ./syncthing.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
