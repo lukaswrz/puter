@@ -8,6 +8,7 @@
     ./direnv.nix
     ./fs.nix
     ./fwupd.nix
+    ./gc.nix
     ./git.nix
     ./nix.nix
     ./readline.nix
