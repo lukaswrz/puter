@@ -35,11 +35,11 @@
               ];
             };
 
-          genHosts = (nixpkgs.lib.pipe (builtins.readDir ./hosts) [
+          genHosts = nixpkgs.lib.pipe (builtins.readDir ./hosts) [
             (nixpkgs.lib.filterAttrs (name: type: type == "directory" && name != "default.nix"))
             builtins.attrNames
             nixpkgs.lib.genAttrs
-          ]);
+          ];
         in
           genHosts commonNixosSystem;
       };
