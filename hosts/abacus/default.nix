@@ -2,6 +2,7 @@
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
 
+    ./backup.nix
     ./microbin.nix
     ./miniflux.nix
     ./nginx.nix
