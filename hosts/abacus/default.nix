@@ -5,6 +5,7 @@
     ./microbin.nix
     ./miniflux.nix
     ./nginx.nix
+    ./syncthing.nix
     ./vaultwarden.nix
   ];
 
