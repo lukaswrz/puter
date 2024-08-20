@@ -32,7 +32,6 @@ in {
   services.nginx.virtualHosts.${virtualHostName} = {
     enableACME = true;
     forceSSL = true;
-    quic = true;
 
     locations."/" = {
       proxyPass = "http://${config.services.vaultwarden.config.ROCKET_ADDRESS}:${builtins.toString config.services.vaultwarden.config.ROCKET_PORT}";

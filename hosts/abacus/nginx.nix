@@ -1,11 +1,9 @@
 {
   config,
-  pkgs,
   ...
 }: {
   services.nginx = {
     enable = true;
-    package = pkgs.nginxQuic;
 
     recommendedBrotliSettings = true;
     recommendedGzipSettings = true;
@@ -31,7 +29,6 @@
       ${domain} = {
         enableACME = true;
         forceSSL = true;
-        quic = true;
 
         root = "/var/www/${domain}";
       };
@@ -39,7 +36,6 @@
       "log.${domain}" = {
         enableACME = true;
         forceSSL = true;
-        quic = true;
 
         root = "/var/www/log.${domain}";
       };

@@ -28,7 +28,6 @@ in {
   services.nginx.virtualHosts.${virtualHostName} = {
     enableACME = true;
     forceSSL = true;
-    quic = true;
 
     locations."/".proxyPass = "http://${config.services.microbin.settings.MICROBIN_BIND}:${builtins.toString config.services.microbin.settings.MICROBIN_PORT}";
   };

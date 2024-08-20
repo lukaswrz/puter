@@ -19,7 +19,6 @@ in {
   services.nginx.virtualHosts.${virtualHostName} = {
     enableACME = true;
     forceSSL = true;
-    quic = true;
 
     locations."/".proxyPass = "http://${config.services.miniflux.config.LISTEN_ADDR}";
   };
