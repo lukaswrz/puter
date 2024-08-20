@@ -6,6 +6,7 @@ in {
     enable = true;
     systemService = true;
     openDefaultPorts = true;
+    guiAddress = "localhost:8040";
   };
 
   services.nginx.virtualHosts.${virtualHostName} = {
