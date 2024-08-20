@@ -8,7 +8,6 @@ in {
     enable = true;
     passwordFile = config.age.secrets.microbin.path;
     settings = {
-      MICROBIN_BIND = "localhost";
       MICROBIN_PORT = 8020;
 
       MICROBIN_PUBLIC_PATH = "https://${virtualHostName}/";
