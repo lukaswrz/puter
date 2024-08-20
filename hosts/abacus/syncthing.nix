@@ -14,6 +14,12 @@ in {
     forceSSL = true;
     quic = true;
 
-    locations."/".proxyPass = "http://${config.services.syncthing.guiAddress}";
+    locations."/" = {
+      proxyPass = "http://${config.services.syncthing.guiAddress}";
+
+      extraConfig = ''
+        proxy_set_header Host ${config.services.syncthing.guiAddress};
+      '';
+    };
   };
 }
