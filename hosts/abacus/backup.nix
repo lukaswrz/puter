@@ -10,8 +10,7 @@
     initialize = true;
     paths = [
       config.services.vaultwarden.backupDir
-      # TODO
-      # config.services.syncthing.dataDir
+      config.services.syncthing.dataDir
     ];
     passwordFile = config.age.secrets."restic-${attrName}".path;
     pruneOpts = ["--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12"];
