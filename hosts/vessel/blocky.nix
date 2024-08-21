@@ -1,11 +1,13 @@
-{
+let
+  upstream = "https://one.one.one.one/dns-query";
+in {
   services.blocky = {
     enable = true;
     settings = {
       port = 53;
-      upstream.default = ["https://one.one.one.one/dns-query"];
+      upstream.default = [upstream];
       bootstrapDns = {
-        upstream = "https://one.one.one.one/dns-query";
+        inherit upstream;
         ips = ["1.1.1.1" "1.0.0.1"];
       };
       blocking = {
