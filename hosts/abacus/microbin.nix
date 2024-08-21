@@ -11,6 +11,8 @@ in {
       MICROBIN_BIND = "127.0.0.1";
       MICROBIN_PORT = 8020;
 
+      MICROBIN_READONLY = true;
+
       MICROBIN_PUBLIC_PATH = "https://${virtualHostName}/";
       MICROBIN_QR = true;
 
