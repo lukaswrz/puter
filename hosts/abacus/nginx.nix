@@ -10,7 +10,7 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    recommendedZstdSettings = true;
+    # recommendedZstdSettings = true;
     commonHttpConfig = ''
       error_log stderr;
       access_log /var/log/nginx/access.log;
