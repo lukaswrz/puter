@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   services.nginx = {
     enable = true;
 
@@ -15,29 +12,11 @@
       access_log /var/log/nginx/access.log;
     '';
 
-    virtualHosts = let
-      inherit (config.networking) domain;
-    in {
-      "~.*" = {
-        default = true;
-        addSSL = false;
+    virtualHosts."~.*" = {
+      default = true;
+      rejectSSL = true;
 
-        globalRedirect = domain;
-      };
-
-      ${domain} = {
-        enableACME = true;
-        forceSSL = true;
-
-        root = "/var/www/${domain}";
-      };
-
-      "log.${domain}" = {
-        enableACME = true;
-        forceSSL = true;
-
-        root = "/var/www/log.${domain}";
-      };
+      globalRedirect = config.networking.domain;
     };
   };
 }
