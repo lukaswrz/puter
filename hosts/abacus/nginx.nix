@@ -20,6 +20,7 @@
     in {
       "~.*" = {
         default = true;
+        addSSL = false;
 
         globalRedirect = domain;
       };
