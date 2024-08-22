@@ -12,7 +12,7 @@ in {
 
   systemd.tmpfiles.settings."10-static-sites".${root}.d = {
     user = "lukas";
-    group = "lukas";
+    group = "users";
     mode = "0755";
   };
 }
