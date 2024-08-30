@@ -19,6 +19,8 @@
 
       flake = {
         nixosConfigurations = let
+          hostsDir = "hosts";
+
           commonNixosSystem = name:
             nixpkgs.lib.nixosSystem {
               specialArgs = {
@@ -29,14 +31,14 @@
                 inputs.agenix.nixosModules.default
 
                 ./common
-                ./hosts/${name}
+                ./${hostsDir}/${name}
 
                 ({lib, ...}: {networking.hostName = lib.mkDefault name;})
               ];
             };
 
-          genHosts = nixpkgs.lib.pipe (builtins.readDir ./hosts) [
-            (nixpkgs.lib.filterAttrs (name: type: type == "directory" && name != "default.nix"))
+          genHosts = nixpkgs.lib.pipe (builtins.readDir ./${hostsDir}) [
+            (nixpkgs.lib.filterAttrs (name: type: type == "directory"))
             builtins.attrNames
             nixpkgs.lib.genAttrs
           ];
