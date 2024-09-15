@@ -11,7 +11,7 @@
         isNormalUser = true;
         hashedPasswordFile = config.age.secrets.user-lukas.path;
         openssh.authorizedKeys.keys = builtins.attrValues (import ../pubkeys.nix).users;
-        extraGroups = ["wheel" "networkmanager" "gamemode"];
+        extraGroups = ["wheel"];
       };
     };
   };
