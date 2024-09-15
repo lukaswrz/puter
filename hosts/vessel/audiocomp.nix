@@ -19,7 +19,7 @@
           pkgs.opusTools
         ];
         text = ''
-          src=$(realpath -- "$1")
+          src=$1
           dst=$src
           dst=''${dst%.flac}.opus
           dst=/srv/compmusic/''${dst#/srv/music/}
@@ -37,7 +37,7 @@
       clean = pkgs.writeShellApplication {
         name = "clean";
         text = ''
-          del=$(realpath -- "$1")
+          del=$1
           chk=$del
           chk=''${chk%.opus}.flac
           chk=/srv/music/''${chk#/srv/compmusic/}
