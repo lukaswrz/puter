@@ -28,7 +28,7 @@
           fi
 
           mkdir --parents -- "$(dirname -- "$dst")"
-          exec opusenc --quiet --bitrate 96.000 -- {} "$dst"
+          exec opusenc --quiet --bitrate 96.000 -- "$src" "$dst"
         '';
       };
     in ''
