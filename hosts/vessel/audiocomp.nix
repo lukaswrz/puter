@@ -51,13 +51,9 @@
     in ''
       shopt -s globstar nullglob
 
-      pushd /srv/music
-      find . -name '*.flac' -print0 | parallel --null -- ${lib.getExe enc} {}
-      popd
+      find /srv/music -name '*.flac' -print0 | parallel --null -- ${lib.getExe enc} {}
 
-      pushd /srv/compmusic
-      find . -name '*.flac' -exec ${clean} {} \;
-      popd
+      find /srv/compmusic -name '*.flac' -exec ${clean} {} \;
 
       rsync --verbose --verbose --archive --update --delete --mkpath --exclude lost+found \
         --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
