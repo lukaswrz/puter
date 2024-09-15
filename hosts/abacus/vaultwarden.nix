@@ -24,7 +24,7 @@ in {
 
       ENABLE_WEBSOCKET = true;
 
-      ROCKET_ADDRESS = "localhost";
+      ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8000;
     };
 
