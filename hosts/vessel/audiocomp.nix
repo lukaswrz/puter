@@ -9,7 +9,7 @@
     runtimeInputs = [
       pkgs.parallel
       pkgs.rsync
-      pkgs.ssh
+      pkgs.openssh
     ];
     text = let
       remoteDir = inputs.self.nixosConfigurations.abacus.config.services.navidrome.settings.MusicFolder;
