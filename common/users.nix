@@ -5,7 +5,10 @@
     mutableUsers = false;
 
     users = {
-      root.hashedPassword = "!";
+      root = {
+        hashedPassword = "!";
+        openssh.authorizedKeys.keys = builtins.attrValues (import ../pubkeys.nix).hosts;
+      };
       lukas = {
         uid = 1000;
         isNormalUser = true;
