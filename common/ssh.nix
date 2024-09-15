@@ -11,7 +11,7 @@
       }
     ];
     settings = {
-      PermitRootLogin = "forced-commands-only";
+      PermitRootLogin = "without-password";
       PasswordAuthentication = false;
     };
   };
