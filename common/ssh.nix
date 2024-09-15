@@ -1,8 +1,4 @@
 {
-  lib,
-  pkgs,
-  ...
-}: {
   age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
   services.openssh = {
@@ -15,19 +11,8 @@
       }
     ];
     settings = {
-      PermitRootLogin = "forced-commands-only";
+      PermitRootLogin = "without-password";
       PasswordAuthentication = false;
     };
   };
-
-  programs.ssh = {
-    startAgent = true;
-    enableAskPassword = true;
-    askPassword = lib.getExe' pkgs.ksshaskpass "ksshaskpass";
-  };
-
-  environment.etc."ssh/ssh_config".text = lib.mkAfter ''
-    Compression yes
-    ServerAliveInterval 60
-  '';
 }
