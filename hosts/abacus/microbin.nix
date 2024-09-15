@@ -12,7 +12,7 @@ in {
     enable = true;
     passwordFile = config.age.secrets.microbin.path;
     settings = {
-      MICROBIN_BIND = "localhost";
+      MICROBIN_BIND = "127.0.0.1";
       MICROBIN_PORT = 8020;
 
       MICROBIN_READONLY = true;
