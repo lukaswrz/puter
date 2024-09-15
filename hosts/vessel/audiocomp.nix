@@ -40,13 +40,23 @@
     '';
   };
 in {
-  # systemd.services.audiocomp = {
-  #   description = "Compress and sync music";
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     User = "root";
-  #     Group = "root";
-  #     ExecStart = lib.getExe audiocomp;
-  #   };
-  # };
+  systemd.services.audiocomp = {
+    description = "Compress and sync music";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      Group = "root";
+      ExecStart = lib.getExe audiocomp;
+    };
+  };
+
+  systemd.timers.audiocomp = {
+    description = "Compress and sync music daily";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "*-*-* 03:00:00";
+      Persistent = true;
+      Unit = "audiocomp.service";
+    };
+  };
 }
