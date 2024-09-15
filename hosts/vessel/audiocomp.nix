@@ -33,7 +33,7 @@
       };
     in ''
       cd /srv/music
-      find . -name '*.flac' -print0 | parallel --null -- '${lib.getExe enc} {}'
+      find . -name '*.flac' -print0 | parallel --null -- ${lib.getExe enc} {}
 
       rsync --verbose --verbose --archive --update --delete --mkpath --exclude lost+found \
         --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
