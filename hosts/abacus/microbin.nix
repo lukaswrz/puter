@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config.networking) domain;
   virtualHostName = "bin.${domain}";
 in {
@@ -8,7 +12,7 @@ in {
     enable = true;
     passwordFile = config.age.secrets.microbin.path;
     settings = {
-      MICROBIN_BIND = "127.0.0.1";
+      MICROBIN_BIND = "localhost";
       MICROBIN_PORT = 8020;
 
       MICROBIN_READONLY = true;
@@ -31,6 +35,9 @@ in {
     enableACME = true;
     forceSSL = true;
 
-    locations."/".proxyPass = "http://${config.services.microbin.settings.MICROBIN_BIND}:${builtins.toString config.services.microbin.settings.MICROBIN_PORT}";
+    locations."/".proxyPass = "http://${lib.formatHostPort {
+      host = config.services.microbin.settings.MICROBIN_BIND;
+      port = config.services.microbin.settings.MICROBIN_PORT;
+    }}";
   };
 }

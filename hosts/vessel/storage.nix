@@ -11,5 +11,17 @@
       group = "users";
       mode = "0755";
     };
+
+    "10-music"."/srv/music".d = {
+      user = "lukas";
+      group = "users";
+      mode = "0755";
+    };
+
+    "10-compmusic"."/srv/compmusic".d = {
+      user = "lukas";
+      group = "users";
+      mode = "0755";
+    };
   };
 }

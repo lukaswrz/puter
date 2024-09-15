@@ -6,8 +6,9 @@
   ...
 }: let
   backups = {
-    storage = "/srv/storage";
+    music = "/srv/music";
     safe = "/srv/safe";
+    storage = "/srv/storage";
     sync = config.services.syncthing.dataDir;
   };
 in {
@@ -33,7 +34,7 @@ in {
           Group = "root";
         };
         script = ''
-          ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath ${backups.${backupName}} /srv/backup/${backupName}/
+          ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath -- ${backups.${backupName}}/ /srv/backup/${backupName}/
         '';
       };
     }

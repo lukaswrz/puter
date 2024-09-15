@@ -1,15 +1,5 @@
 {modulesPath, ...}: {
-  imports = [
-    "${modulesPath}/profiles/qemu-guest.nix"
-
-    ./backup.nix
-    ./microbin.nix
-    ./miniflux.nix
-    ./nginx.nix
-    ./static
-    ./syncthing.nix
-    ./vaultwarden.nix
-  ];
+  imports = ["${modulesPath}/profiles/qemu-guest.nix"];
 
   nixpkgs.hostPlatform = "aarch64-linux";
 
@@ -34,10 +24,5 @@
       inherit interface;
     };
     firewall.allowedTCPPorts = [80 443];
-  };
-
-  security.acme = {
-    defaults.email = "lukas@wrz.one";
-    acceptTerms = true;
   };
 }

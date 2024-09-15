@@ -9,7 +9,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     flake-parts,
     ...
@@ -19,28 +18,30 @@
 
       flake = {
         nixosConfigurations = let
-          hostsDir = "hosts";
+          lib = nixpkgs.lib.extend (import ./lib.nix);
 
           commonNixosSystem = name:
-            nixpkgs.lib.nixosSystem {
+            lib.nixosSystem {
               specialArgs = {
-                inherit inputs;
+                inherit inputs lib;
                 attrName = name;
               };
-              modules = [
-                inputs.agenix.nixosModules.default
 
-                ./common
-                ./${hostsDir}/${name}
-
-                ({lib, ...}: {networking.hostName = lib.mkDefault name;})
-              ];
+              modules =
+                (lib.findModules [
+                  ./common
+                  ./hosts/${name}
+                ])
+                ++ [
+                  inputs.agenix.nixosModules.default
+                  {networking.hostName = lib.mkDefault name;}
+                ];
             };
 
-          genHosts = nixpkgs.lib.pipe (builtins.readDir ./${hostsDir}) [
-            (nixpkgs.lib.filterAttrs (name: type: type == "directory"))
+          genHosts = lib.pipe (builtins.readDir ./hosts) [
+            (lib.filterAttrs (name: type: type == "directory"))
             builtins.attrNames
-            nixpkgs.lib.genAttrs
+            lib.genAttrs
           ];
         in
           genHosts commonNixosSystem;

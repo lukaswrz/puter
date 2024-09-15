@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config.networking) domain;
   virtualHostName = "vault.${domain}";
   backupDir = "/srv/backup/vaultwarden";
@@ -20,7 +24,7 @@ in {
 
       ENABLE_WEBSOCKET = true;
 
-      ROCKET_ADDRESS = "127.0.0.1";
+      ROCKET_ADDRESS = "localhost";
       ROCKET_PORT = 8000;
     };
 
@@ -34,7 +38,10 @@ in {
     forceSSL = true;
 
     locations."/" = {
-      proxyPass = "http://${config.services.vaultwarden.config.ROCKET_ADDRESS}:${builtins.toString config.services.vaultwarden.config.ROCKET_PORT}";
+      proxyPass = "http://${lib.formatHostPort {
+        host = config.services.vaultwarden.config.ROCKET_ADDRESS;
+        port = config.services.vaultwarden.config.ROCKET_PORT;
+      }}";
       proxyWebsockets = true;
     };
   };
