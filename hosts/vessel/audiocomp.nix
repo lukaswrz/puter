@@ -19,21 +19,45 @@
           pkgs.opusTools
         ];
         text = ''
-          src="$1"
-          dst=''${src%.flac}.opus
-          dst=/srv/compmusic/''${dst#./}
+          src=$(realpath -- "$1")
+          dst=$src
+          dst=''${dst%.flac}.opus
+          dst=/srv/compmusic/''${dst#/srv/music/}
 
           if [[ -f "$dst" ]]; then
             exit
           fi
 
           mkdir --parents -- "$(dirname -- "$dst")"
+
+          echo "encoding ''${src@Q} -> ''${dst@Q}" >&2
           exec opusenc --quiet --bitrate 96.000 -- "$src" "$dst"
         '';
       };
+      clean = pkgs.writeShellApplication {
+        name = "clean";
+        text = ''
+          del=$(realpath -- "$1")
+          chk=$del
+          chk=''${chk%.opus}.flac
+          chk=/srv/music/''${chk#/srv/compmusic/}
+
+          if [[ ! -f "$chk" ]]; then
+            echo "deleting ''${del@Q}" >&2
+            rm --force -- "$del"
+          fi
+        '';
+      };
     in ''
-      cd /srv/music
+      shopt -s globstar nullglob
+
+      pushd /srv/music
       find . -name '*.flac' -print0 | parallel --null -- ${lib.getExe enc} {}
+      popd
+
+      pushd /srv/compmusic
+      find . -name '*.flac' -exec ${clean} {} \;
+      popd
 
       rsync --verbose --verbose --archive --update --delete --mkpath --exclude lost+found \
         --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
