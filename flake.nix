@@ -39,7 +39,7 @@
             };
 
           genHosts = lib.pipe (builtins.readDir ./hosts) [
-            (lib.filterAttrs (name: type: type == "directory"))
+            (lib.filterAttrs (_: type: type == "directory"))
             builtins.attrNames
             lib.genAttrs
           ];

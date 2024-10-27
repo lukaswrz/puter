@@ -55,6 +55,7 @@
 
       find /srv/compmusic -name '*.flac' -exec ${clean} {} \;
 
+      echo syncing >&2
       rsync --verbose --verbose --archive --update --delete --mkpath --exclude lost+found \
         --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
         -- /srv/compmusic/ root@wrz.one:${remoteDir}
