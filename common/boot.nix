@@ -11,5 +11,6 @@
         efiSysMountPoint = "/boot";
       };
     };
+    tmp.cleanOnBoot = true;
   };
 }

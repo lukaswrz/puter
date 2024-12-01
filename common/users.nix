@@ -1,5 +1,11 @@
-{config, ...}: {
-  age.secrets.user-lukas.file = ../secrets/user-lukas.age;
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (config.users) mainUser;
+in {
+  age.secrets = lib.mkSecrets {"user-${mainUser}" = {};};
 
   users = {
     mutableUsers = false;
@@ -9,10 +15,10 @@
         hashedPassword = "!";
         openssh.authorizedKeys.keys = builtins.attrValues (import ../pubkeys.nix).hosts;
       };
-      lukas = {
+      ${mainUser} = {
         uid = 1000;
         isNormalUser = true;
-        hashedPasswordFile = config.age.secrets.user-lukas.path;
+        hashedPasswordFile = config.age.secrets."user-${mainUser}".path;
         openssh.authorizedKeys.keys = builtins.attrValues (import ../pubkeys.nix).users;
         extraGroups = ["wheel"];
       };

@@ -16,35 +16,17 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux" "aarch64-linux"];
 
-      flake = {
-        nixosConfigurations = let
-          lib = nixpkgs.lib.extend (import ./lib.nix);
+      flake = let
+        lib = nixpkgs.lib.extend (import ./lib.nix);
+      in {
+        inherit lib;
 
-          commonNixosSystem = name:
-            lib.nixosSystem {
-              specialArgs = {
-                inherit inputs lib;
-                attrName = name;
-              };
-
-              modules =
-                (lib.findModules [
-                  ./common
-                  ./hosts/${name}
-                ])
-                ++ [
-                  inputs.agenix.nixosModules.default
-                  {networking.hostName = lib.mkDefault name;}
-                ];
-            };
-
-          genHosts = lib.pipe (builtins.readDir ./hosts) [
-            (lib.filterAttrs (_: type: type == "directory"))
-            builtins.attrNames
-            lib.genAttrs
+        nixosConfigurations = lib.genNixosConfigurations {
+          inherit inputs;
+          extraModules = [
+            inputs.agenix.nixosModules.default
           ];
-        in
-          genHosts commonNixosSystem;
+        };
       };
 
       perSystem = {

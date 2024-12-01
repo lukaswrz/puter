@@ -40,7 +40,7 @@ in {
     }
   ) (lib.attrNames backups));
 
-  age.secrets."restic-${attrName}".file = ../../secrets/restic-${attrName}.age;
+  age.secrets = lib.mkSecrets {"restic-${attrName}" = {};};
 
   services.restic.backups.${attrName} = {
     repository = "sftp:u385962@u385962.your-storagebox.de:/restic/${attrName}";

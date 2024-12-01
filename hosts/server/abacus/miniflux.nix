@@ -1,8 +1,12 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config.networking) domain;
   virtualHostName = "flux.${domain}";
 in {
-  age.secrets.miniflux.file = ../../secrets/miniflux.age;
+  age.secrets = lib.mkSecrets {miniflux = {};};
 
   services.miniflux = {
     enable = true;

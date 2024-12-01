@@ -7,7 +7,7 @@
   virtualHostName = "vault.${domain}";
   backupDir = "/srv/backup/vaultwarden";
 in {
-  age.secrets.vaultwarden.file = ../../secrets/vaultwarden.age;
+  age.secrets = lib.mkSecrets {vaultwarden = {};};
 
   services.vaultwarden = {
     enable = true;

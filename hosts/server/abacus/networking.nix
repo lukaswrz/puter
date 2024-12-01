@@ -1,14 +1,4 @@
-{modulesPath, ...}: {
-  imports = ["${modulesPath}/profiles/qemu-guest.nix"];
-
-  nixpkgs.hostPlatform = "aarch64-linux";
-
-  boot.initrd.availableKernelModules = ["xhci_pci" "virtio_pci" "virtio_scsi" "usbhid" "sr_mod"];
-
-  system.stateVersion = "24.11";
-
-  powerManagement.cpuFreqGovernor = "performance";
-
+{
   networking = let
     interface = "enp1s0";
   in {
