@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -o errexit
 set -o nounset
 set -o pipefail
@@ -72,7 +74,7 @@ while true; do
       printf '\n'
       read -r -s -p 'Re-enter password: ' repassword
       printf '\n'
-      if [[ "$password" == "$repassword" ]]; then
+      if [[ $password == "$repassword" ]]; then
         break
       fi
     done

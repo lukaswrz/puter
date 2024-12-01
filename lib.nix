@@ -69,7 +69,7 @@ lib: _: {
           class: map (name: {inherit class name;}) (dirsIn (hostsDir + "/${class}"))
         )
         classes)
-      (map (obj: lib.nameValuePair obj.name (commonNixosSystem obj)))
+      (map (args: lib.nameValuePair args.name (commonNixosSystem args)))
       builtins.listToAttrs
     ];
 }
