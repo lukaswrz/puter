@@ -19,5 +19,5 @@
   powerManagement.cpuFreqGovernor = "powersave";
 
   console.keyMap = "de";
-  services.xserver.layout = "de";
+  services.xserver.xkb.layout = "de";
 }
