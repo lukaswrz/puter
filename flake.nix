@@ -12,6 +12,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     flake-parts,
     treefmt,
@@ -25,12 +26,10 @@
 
       systems = ["x86_64-linux" "aarch64-linux"];
 
-      flake = let
+      flake = {
         lib = nixpkgs.lib.extend (import ./lib.nix);
-      in {
-        inherit lib;
 
-        nixosConfigurations = lib.genNixosConfigurations {
+        nixosConfigurations = self.lib.genNixosConfigurations {
           inherit inputs;
           extraModules = [
             inputs.agenix.nixosModules.default
