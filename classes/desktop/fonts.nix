@@ -8,7 +8,7 @@
       pkgs.noto-fonts-cjk-serif
       pkgs.noto-fonts-monochrome-emoji
       pkgs.noto-fonts-color-emoji
-      (pkgs.nerdfonts.override {fonts = ["FiraCode"];})
+      pkgs.nerd-fonts.fira-code
     ];
 
     fontconfig = {

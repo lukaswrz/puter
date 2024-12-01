@@ -1,6 +1,9 @@
-{
+{config, ...}: let
+  inherit (config.users) mainUser;
+in {
   services.resolved.enable = true;
 
+  # TODO
   networking = {
     networkmanager = {
       enable = true;
@@ -34,4 +37,6 @@
       ];
     };
   };
+
+  users.users.${mainUser}.extraGroups = ["networkmanager"];
 }

@@ -16,6 +16,7 @@ in {
         openssh.authorizedKeys.keys = builtins.attrValues (import ../pubkeys.nix).hosts;
       };
       ${mainUser} = {
+        description = "Lukas Wurzinger";
         uid = 1000;
         isNormalUser = true;
         hashedPasswordFile = config.age.secrets."user-${mainUser}".path;

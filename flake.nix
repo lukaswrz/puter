@@ -6,6 +6,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hardware.url = "github:NixOS/nixos-hardware";
     agenix.url = "github:ryantm/agenix";
+    hxwrap.url = "github:lukaswrz/hxwrap";
   };
 
   outputs = {
