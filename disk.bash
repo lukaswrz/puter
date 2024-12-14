@@ -68,7 +68,7 @@ mkfs.vfat -F 32 -n "$bootlbl" -- "$bootfs" >/dev/null
 while true; do
   read -r -p 'Do you want your main partition to be encrypted [y/N]? ' luks
   case "$luks" in
-  [Yy]*)
+  ([Yy]*)
     while true; do
       read -r -s -p 'Enter password: ' password
       printf '\n'
@@ -85,11 +85,11 @@ while true; do
     mainfs=/dev/mapper/$mapping
     break
     ;;
-  '' | [Nn]*)
+  ('' | [Nn]*)
     mainfs=$mainblkdev
     break
     ;;
-  *) printf 'Please answer with yes or no\n' 1>&2 ;;
+  (*) printf 'Please answer with yes or no\n' 1>&2 ;;
   esac
 done
 
