@@ -3,12 +3,27 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    # Pre-commit
     git-hooks.url = "github:cachix/git-hooks.nix";
+
+    # Formatting
     treefmt.url = "github:numtide/treefmt-nix";
+
+    # Hardware support
     hardware.url = "github:NixOS/nixos-hardware";
+
+    # Agenix
     agenix.url = "github:ryantm/agenix";
+
+    # Helix
     hxwrap.url = "github:lukaswrz/hxwrap";
+
+    # COSMIC
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
   };
 
   outputs = {
@@ -29,12 +44,7 @@
       flake = {
         lib = nixpkgs.lib.extend (import ./lib.nix);
 
-        nixosConfigurations = self.lib.genNixosConfigurations {
-          inherit inputs;
-          extraModules = [
-            inputs.agenix.nixosModules.default
-          ];
-        };
+        nixosConfigurations = self.lib.genNixosConfigurations {inherit inputs;};
       };
 
       perSystem = {

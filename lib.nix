@@ -28,7 +28,7 @@ lib: _: {
 
   genNixosConfigurations = {
     inputs,
-    extraModules,
+    extraModules ? _: [],
   }: let
     commonDir = ./common;
     classesDir = ./classes;
@@ -54,7 +54,7 @@ lib: _: {
           ++ [
             {networking.hostName = lib.mkDefault name;}
           ]
-          ++ extraModules;
+          ++ (extraModules {inherit class name;});
       };
 
     dirsIn = dir:
