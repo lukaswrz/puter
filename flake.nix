@@ -6,12 +6,6 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # Pre-commit
-    git-hooks.url = "github:cachix/git-hooks.nix";
-
-    # Formatting
-    treefmt.url = "github:numtide/treefmt-nix";
-
     # Hardware support
     hardware.url = "github:NixOS/nixos-hardware";
 
@@ -24,19 +18,24 @@
     # COSMIC
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
+
+    # Devenv
+    devenv-root = {
+      url = "file+file:///dev/null";
+      flake = false;
+    };
+    devenv.url = "github:cachix/devenv";
   };
 
   outputs = {
     self,
     nixpkgs,
     flake-parts,
-    treefmt,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.git-hooks.flakeModule
-        inputs.treefmt.flakeModule
+        inputs.devenv.flakeModule
       ];
 
       systems = ["x86_64-linux" "aarch64-linux"];
@@ -48,38 +47,20 @@
       };
 
       perSystem = {
-        config,
         pkgs,
         inputs',
         ...
       }: {
-        treefmt = ./treefmt.nix;
+        devenv.shells.default = {
+          devenv.root = let
+            devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
+          in
+            pkgs.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
 
-        pre-commit = {
-          check.enable = true;
+          name = "puter";
 
-          settings = {
-            hooks = {
-              treefmt.enable = true;
-              deadnix.enable = true;
-              statix.enable = true;
-              shellcheck = {
-                enable = true;
-                excludes = [
-                  "^\.envrc$"
-                ];
-              };
-              flake-checker.enable = true;
-            };
-          };
-        };
-
-        devShells.default = pkgs.mkShellNoCC {
-          inherit (config.pre-commit.devShell) shellHook;
-
-          inputsFrom = [
-            config.pre-commit.devShell
-            config.treefmt.build.devShell
+          imports = [
+            ./devenv.nix
           ];
 
           packages = [
@@ -87,18 +68,7 @@
           ];
         };
 
-        packages.disk = pkgs.writeShellApplication {
-          name = "disk";
-
-          runtimeInputs = with pkgs; [
-            util-linux
-            jq
-            e2fsprogs
-            dosfstools
-          ];
-
-          text = builtins.readFile ./disk.bash;
-        };
+        packages.disk = pkgs.callPackage ./disk {};
       };
     };
 }
