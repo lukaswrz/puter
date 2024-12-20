@@ -8,7 +8,7 @@
 in {
   environment.systemPackages = [package];
 
-  environment.variables = let
+  environment.sessionVariables = let
     exe = builtins.baseNameOf (lib.getExe package);
   in {
     EDITOR = exe;
