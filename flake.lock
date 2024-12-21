@@ -447,17 +447,17 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1734804853,
-        "narHash": "sha256-nIrVMs4BGdNeh2CPTb0f852YAspErlG3bMxWk+Gh5uI=",
-        "owner": "lukaswrz",
-        "repo": "hxwrap",
-        "rev": "b4f3e02c129bbf64a2dd75b22c7b7875817fef17",
-        "type": "github"
+        "lastModified": 1734816808,
+        "narHash": "sha256-m26BfEc0gQxH0cJ55RThpdmWIHBi1PGrFlUkpXHFx0s=",
+        "ref": "refs/heads/main",
+        "rev": "2d348d78cc12247a405f6f9914b08e82579fd167",
+        "revCount": 12,
+        "type": "git",
+        "url": "ssh://forgejo@tea.wrz.one/lukas/hxwrap.git"
       },
       "original": {
-        "owner": "lukaswrz",
-        "repo": "hxwrap",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://forgejo@tea.wrz.one/lukas/hxwrap.git"
       }
     },
     "libgit2": {
