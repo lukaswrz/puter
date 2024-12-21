@@ -447,11 +447,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1734803076,
-        "narHash": "sha256-Rq0DTQX3J1yzN6i7rKcLoDZUWycXtzpn6g4S3DjgnJ8=",
+        "lastModified": 1734803520,
+        "narHash": "sha256-6qxEDRTLFxIcLYDrHZd3nUc3KHQq8JOiL898XVyce28=",
         "owner": "lukaswrz",
         "repo": "hxwrap",
-        "rev": "5b9fdb8172970b3d8a509126b5c57a3575e5e9fd",
+        "rev": "02cbfb215b39141f1dde0f2b3b479f87542107bb",
         "type": "github"
       },
       "original": {
