@@ -32,12 +32,12 @@ in {
       service = {
         DISABLE_REGISTRATION = true;
         ENABLE_NOTIFY_MAIL = true;
-        REQUIRE_SIGNIN_VIEW = true; # TODO
       };
 
+      # TODO: Enable
       federation = {
-        ENABLED = false; # TODO
-        SHARE_USER_STATISTICS = false; # TODO
+        ENABLED = false;
+        SHARE_USER_STATISTICS = false;
       };
 
       mailer = {
