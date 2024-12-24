@@ -3,7 +3,7 @@ lib: _: {
     builtins.concatMap (dir:
       lib.pipe dir [
         (lib.fileset.fileFilter (
-          file: file.hasExt "nix" && file.name != "default.nix"
+          file: file.hasExt "nix"
         ))
         lib.fileset.toList
       ])
@@ -48,8 +48,8 @@ lib: _: {
           (lib.findModules [
             commonDir
             ./classes/${class}
-            (classesDir + "/${class}")
-            (hostsDir + "/${class}/${name}")
+            (classesDir + /${class})
+            (hostsDir + /${class}/${name})
           ])
           ++ [
             {networking.hostName = lib.mkDefault name;}
@@ -66,7 +66,7 @@ lib: _: {
     lib.pipe (dirsIn hostsDir) [
       (classes:
         builtins.concatMap (
-          class: map (name: {inherit class name;}) (dirsIn (hostsDir + "/${class}"))
+          class: map (name: {inherit class name;}) (dirsIn (hostsDir + /${class}))
         )
         classes)
       (map (args: lib.nameValuePair args.name (commonNixosSystem args)))
