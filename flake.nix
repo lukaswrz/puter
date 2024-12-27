@@ -13,7 +13,7 @@
     agenix.url = "github:ryantm/agenix";
 
     # Helix
-    hxwrap.url = "git+ssh://forgejo@tea.wrz.one/lukas/hxwrap.git";
+    hxwrap.url = "git+https://forgejo@tea.wrz.one/lukas/hxwrap.git";
 
     # COSMIC
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
