@@ -453,11 +453,11 @@
         "rev": "2d348d78cc12247a405f6f9914b08e82579fd167",
         "revCount": 12,
         "type": "git",
-        "url": "ssh://forgejo@tea.wrz.one/lukas/hxwrap.git"
+        "url": "https://forgejo@tea.wrz.one/lukas/hxwrap.git"
       },
       "original": {
         "type": "git",
-        "url": "ssh://forgejo@tea.wrz.one/lukas/hxwrap.git"
+        "url": "https://forgejo@tea.wrz.one/lukas/hxwrap.git"
       }
     },
     "libgit2": {
