@@ -4,9 +4,19 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-opts=$(getopt --options r:m:b:l:c: --longoptions=root:,mapping:,boot-label:,main-label:,cryptmain-label: --name "$0" -- "$@")
+progname="$0"
 
-eval set -- "$opts"
+error() {
+    for line in "$@"; do
+        printf '%s\n' "$progname: $line" 1>&2
+    done
+
+    exit 1
+}
+
+args=$(getopt --options r:m:b:l:c: --longoptions=root:,mapping:,boot-label:,main-label:,cryptmain-label: --name "$progname" -- "$@")
+
+eval set -- "$args"
 
 root=/mnt
 mapping=main
@@ -15,36 +25,39 @@ mainlbl=main
 cryptmainlbl=cryptmain
 while true; do
   case "$1" in
-  -r | --root)
+  (-r | --root)
     root=$2
     shift 2
     ;;
-  -m | --mapping)
+  (-m | --mapping)
     mapping=$2
     shift 2
     ;;
-  -b | --boot-label)
+  (-b | --boot-label)
     bootlbl=${2^^}
     shift 2
     ;;
-  -l | --main-label)
+  (-l | --main-label)
     mainlbl=$2
     shift 2
     ;;
-  -c | --cryptmain-label)
+  (-c | --cryptmain-label)
     cryptmainlbl=$2
     shift 2
     ;;
-  --)
+  (--)
     shift
     break
     ;;
   esac
 done
 
-if [[ $# != 1 ]]; then
-  printf '%s\n' "$0: an argument specifying the block device is required" 1>&2
-  exit 1
+if (( $# < 1 )); then
+  error 'an argument specifying the block device is required'
+fi
+
+if (( $# > 1 )); then
+  error 'too many arguments'
 fi
 
 blkdev=$1
