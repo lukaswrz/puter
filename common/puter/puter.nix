@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  puter = pkgs.writeShellScriptBin {
+  puter = pkgs.writeShellApplication {
     name = "puter";
     runtimeInputs = [
       pkgs.nixos-rebuild
