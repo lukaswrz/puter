@@ -19,7 +19,11 @@ args=$(getopt --options f --longoptions=flake: --name "$progname" -- "$@")
 eval set -- "$args"
 
 flake=git+https://forgejo@tea.wrz.one/lukas/puter.git#$(hostname)
-flags=()
+flags=(
+    --refresh
+    --use-remote-sudo
+    --no-write-lock-file
+)
 while true; do
     case $1 in
     (-f | --flake)
@@ -43,10 +47,6 @@ fi
 
 subcommand=$1
 
-nixos-rebuild() {
-    command nixos-rebuild "${flags[@]}" --flake "$flake" --no-write-lock-file "$@"
-}
-
 case $subcommand in
     (s | switch)
         shift
@@ -55,7 +55,7 @@ case $subcommand in
             error 'too many arguments'
         fi
 
-        nixos-rebuild switch
+        nixos-rebuild switch "${flags[@]}" --flake "$flake"
         ;;
     (b | boot)
         shift
@@ -64,7 +64,7 @@ case $subcommand in
             error 'too many arguments'
         fi
 
-        nixos-rebuild boot
+        nixos-rebuild boot "${flags[@]}" --flake "$flake"
         ;;
     (*)
         error 'invalid subcommand'
