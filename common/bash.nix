@@ -1,5 +1,5 @@
 {
   programs.bash.interactiveShellInit = ''
-    shopt -s autocd globstar failglob extglob checkwinsize
+    shopt -s autocd globstar nullglob extglob checkwinsize
   '';
 }
