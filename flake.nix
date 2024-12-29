@@ -6,20 +6,13 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # Hardware support
     hardware.url = "github:NixOS/nixos-hardware";
 
-    # Agenix
     agenix.url = "github:ryantm/agenix";
 
-    # Helix
-    hxwrap.url = "git+https://forgejo@tea.wrz.one/lukas/hxwrap.git";
-
-    # COSMIC
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
-    # Devenv
     devenv-root = {
       url = "file+file:///dev/null";
       flake = false;

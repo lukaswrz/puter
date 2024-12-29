@@ -1,10 +1,9 @@
 {
-  inputs,
   lib,
   pkgs,
   ...
 }: let
-  package = inputs.hxwrap.packages.${pkgs.system}.default;
+  package = pkgs.helix;
 in {
   environment.systemPackages = [package];
 
