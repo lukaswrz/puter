@@ -13,5 +13,5 @@
       '';
     };
 
-  config.pubkeys = import self + /pubkeys.nix;
+  config.pubkeys = import (self + /pubkeys.nix);
 }
