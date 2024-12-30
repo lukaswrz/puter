@@ -10,18 +10,19 @@ in {
   users = {
     mutableUsers = false;
 
+    mainUser = "lukas";
+
     users = {
       root = {
         hashedPassword = "!";
-        openssh.authorizedKeys.keys = builtins.attrValues (import ../pubkeys.nix).hosts;
+        openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.hosts;
       };
       ${mainUser} = {
         description = "Lukas Wurzinger";
         uid = 1000;
         isNormalUser = true;
         hashedPasswordFile = config.age.secrets."user-${mainUser}".path;
-        openssh.authorizedKeys.keys = builtins.attrValues (import ../pubkeys.nix).users;
-        extraGroups = ["wheel"];
+        openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
       };
     };
   };

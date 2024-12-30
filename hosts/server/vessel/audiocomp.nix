@@ -1,5 +1,5 @@
 {
-  inputs,
+  self,
   lib,
   pkgs,
   ...
@@ -12,7 +12,7 @@
       pkgs.openssh
     ];
     text = let
-      remoteDir = inputs.self.nixosConfigurations.abacus.config.services.navidrome.settings.MusicFolder;
+      remoteDir = self.nixosConfigurations.abacus.config.services.navidrome.settings.MusicFolder;
       enc = pkgs.writeShellApplication {
         name = "enc";
         runtimeInputs = [

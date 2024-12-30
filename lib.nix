@@ -40,6 +40,7 @@ lib: _: {
     }:
       lib.nixosSystem {
         specialArgs = {
+          inherit (inputs) self;
           inherit inputs lib;
           attrName = name;
         };

@@ -1,6 +1,4 @@
-{config, ...}: let
-  inherit (config.users) mainUser;
-in {
+{config, ...}: {
   services.resolved.enable = true;
 
   networking = {
@@ -11,5 +9,5 @@ in {
     firewall.enable = false;
   };
 
-  users.users.${mainUser}.extraGroups = ["networkmanager"];
+  users.groups.networkmanager.members = config.users.normalUsers;
 }

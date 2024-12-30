@@ -3,9 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (config.users) mainUser;
-in {
+}: {
   programs.gamemode = {
     enable = true;
     settings = {
@@ -19,5 +17,5 @@ in {
     };
   };
 
-  users.users.${mainUser}.extraGroups = ["gamemode"];
+  users.groups.gamemode.members = config.users.normalUsers;
 }
