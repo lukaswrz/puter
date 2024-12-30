@@ -1,4 +1,10 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
+  age.secrets = lib.mkSecrets {"user-guest" = {};};
+
   users.users.guest = {
     description = "Guest";
     uid = 1001;
