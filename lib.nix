@@ -1,13 +1,13 @@
 lib: _: {
-  findModules = dirs:
-    builtins.concatMap (dir:
-      lib.pipe dir [
+  findModules = paths:
+    builtins.concatMap (path:
+      lib.pipe path [
         (lib.fileset.fileFilter (
           file: file.hasExt "nix"
         ))
         lib.fileset.toList
       ])
-    dirs;
+    paths;
 
   formatHostPort = {
     host,
@@ -30,6 +30,7 @@ lib: _: {
     inputs,
     extraModules ? _: [],
   }: let
+    modulesDir = ./modules;
     commonDir = ./common;
     classesDir = ./classes;
     hostsDir = ./hosts;
@@ -47,6 +48,7 @@ lib: _: {
 
         modules =
           (lib.findModules [
+            modulesDir
             commonDir
             ./classes/${class}
             (classesDir + /${class})

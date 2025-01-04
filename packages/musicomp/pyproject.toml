@@ -1,0 +1,19 @@
+[project]
+name = "musicomp"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Lukas Wurzinger", email = "lukas@wrz.one"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+musicomp = "musicomp.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/musicomp"]

@@ -1,13 +1,9 @@
-{pkgs, ...}: let
-  puter = pkgs.writeShellApplication {
-    name = "puter";
-    runtimeInputs = [
-      pkgs.nixos-rebuild
-    ];
-    text = builtins.readFile ./puter.bash;
-  };
-in {
+{
+  pkgs,
+  self,
+  ...
+}: {
   environment.systemPackages = [
-    puter
+    self.packages.${pkgs.system}.puter
   ];
 }

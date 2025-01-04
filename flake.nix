@@ -48,7 +48,7 @@
           devenv.root = let
             devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
           in
-            pkgs.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
+            self.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
 
           name = "puter";
 
@@ -61,7 +61,14 @@
           ];
         };
 
-        packages.disk = pkgs.callPackage ./disk {};
+        packages =
+          self.lib.genAttrs [
+            "puter"
+            "disk"
+            "musicomp"
+          ] (
+            name: pkgs.callPackage ./packages/${name} {}
+          );
       };
     };
 }
