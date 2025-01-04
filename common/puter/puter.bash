@@ -6,15 +6,20 @@ set -o pipefail
 
 progname=$0
 
-error() {
+warn() {
+    local line
     for line in "$@"; do
         echo "$progname: $line" 1>&2
     done
+}
+
+error() {
+    warn "$@"
 
     exit 1
 }
 
-args=$(getopt --options f:o:t: --longoptions=flake:,on:,to: --name "$progname" -- "$@")
+args=$(getopt --options f:o:t:v --longoptions=flake:,on:,to:,verbose --name "$progname" -- "$@")
 
 eval set -- "$args"
 
@@ -24,6 +29,7 @@ flags=(
     --use-remote-sudo
     --no-write-lock-file
 )
+verbose=false
 while true; do
     case $1 in
     (-f | --flake)
@@ -41,6 +47,7 @@ while true; do
         ;;
     (-v | --verbose)
         flags+=(--verbose)
+        verbose=true
         shift
         ;;
     (--)
@@ -60,9 +67,17 @@ if (( $# == 0 )); then
     error 'a subcommand is required'
 fi
 
-sub=$1
+run() {
+    cmd=(nixos-rebuild "${flags[@]}" "$@")
 
-cmd=(nixos-rebuild "${flags[@]}")
+    if "$verbose"; then
+        warn "running ${cmd[*]}"
+    fi
+
+    "${cmd[@]}"
+}
+
+sub=$1
 
 case $sub in
     (s | switch)
@@ -72,9 +87,7 @@ case $sub in
             error 'too many arguments'
         fi
 
-        cmd+=(switch)
-        echo "${cmd[@]}"
-        "${cmd[@]}"
+        run switch
         ;;
     (b | boot)
         shift
@@ -83,9 +96,7 @@ case $sub in
             error 'too many arguments'
         fi
 
-        cmd+=(boot)
-        echo "${cmd[@]}"
-        "${cmd[@]}"
+        run boot
         ;;
     (*)
         error 'invalid subcommand'
