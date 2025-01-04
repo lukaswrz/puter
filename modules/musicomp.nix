@@ -11,8 +11,9 @@
 in {
   options.services.musicomp.jobs = lib.mkOption {
     description = ''
-      Periodic jobs to run with musicomp.
+      Compression jobs to run with musicomp.
     '';
+    default = {};
     # type = types.attrsOf (types.submodule ({name, ...}: {
     type = types.attrsOf (types.submodule {
       options = {
@@ -71,9 +72,8 @@ in {
         };
       };
       description = ''
-        Periodic compression jobs to run with musicomp.
+        Compression job to run with musicomp.
       '';
-      default = {};
     });
   };
 
@@ -83,10 +83,8 @@ in {
       (
         name: job:
           lib.nameValuePair "musicomp-jobs-${name}" {
+            wantedBy = ["multi-user.target"];
             restartIfChanged = false;
-            # TODO
-            wants = ["network-online.target"];
-            after = ["network-online.target"];
 
             script = ''
               ${lib.optionalString job.inhibitsSleep ''
