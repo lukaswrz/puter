@@ -8,7 +8,7 @@ progname=$0
 
 error() {
     for line in "$@"; do
-        printf '%s\n' "$progname: $line" 1>&2
+        echo "$progname: $line" 1>&2
     done
 
     exit 1
@@ -18,7 +18,7 @@ args=$(getopt --options f:o:t: --longoptions=flake:,on:,to: --name "$progname" -
 
 eval set -- "$args"
 
-flake=git+https://forgejo@tea.wrz.one/lukas/puter.git#$(hostname)
+host=localhost
 flags=(
     --refresh
     --use-remote-sudo
@@ -35,7 +35,8 @@ while true; do
         shift 2
         ;;
     (-t | --to)
-        flags+=(--target-host "$2")
+        host=$2
+        flags+=(--target-host "$host")
         shift 2
         ;;
     (-v | --verbose)
@@ -49,13 +50,21 @@ while true; do
     esac
 done
 
+if [[ ! -v flake ]]; then
+    flake=git+https://forgejo@tea.wrz.one/lukas/puter.git#$(ssh -- "$host" hostname)
+fi
+
+flags+=(--flake "$flake")
+
 if (( $# == 0 )); then
     error 'a subcommand is required'
 fi
 
-subcommand=$1
+sub=$1
 
-case $subcommand in
+cmd=(nixos-rebuild "${flags[@]}")
+
+case $sub in
     (s | switch)
         shift
 
@@ -63,7 +72,9 @@ case $subcommand in
             error 'too many arguments'
         fi
 
-        nixos-rebuild switch "${flags[@]}" --flake "$flake"
+        cmd+=(switch)
+        echo "${cmd[@]}"
+        "${cmd[@]}"
         ;;
     (b | boot)
         shift
@@ -72,7 +83,9 @@ case $subcommand in
             error 'too many arguments'
         fi
 
-        nixos-rebuild boot "${flags[@]}" --flake "$flake"
+        cmd+=(boot)
+        echo "${cmd[@]}"
+        "${cmd[@]}"
         ;;
     (*)
         error 'invalid subcommand'
