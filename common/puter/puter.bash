@@ -14,7 +14,7 @@ error() {
     exit 1
 }
 
-args=$(getopt --options f --longoptions=flake: --name "$progname" -- "$@")
+args=$(getopt --options f:o:t: --longoptions=flake:,on:,to: --name "$progname" -- "$@")
 
 eval set -- "$args"
 
