@@ -94,6 +94,7 @@ in {
 
               ${lib.getExe job.package} \
                 ${lib.optionalString (job.workers > 0) "--workers ${job.workers}"} \
+                --verbose \
                 -- ${job.music} ${job.comp}
             '';
 
