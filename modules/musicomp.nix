@@ -97,7 +97,7 @@ in {
                 -- ${job.music} ${job.comp}
             '';
 
-            postStop = job.post;
+            postStart = job.post;
 
             serviceConfig.Type = "oneshot";
           }
