@@ -3,6 +3,7 @@
   lib,
   pkgs,
   utils,
+  config,
   ...
 }: let
   inherit (lib) types;
