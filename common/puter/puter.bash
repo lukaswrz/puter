@@ -30,6 +30,14 @@ while true; do
         flake=$2
         shift 2
         ;;
+    (-o | --on)
+        flags+=(--build-host "$2")
+        shift 2
+        ;;
+    (-t | --to)
+        flags+=(--target-host "$2")
+        shift 2
+        ;;
     (-v | --verbose)
         flags+=(--verbose)
         shift
