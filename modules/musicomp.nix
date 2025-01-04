@@ -71,9 +71,6 @@ in {
           '';
         };
       };
-      description = ''
-        Compression job to run with musicomp.
-      '';
     });
   };
 
