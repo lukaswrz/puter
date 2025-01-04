@@ -23,7 +23,6 @@ args=$(getopt --options f:o:t:v --longoptions=flake:,on:,to:,verbose --name "$pr
 
 eval set -- "$args"
 
-host=localhost
 flags=(
     --refresh
     --use-remote-sudo
@@ -58,7 +57,12 @@ while true; do
 done
 
 if [[ ! -v flake ]]; then
-    flake=git+https://forgejo@tea.wrz.one/lukas/puter.git#$(ssh -- "$host" hostname)
+    if [[ -v host ]]; then
+        hostname=$(ssh -- "$host" hostname)
+    else
+        hostname=$(hostname)
+    fi
+    flake=git+https://forgejo@tea.wrz.one/lukas/puter.git#$hostname
 fi
 
 flags+=(--flake "$flake")
