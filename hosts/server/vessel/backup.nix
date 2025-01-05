@@ -20,9 +20,9 @@ in {
         description = "Local rsync Backup ${backupName}";
         wantedBy = ["timers.target"];
         timerConfig = {
-          OnCalendar = "*-*-* 03:00:00";
+          OnCalendar = "*-*-* 03:00:00"; # TODO
           Persistent = true;
-          Unit = "${systemdName}.service";
+          Unit = "${systemdName}.service"; # TODO
         };
       };
 
@@ -33,6 +33,7 @@ in {
           User = "root";
           Group = "root";
         };
+        # TODO
         script = ''
           ${lib.getExe pkgs.rsync} --verbose --verbose --archive --update --delete --mkpath -- ${backups.${backupName}}/ /srv/backup/${backupName}/
         '';
@@ -52,7 +53,7 @@ in {
     passwordFile = config.age.secrets."restic-${attrName}".path;
     pruneOpts = ["--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12"];
     timerConfig = {
-      OnCalendar = "*-*-* 03:00:00";
+      OnCalendar = "*-*-* 03:00:00"; # TODO
       Persistent = true;
     };
     extraOptions = ["sftp.args='-i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'"];

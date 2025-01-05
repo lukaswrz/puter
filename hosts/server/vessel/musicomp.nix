@@ -15,6 +15,7 @@
     post = let
       remoteDir = self.nixosConfigurations.abacus.config.services.navidrome.settings.MusicFolder;
       rsyncExe = lib.getExe pkgs.rsync;
+      rsh = "${lib.getExe pkgs.openssh} -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null";
     in ''
       ${rsyncExe} \
         --archive \
@@ -24,7 +25,7 @@
         --mkpath \
         --verbose --verbose \
         --exclude lost+found \
-        --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
+        --rsh ${lib.escapeShellArg rsh} \
         /srv/compmusic/ root@wrz.one:${remoteDir}
     '';
   };
