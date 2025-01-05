@@ -4,7 +4,6 @@ from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from pathlib import Path
 from .todo import Todo
 
-
 args = Namespace()
 
 
