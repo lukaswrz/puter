@@ -4,14 +4,14 @@ in {
   services.blocky = {
     enable = true;
     settings = {
-      port = 53;
-      upstream.default = [upstream];
+      ports.dns = 53;
+      upstreams.groups.default = [upstream];
       bootstrapDns = {
         inherit upstream;
         ips = ["1.1.1.1" "1.0.0.1"];
       };
       blocking = {
-        blackLists.ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
+        denylists.ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
         clientGroupsBlock.default = ["ads"];
       };
       caching = {
