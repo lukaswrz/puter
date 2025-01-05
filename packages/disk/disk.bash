@@ -6,10 +6,15 @@ set -o pipefail
 
 progname="$0"
 
-error() {
+warn() {
+    local line
     for line in "$@"; do
-        printf '%s\n' "$progname: $line" 1>&2
+        echo "$progname: $line" 1>&2
     done
+}
+
+error() {
+    warn "$@"
 
     exit 1
 }
@@ -84,9 +89,9 @@ while true; do
   ([Yy]*)
     while true; do
       read -r -s -p 'Enter password: ' password
-      printf '\n'
+      warn ''
       read -r -s -p 'Re-enter password: ' repassword
-      printf '\n'
+      warn ''
       if [[ $password == "$repassword" ]]; then
         break
       fi
@@ -102,7 +107,7 @@ while true; do
     mainfs=$mainblkdev
     break
     ;;
-  (*) printf 'Please answer with yes or no\n' 1>&2 ;;
+  (*) warn 'Please answer with yes or no' ;;
   esac
 done
 
