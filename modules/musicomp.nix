@@ -14,7 +14,6 @@ in {
       Compression jobs to run with musicomp.
     '';
     default = {};
-    # type = types.attrsOf (types.submodule ({name, ...}: {
     type = types.attrsOf (types.submodule {
       options = {
         music = lib.mkOption {
