@@ -3,16 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     flake-parts.url = "github:hercules-ci/flake-parts";
-
     hardware.url = "github:NixOS/nixos-hardware";
-
     agenix.url = "github:ryantm/agenix";
-
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
-
     devenv-root = {
       url = "file+file:///dev/null";
       flake = false;

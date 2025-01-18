@@ -10,7 +10,7 @@
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 
     settings = {
-      trusted-users = ["@wheel"];
+      trusted-users = config.users.normalUsers;
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
     };

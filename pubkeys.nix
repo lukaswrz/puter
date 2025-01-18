@@ -2,6 +2,7 @@
   users = {
     "lukas@flamingo" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAztZgcRBHqX8Wb2nAlP1qCKF205M3un/D1YnREcO7Dy";
     "lukas@glacier" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK4U9RzV/gVGBfrCOye7BlS11g5BS7SmuZ36n2ZIJyAX";
+    "lukas@work" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINjvkQeQhAlS+e5EJOXW9Lqd3/uG9qNLIO0NaMFCA0Ew";
   };
 
   hosts = {

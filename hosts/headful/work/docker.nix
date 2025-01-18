@@ -1,0 +1,5 @@
+{config, ...}: {
+  virtualisation.docker.enable = true;
+
+  users.groups.docker.members = config.users.normalUsers;
+}

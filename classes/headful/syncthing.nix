@@ -1,9 +1,9 @@
 {
   services.syncthing = {
     enable = true;
+    systemService = true;
+    openDefaultPorts = true;
     overrideDevices = false;
     overrideFolders = false;
   };
-
-  systemd.user.services.syncthing.wantedBy = ["default.target"];
 }
