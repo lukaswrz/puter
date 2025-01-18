@@ -11,6 +11,7 @@
       flake = false;
     };
     devenv.url = "github:cachix/devenv";
+    phps.url = "github:fossar/nix-phps";
   };
 
   outputs = {

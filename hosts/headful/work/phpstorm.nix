@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   environment.systemPackages = [
-    pkgs.distrobox
+    pkgs.jetbrains.phpstorm
   ];
 }
