@@ -28,8 +28,7 @@
   phps = lib.genAttrs supportedPhps (
     phpName: let
       base = inputs.phps.packages.${pkgs.system}.${phpName};
-    in
-      base.buildEnv {
+      unwrapped = base.buildEnv {
         extensions = {
           enabled,
           all,
@@ -42,7 +41,13 @@
             else []
           );
         inherit extraConfig;
-      }
+      };
+      wrapped = pkgs.symlinkJoin {
+        inherit (unwrapped) name version meta passthru;
+        paths = [unwrapped unwrapped.packages.composer pkgs.symfony-cli];
+      };
+    in
+      wrapped
   );
 
   prefix = "/var/lib/phps";
