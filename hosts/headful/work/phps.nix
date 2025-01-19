@@ -15,7 +15,7 @@
     "php84"
   ];
 
-  selectedPhp = "php84";
+  selectedPhp = lib.last supportedPhps;
 
   extraConfig = ''
     memory_limit = -1
@@ -26,44 +26,26 @@
   '';
 
   phps = lib.genAttrs supportedPhps (
-    phpName:
-      inputs.phps.packages.${pkgs.system}.${phpName}.buildEnv {
+    phpName: let
+      base = inputs.phps.packages.${pkgs.system}.${phpName};
+    in
+      base.buildEnv {
         extensions = {
           enabled,
           all,
         }:
-          enabled ++ [all.xdebug all.amqp];
+          enabled
+          ++ [all.xdebug]
+          ++ (
+            if (lib.versionAtLeast base.version "8")
+            then [all.amqp]
+            else []
+          );
         inherit extraConfig;
       }
   );
 
   prefix = "/var/lib/phps";
-  /*
-  phpHomeLink = ".local/bin/php";
-
-  usephp = pkgs.writeShellApplication {
-    name = "usephp";
-    text = ''
-      if (( $# != 1 )); then
-        echo incorrect number of arguments >&2
-        exit 1
-      fi
-      ln --symbolic --force -- ${lib.escapeShellArg prefix}/"$1"/bin/php ~/${lib.escapeShellArg phpHomeLink}
-    '';
-  };
-
-  composer = pkgs.writeShellApplication {
-    name = "composer";
-    text = ''
-      php=~/${lib.escapeShellArg phpHomeLink}
-      if [[ ! -x $php ]]; then
-        echo php has not been linked >&2
-        exit 1
-      fi
-      exec -- "$php" ${pkgs.phpPackages.composer}/bin/.composer-wrapped
-    '';
-  };
-  */
 in {
   nix.settings = {
     substituters = ["https://fossar.cachix.org/"];
@@ -79,11 +61,4 @@ in {
   environment.systemPackages = [
     phps.${selectedPhp}.packages.composer
   ];
-
-  /*
-  environment.systemPackages = [
-    usephp
-    composer
-  ];
-  */
 }
