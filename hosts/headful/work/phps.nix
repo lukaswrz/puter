@@ -27,8 +27,8 @@
 
   phps = lib.genAttrs supportedPhps (
     phpName: let
-      base = inputs.phps.packages.${pkgs.system}.${phpName};
-      unwrapped = base.buildEnv {
+      phpBase = inputs.phps.packages.${pkgs.system}.${phpName};
+      phpWithEnv = phpBase.buildEnv {
         extensions = {
           enabled,
           all,
@@ -36,18 +36,22 @@
           enabled
           ++ [all.xdebug]
           ++ (
-            if (lib.versionAtLeast base.version "8")
+            if (lib.versionAtLeast phpBase.version "8")
             then [all.amqp]
             else []
           );
         inherit extraConfig;
       };
-      wrapped = pkgs.symlinkJoin {
-        inherit (unwrapped) name version meta passthru;
-        paths = [unwrapped unwrapped.packages.composer pkgs.symfony-cli];
+      phpWithTools = pkgs.symlinkJoin {
+        inherit (phpWithEnv) name version meta passthru;
+        paths = [
+          phpWithEnv
+          phpWithEnv.packages.composer
+          pkgs.symfony-cli
+        ];
       };
     in
-      wrapped
+      phpWithTools
   );
 
   prefix = "/var/lib/phps";
