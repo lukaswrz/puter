@@ -1,4 +1,9 @@
 {
+  fileSystems."/boot" = {
+    label = "BOOT";
+    fsType = "vfat";
+  };
+
   boot = {
     loader = {
       systemd-boot = {

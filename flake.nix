@@ -12,6 +12,8 @@
     };
     devenv.url = "github:cachix/devenv";
     phps.url = "github:fossar/nix-phps";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
   };
 
   outputs = {

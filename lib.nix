@@ -9,6 +9,12 @@ lib: _: {
       ])
     paths;
 
+  mkIfElse = condition: trueContent: falseContent:
+    lib.mkMerge [
+      (lib.mkIf condition trueContent)
+      (lib.mkIf (!condition) falseContent)
+    ];
+
   formatHostPort = {
     host,
     port,

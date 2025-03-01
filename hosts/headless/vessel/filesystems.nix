@@ -5,9 +5,10 @@
       label = "main";
       options = ["noatime"];
     };
-    "/boot" = {
-      label = "BOOT";
-      fsType = "vfat";
+    "/srv/backup" = {
+      label = "backup";
+      fsType = "ext4";
+      options = ["noatime"];
     };
   };
 }

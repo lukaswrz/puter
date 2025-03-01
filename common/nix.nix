@@ -9,9 +9,14 @@
 
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 
+    optimise.automatic = true;
+
     settings = {
-      trusted-users = config.users.normalUsers;
-      experimental-features = "nix-command flakes";
+      trusted-users = ["root"] ++ config.users.normalUsers;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
   };

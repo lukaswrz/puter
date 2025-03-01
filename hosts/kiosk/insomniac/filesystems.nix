@@ -1,7 +1,7 @@
 {
-  fileSystems."/srv/backup" = {
-    label = "backup";
+  fileSystems."/" = {
     fsType = "ext4";
+    label = "main";
     options = ["noatime"];
   };
 }

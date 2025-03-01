@@ -15,7 +15,8 @@ in {
     users = {
       root = {
         hashedPassword = "!";
-        openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.hosts;
+        # TODO define this more granularly
+        openssh.authorizedKeys.keys = [];
       };
       ${mainUser} = {
         description = "Lukas Wurzinger";

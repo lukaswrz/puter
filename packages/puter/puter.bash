@@ -19,10 +19,19 @@ error() {
     exit 1
 }
 
-args=$(getopt --options f:o:t:v --longoptions=flake:,on:,to:,verbose --name "$progname" -- "$@")
+args=$(
+    getopt \
+        --options F:f:o:t:v \
+        --longoptions flakeref:,flake:,on:,to:,verbose \
+        --name "$progname" \
+        -- "$@"
+)
 
 eval set -- "$args"
 
+if [[ -n $PUTER_FLAKEREF ]]; then
+    flakeref=$PUTER_FLAKEREF
+fi
 flags=(
     --refresh
     --use-remote-sudo
@@ -31,25 +40,29 @@ flags=(
 verbose=false
 while true; do
     case $1 in
-    (-f | --flake)
+    -F | --flakeref)
+        flakeref=$2
+        shift 2
+        ;;
+    -f | --flake)
         flake=$2
         shift 2
         ;;
-    (-o | --on)
+    -o | --on)
         flags+=(--build-host "$2")
         shift 2
         ;;
-    (-t | --to)
+    -t | --to)
         host=$2
         flags+=(--target-host "$host")
         shift 2
         ;;
-    (-v | --verbose)
+    -v | --verbose)
         flags+=(--verbose)
         verbose=true
         shift
         ;;
-    (--)
+    --)
         shift
         break
         ;;
@@ -57,17 +70,26 @@ while true; do
 done
 
 if [[ ! -v flake ]]; then
-    if [[ -v host ]]; then
-        hostname=$(ssh -- "$host" hostname)
+    if [[ -v flakeref ]]; then
+        warn "using flake reference $flakeref"
+        if [[ -v host ]]; then
+            hostname=$(ssh -- "$host" hostname)
+        else
+            hostname=$(hostname)
+        fi
+        if [[ -z $hostname ]]; then
+            error 'hostname could not be resolved and no flake specified'
+        fi
+        flake=$flakeref#$hostname
+        warn "resolved to $flake"
     else
-        hostname=$(hostname)
+        error 'no flake or flake reference specified'
     fi
-    flake=git+https://forgejo@tea.wrz.one/lukas/puter.git#$hostname
 fi
 
 flags+=(--flake "$flake")
 
-if (( $# == 0 )); then
+if (($# == 0)); then
     error 'a subcommand is required'
 fi
 
@@ -84,25 +106,25 @@ run() {
 sub=$1
 
 case $sub in
-    (s | switch)
-        shift
+s | switch)
+    shift
 
-        if (( $# > 0 )); then
-            error 'too many arguments'
-        fi
+    if (($# > 0)); then
+        error 'too many arguments'
+    fi
 
-        run switch
-        ;;
-    (b | boot)
-        shift
+    run switch
+    ;;
+b | boot)
+    shift
 
-        if (( $# > 0 )); then
-            error 'too many arguments'
-        fi
+    if (($# > 0)); then
+        error 'too many arguments'
+    fi
 
-        run boot
-        ;;
-    (*)
-        error 'invalid subcommand'
-        ;;
+    run boot
+    ;;
+*)
+    error 'invalid subcommand'
+    ;;
 esac
