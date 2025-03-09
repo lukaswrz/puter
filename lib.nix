@@ -67,7 +67,8 @@ lib: _: {
       };
 
     dirsIn = dir:
-      lib.pipe (builtins.readDir dir) [
+      lib.pipe dir [
+        builtins.readDir
         (lib.filterAttrs (_: type: type == "directory"))
         builtins.attrNames
       ];

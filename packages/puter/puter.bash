@@ -29,7 +29,7 @@ args=$(
 
 eval set -- "$args"
 
-if [[ -n $PUTER_FLAKEREF ]]; then
+if [[ -v PUTER_FLAKEREF && -n $PUTER_FLAKEREF ]]; then
     flakeref=$PUTER_FLAKEREF
 fi
 flags=(

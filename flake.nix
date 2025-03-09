@@ -14,6 +14,8 @@
     phps.url = "github:fossar/nix-phps";
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = {
@@ -57,14 +59,10 @@
           ];
         };
 
-        packages =
-          self.lib.genAttrs [
-            "puter"
-            "disk"
-            "musicomp"
-          ] (
-            name: pkgs.callPackage ./packages/${name} {}
-          );
+        packages = self.lib.packagesFromDirectoryRecursive {
+          inherit (pkgs) callPackage;
+          directory = ./packages;
+        };
       };
     };
 }

@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   services.loki = {
     enable = true;
     configuration = {
@@ -25,10 +25,10 @@
       schema_config = {
         configs = [
           {
-            from = "2022-06-06";
-            store = "boltdb-shipper";
+            from = "2022-06-06"; #TODO
+            store = "tsdb";
             object_store = "filesystem";
-            schema = "v12";
+            schema = "v13";
             index = {
               prefix = "index_";
               period = "24h";
@@ -38,9 +38,9 @@
       };
 
       storage_config = {
-        boltdb_shipper = {
-          active_index_directory = "/var/lib/loki/boltdb-shipper-active";
-          cache_location = "/var/lib/loki/boltdb-shipper-cache";
+        tsdb_shipper = {
+          active_index_directory = "${config.services.loki.dataDir}/tsdb-shipper-active";
+          cache_location = "${config.services.loki.dataDir}/tsdb-shipper-cache";
           cache_ttl = "24h";
           shared_store = "filesystem";
         };
@@ -65,7 +65,7 @@
       };
 
       compactor = {
-        working_directory = "/var/lib/loki";
+        working_directory = config.services.loki.dataDir;
         shared_store = "filesystem";
         compactor_ring = {
           kvstore = {
@@ -74,6 +74,5 @@
         };
       };
     };
-    # user, group, dataDir, extraFlags, (configFile)
   };
 }

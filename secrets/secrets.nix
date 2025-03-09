@@ -1,6 +1,6 @@
 with import ../pubkeys.nix; {
   "user-lukas.age".publicKeys = (builtins.attrValues users) ++ (builtins.attrValues (builtins.removeAttrs hosts ["insomniac"]));
-  "user-user.age".publicKeys = (builtins.attrValues users) ++ [hosts.insomniac];
+  "user-insomniac.age".publicKeys = (builtins.attrValues users) ++ [hosts.insomniac];
 
   "microbin.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
 

@@ -6,7 +6,7 @@
   inherit (config.users) mainUser;
 in {
   users = {
-    mainUser = lib.mkForce "user";
-    users.${mainUser}.description = lib.mkForce "User";
+    mainUser = lib.mkForce "insomniac";
+    users.${mainUser}.description = lib.mkForce "Insomniac";
   };
 }

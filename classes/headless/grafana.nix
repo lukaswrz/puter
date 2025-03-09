@@ -1,20 +1,24 @@
 {
+  config,
+  lib,
+  ...
+}: {
   services.grafana = {
     enable = true;
-    domain = "grafana.pele";
-    port = 9010;
-    addr = "127.0.0.1";
 
-    # WARNING: this should match nginx setup!
-    # prevents "Request origin is not authorized"
-    rootUrl = "http://192.168.1.10:8010"; # helps with nginx / ws / live
+    settings.server = {
+      domain = "grafana.pele";
+      http_port = 9010;
+      http_addr = "127.0.0.1";
+      root_url = "http://192.168.1.10:8010"; # TODO
+      protocol = "http";
+    };
 
-    protocol = "http";
     analytics.reporting.enable = false;
 
     provision = {
       enable = true;
-      datasources = [
+      datasources.settings.datasources = [
         {
           name = "Prometheus";
           type = "prometheus";
@@ -31,11 +35,11 @@
     };
   };
 
-  services.nginx.virtualHosts.${config.services.grafana.domain} = {
+  services.nginx.virtualHosts.${config.services.grafana.settings.server.domain} = {
     locations."/" = {
       proxyPass = "http://${lib.formatHostPort {
-        host = config.services.grafana.addr;
-        inherit (config.services.grafana) port;
+        host = config.services.grafana.settings.server.http_addr;
+        port = config.services.grafana.settings.server.http_port;
       }}";
       proxyWebsockets = true;
     };

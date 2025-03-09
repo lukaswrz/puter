@@ -1,5 +1,5 @@
 {
   services.flatpak.packages = [
-    "org.mozilla.firefox"
+    "io.gitlab.librewolf-community"
   ];
 }
