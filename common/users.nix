@@ -20,7 +20,7 @@ in {
         isNormalUser = true;
         hashedPasswordFile = config.age.secrets."user-${mainUser}".path;
         openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
-        extraGroups = ["wheel"];
+        extraGroups = ["wheel"]; #TODO remove
       };
     };
   };
