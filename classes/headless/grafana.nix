@@ -4,15 +4,17 @@ in {
   services.grafana = {
     enable = true;
 
-    settings.server = {
-      domain = virtualHostName;
-      http_port = 9010;
-      http_addr = "127.0.0.1";
-      root_url = "http://192.168.1.10:8010"; # TODO
-      protocol = "http";
-    };
+    settings = {
+      server = {
+        domain = virtualHostName;
+        http_port = 9010;
+        http_addr = "127.0.0.1";
+        root_url = "http://192.168.1.10:8010"; # TODO
+        protocol = "http";
+      };
 
-    analytics.reporting.enable = false;
+      analytics.reporting_enabled = false;
+    };
 
     provision = {
       enable = true;
