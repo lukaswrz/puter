@@ -33,13 +33,13 @@ in {
     };
   };
 
-  services.nginx.virtualHosts.${virtualHostName} = {
-    locations."/" = {
-      proxyPass = let
-        host = config.services.grafana.settings.server.http_addr;
-        port = builtins.toString config.services.grafana.settings.server.http_port;
-      in "http://${host}:${port}";
-      proxyWebsockets = true;
-    };
-  };
+  # services.nginx.virtualHosts.${virtualHostName} = {
+  #   locations."/" = {
+  #     proxyPass = let
+  #       host = config.services.grafana.settings.server.http_addr;
+  #       port = builtins.toString config.services.grafana.settings.server.http_port;
+  #     in "http://${host}:${port}";
+  #     proxyWebsockets = true;
+  #   };
+  # };
 }
