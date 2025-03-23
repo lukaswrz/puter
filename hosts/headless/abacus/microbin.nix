@@ -1,3 +1,4 @@
+# TODO: use another service for this
 {
   config,
   lib,
@@ -41,9 +42,9 @@ in {
     enableACME = true;
     forceSSL = true;
 
-    locations."/".proxyPass = "http://${lib.formatHostPort {
+    locations."/".proxyPass = let
       host = config.services.microbin.settings.MICROBIN_BIND;
-      port = config.services.microbin.settings.MICROBIN_PORT;
-    }}";
+      port = builtins.toString config.services.microbin.settings.MICROBIN_PORT;
+    in "http://${host}:${port}";
   };
 }

@@ -3,14 +3,14 @@
   lib,
   ...
 }: let
-  inherit (config.networking) domain;
   parent = "/var/www";
   sites = [
-    domain
-    "log.${domain}"
+    "wrz.one"
+    "helveticanonstandard.net"
   ];
 in
-  lib.mkMerge (map (
+  lib.mkMerge (
+    map (
       virtualHostName: let
         root = "${parent}/${virtualHostName}";
       in {
@@ -28,4 +28,5 @@ in
         };
       }
     )
-    sites)
+    sites
+  )

@@ -3,8 +3,7 @@
   lib,
   ...
 }: let
-  inherit (config.networking) domain;
-  virtualHostName = "vault.${domain}";
+  virtualHostName = "vault.wrz.one";
   backupDir = "/srv/backup/vaultwarden";
 in {
   age.secrets = lib.mkSecrets {vaultwarden = {};};
@@ -38,10 +37,10 @@ in {
     forceSSL = true;
 
     locations."/" = {
-      proxyPass = "http://${lib.formatHostPort {
+      proxyPass = let
         host = config.services.vaultwarden.config.ROCKET_ADDRESS;
-        port = config.services.vaultwarden.config.ROCKET_PORT;
-      }}";
+        port = builtins.toString config.services.vaultwarden.config.ROCKET_PORT;
+      in "http://${host}:${port}";
       proxyWebsockets = true;
     };
   };

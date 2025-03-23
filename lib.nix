@@ -15,11 +15,6 @@ lib: _: {
       (lib.mkIf (!condition) falseContent)
     ];
 
-  formatHostPort = {
-    host,
-    port,
-  }: "${host}:${builtins.toString port}";
-
   mkSecrets = secrets: let
     mkSecret = {
       name,

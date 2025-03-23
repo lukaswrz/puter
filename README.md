@@ -9,3 +9,6 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 - [ ] logging (loki)
 - [ ] kiosk
 - [ ] tailscale and headscale
+- [ ] game rom sync insomniac
+- [ ] insomniac backups
+- [ ] nginx websites

@@ -1,4 +1,4 @@
-{config, ...}: {
+{
   services.nginx = {
     enable = true;
 
@@ -12,11 +12,19 @@
       access_log /var/log/nginx/access.log;
     '';
 
-    virtualHosts."~.*" = {
-      default = true;
-      rejectSSL = true;
+    virtualHosts = let
+      matchAll = ''~.*'';
+      matchWww = ''~^www\.(?<domain>.+)$'';
+    in {
+      # Redirect anything that doesn't match any server name to networking.domain
+      ${matchAll} = {
+        default = true;
+        rejectSSL = true;
 
-      globalRedirect = config.networking.domain;
+        globalRedirect = "wrz.one";
+      };
+      # Redirect www to non-www
+      ${matchWww}.globalRedirect = "$domain";
     };
   };
 }

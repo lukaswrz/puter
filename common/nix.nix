@@ -18,6 +18,8 @@
         "flakes"
       ];
       auto-optimise-store = true;
+      flake-registry = "";
+      use-xdg-base-directories = true;
     };
   };
 

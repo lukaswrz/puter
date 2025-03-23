@@ -3,8 +3,7 @@
   lib,
   ...
 }: let
-  inherit (config.networking) domain;
-  virtualHostName = "tea.${domain}";
+  virtualHostName = "tea.wrz.one";
 in {
   age.secrets = lib.mkSecrets {
     forgejo-mailer = {
@@ -43,8 +42,8 @@ in {
       mailer = {
         ENABLED = true;
         SMTP_ADDR = "smtp.fastmail.com";
-        FROM = "tea@${domain}";
-        USER = "lukas@${domain}";
+        FROM = "tea@wrz.one";
+        USER = "lukas@wrz.one";
       };
     };
     secrets.mailer.PASSWD = config.age.secrets.forgejo-mailer.path;
@@ -53,6 +52,7 @@ in {
   systemd.services.forgejo.preStart = let
     forgejo = lib.getExe config.services.forgejo.package;
     passwordFile = config.age.secrets.forgejo-admin.path;
+    # TODO
     user = "lukas";
     email = "lukas@wrz.one";
   in ''
@@ -78,10 +78,8 @@ in {
     '';
 
     locations."/".proxyPass = let
-      inherit (config.services.forgejo.settings.server) HTTP_ADDR HTTP_PORT;
-    in "http://${lib.formatHostPort {
-      host = HTTP_ADDR;
-      port = HTTP_PORT;
-    }}";
+      host = config.services.forgejo.settings.server.HTTP_ADDR;
+      port = builtins.toString config.services.forgejo.settings.server.HTTP_PORT;
+    in "http://${host}:${port}";
   };
 }

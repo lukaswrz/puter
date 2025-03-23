@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   services.prometheus = {
     enable = true;
     port = 3020;
@@ -22,11 +18,9 @@
         static_configs = [
           {
             targets = let
-              target = lib.formatHostPort {
-                host = config.services.prometheus.exporters.node.listenAddress;
-                inherit (config.services.prometheus.exporters.node) port;
-              };
-            in [target];
+              host = config.services.prometheus.exporters.node.listenAddress;
+              port = builtins.toString config.services.prometheus.exporters.node.port;
+            in ["${host}:${port}"];
           }
         ];
       }

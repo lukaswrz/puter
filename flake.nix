@@ -4,18 +4,22 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    hardware.url = "github:NixOS/nixos-hardware";
-    agenix.url = "github:ryantm/agenix";
     devenv-root = {
       url = "file+file:///dev/null";
       flake = false;
     };
     devenv.url = "github:cachix/devenv";
+    hardware.url = "github:NixOS/nixos-hardware";
+    agenix.url = "github:ryantm/agenix";
     phps.url = "github:fossar/nix-phps";
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -40,13 +44,14 @@
       perSystem = {
         pkgs,
         inputs',
+        lib,
         ...
       }: {
         devenv.shells.default = {
           devenv.root = let
             devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
           in
-            self.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
+            lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
 
           name = "puter";
 
@@ -59,7 +64,7 @@
           ];
         };
 
-        packages = self.lib.packagesFromDirectoryRecursive {
+        packages = lib.packagesFromDirectoryRecursive {
           inherit (pkgs) callPackage;
           directory = ./packages;
         };

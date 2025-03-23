@@ -1,10 +1,5 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (config.networking) domain;
-  virtualHostName = "navi.${domain}";
+{config, ...}: let
+  virtualHostName = "navidrome.helveticanonstandard.net";
 in {
   services.navidrome = {
     enable = true;
@@ -19,9 +14,9 @@ in {
     enableACME = true;
     forceSSL = true;
 
-    locations."/".proxyPass = "http://${lib.formatHostPort {
+    locations."/".proxyPass = let
       host = config.services.navidrome.settings.Address;
-      port = config.services.navidrome.settings.Port;
-    }}";
+      port = builtins.toString config.services.navidrome.settings.Port;
+    in "http://${host}:${port}";
   };
 }
