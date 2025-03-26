@@ -124,6 +124,68 @@ b | boot)
 
     run boot
     ;;
+t | test)
+    shift
+
+    if (($# > 0)); then
+        error 'too many arguments'
+    fi
+
+    run test
+    ;;
+bld | build)
+    shift
+
+    if (($# > 0)); then
+        error 'too many arguments'
+    fi
+
+    run build
+    ;;
+dbld | dry-build)
+    shift
+
+    if (($# > 0)); then
+        error 'too many arguments'
+    fi
+
+    run dry-build
+    ;;
+da | dry-activate)
+    shift
+
+    if (($# > 0)); then
+        error 'too many arguments'
+    fi
+
+    run dry-activate
+    ;;
+vm | build-vm)
+    shift
+
+    if (($# > 0)); then
+        error 'too many arguments'
+    fi
+
+    run build-vm
+    ;;
+i | img | build-image)
+    shift
+
+    if (($# < 1)); then
+        error 'image variant is required'
+    fi
+
+    if (($# > 1)); then
+        error 'too many arguments'
+    fi
+
+    variant=$1
+
+    flags+=("$variant")
+
+    run build-image
+    ;;
 *)
     error 'invalid subcommand'
     ;;
