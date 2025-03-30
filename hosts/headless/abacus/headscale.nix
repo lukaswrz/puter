@@ -7,6 +7,7 @@ in {
     port = 8010;
     settings = {
       server_url = "https://${virtualHostName}";
+      dns.base_domain = "tailnet.helveticanonstandard.net";
       logtail.enabled = false;
     };
   };
