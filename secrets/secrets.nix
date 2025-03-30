@@ -1,8 +1,9 @@
-with import ../pubkeys.nix; {
+let
+  pubkeys = import ../pubkeys.nix;
+  inherit (pubkeys) users hosts;
+in {
   "user-lukas.age".publicKeys = (builtins.attrValues users) ++ (builtins.attrValues (builtins.removeAttrs hosts ["insomniac"]));
   "user-insomniac.age".publicKeys = (builtins.attrValues users) ++ [hosts.insomniac];
-
-  "microbin.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
 
   "miniflux.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
 

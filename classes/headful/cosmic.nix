@@ -4,7 +4,7 @@
   ];
 
   nix.settings = {
-    substituters = ["https://cosmic.cachix.org/"];
+    substituters = ["https://cosmic.cachix.org"];
     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
   };
 
@@ -12,4 +12,6 @@
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
   };
+
+  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 }
