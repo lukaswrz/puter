@@ -1,11 +1,11 @@
 {config, ...}: let
-  inherit (config.networking) hostname;
+  inherit (config.networking) hostName;
 in {
   services.syncthing = {
     enable = true;
     systemService = true;
     openDefaultPorts = true;
-    guiAddress = "${hostname}.tailnet.helveticanonstandard.net:4000";
+    guiAddress = "${hostName}.tailnet.helveticanonstandard.net:4000";
     overrideDevices = false;
     overrideFolders = false;
   };
