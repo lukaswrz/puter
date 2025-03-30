@@ -5,8 +5,8 @@ in {
     enable = true;
     address = "127.0.0.1";
     port = 8010;
-    server_url = "https://${virtualHostName}";
     settings = {
+      server_url = "https://${virtualHostName}";
       logtail.enabled = false;
     };
   };
@@ -15,7 +15,10 @@ in {
     forceSSL = true;
     enableACME = true;
     locations."/" = {
-      proxyPass = "http://localhost:${builtins.toString config.services.headscale.port}";
+      proxyPass = let
+        host = config.services.headscale.address;
+        port = builtins.toString config.services.headscale.port;
+      in "http://${host}:${port}";
       proxyWebsockets = true;
     };
   };
