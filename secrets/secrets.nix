@@ -2,7 +2,7 @@ let
   pubkeys = import ../pubkeys.nix;
   inherit (pubkeys) users hosts;
 in {
-  "user-lukas.age".publicKeys = (builtins.attrValues users) ++ (builtins.attrValues (builtins.removeAttrs hosts ["insomniac"]));
+  "user-helvetica.age".publicKeys = (builtins.attrValues users) ++ (builtins.attrValues (builtins.removeAttrs hosts ["insomniac"]));
   "user-insomniac.age".publicKeys = (builtins.attrValues users) ++ [hosts.insomniac];
 
   "miniflux.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];

@@ -16,7 +16,8 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 ## port allocation
 
 * 80X0: public HTTP services that are proxied through nginx
-* 40X0: private HTTP services that are accessible via tailscale
+* 40X0: syncthing instances (4000 being the system instance, subsequent ones are for individual users)
+* 60X0: private HTTP services that are accessible via tailscale
 * 20XX: Administrative stuff, like prometheus etc.
 
 * 8000: vaultwarden

@@ -10,12 +10,12 @@ in {
   users = {
     mutableUsers = false;
 
-    mainUser = "lukas";
+    mainUser = "helvetica";
 
     users = {
       root.hashedPassword = "!";
       ${mainUser} = {
-        description = "Lukas Wurzinger";
+        description = "Helvetica";
         uid = 1000;
         isNormalUser = true;
         hashedPasswordFile = config.age.secrets."user-${mainUser}".path;
