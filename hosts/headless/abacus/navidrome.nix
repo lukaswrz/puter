@@ -7,6 +7,7 @@ in {
       Address = "localhost";
       Port = 8050;
       MusicFolder = "/srv/music";
+      EnableSharing = true;
     };
   };
 

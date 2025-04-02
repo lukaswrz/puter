@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  virtualHostName = "tea.wrz.one";
+  virtualHostName = "forgejo.helveticanonstandard.net";
 in {
   age.secrets = lib.mkSecrets {
     forgejo-mailer = {
@@ -46,15 +46,15 @@ in {
         USER = "lukas@wrz.one";
       };
     };
+
     secrets.mailer.PASSWD = config.age.secrets.forgejo-mailer.path;
   };
 
   systemd.services.forgejo.preStart = let
     forgejo = lib.getExe config.services.forgejo.package;
     passwordFile = config.age.secrets.forgejo-admin.path;
-    # TODO
-    user = "lukas";
-    email = "lukas@wrz.one";
+    user = "helvetica";
+    email = "helvetica@helveticanonstandard.net";
   in ''
     if ! \
       ${forgejo} admin user change-password \
