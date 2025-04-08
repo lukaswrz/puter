@@ -14,4 +14,6 @@ in {
 
   "restic-vessel.age".publicKeys = (builtins.attrValues users) ++ [hosts.vessel];
   "restic-abacus.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
+
+  "syncserver.age".publicKeys = (builtins.attrValues users) ++ [hosts.abacus];
 }

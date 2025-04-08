@@ -25,6 +25,7 @@
     xdebug.client_host = localhost
   '';
 
+  # Wrap all PHP versions with the extensions I need and bundle composer
   phps = lib.genAttrs supportedPhps (
     phpName: let
       phpBase = inputs.phps.packages.${pkgs.system}.${phpName};
@@ -47,7 +48,6 @@
         paths = [
           phpWithEnv
           phpWithEnv.packages.composer
-          pkgs.symfony-cli
         ];
       };
     in
@@ -55,12 +55,32 @@
   );
 
   prefix = "/var/lib/phps";
+
+  # Tell Symfony's CLI where it can access the different PHP versions
+  symfony-cli = let
+    package = pkgs.symfony-cli;
+  in
+    pkgs.symlinkJoin {
+      inherit (package) pname version meta;
+
+      paths = [package];
+
+      buildInputs = [pkgs.makeWrapper];
+
+      postBuild = ''
+        wrapProgram $out/bin/${package.meta.mainProgram} \
+          --suffix PATH : ${pkgs.lib.makeBinPath (
+          builtins.attrValues phps
+        )}
+      '';
+    };
 in {
   nix.settings = {
     substituters = ["https://fossar.cachix.org/"];
     trusted-public-keys = ["fossar.cachix.org-1:Zv6FuqIboeHPWQS7ysLCJ7UT7xExb4OE8c4LyGb5AsE="];
   };
 
+  # Link PHP installations so that PhpStorm knows about them
   systemd.tmpfiles.settings =
     builtins.mapAttrs (name: drv: {
       "${prefix}/${name}"."L+".argument = drv.outPath;
@@ -68,6 +88,8 @@ in {
     phps;
 
   environment.systemPackages = [
-    phps.${selectedPhp}.packages.composer
+    pkgs.jetbrains.phpstorm
+    phps.${selectedPhp}
+    symfony-cli
   ];
 }

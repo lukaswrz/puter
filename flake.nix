@@ -20,6 +20,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    musicomp.url = "git+https://codeberg.org/helveticanonstandard/musicomp.git";
   };
 
   nixConfig = {

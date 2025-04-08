@@ -1,5 +1,5 @@
 {
   services.flatpak.packages = [
-    "com.spotify.Client"
+    "io.github.dweymouth.supersonic"
   ];
 }

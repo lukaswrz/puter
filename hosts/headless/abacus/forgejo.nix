@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   virtualHostName = "forgejo.helveticanonstandard.net";
@@ -50,24 +51,26 @@ in {
     secrets.mailer.PASSWD = config.age.secrets.forgejo-mailer.path;
   };
 
-  systemd.services.forgejo.preStart = let
-    forgejo = lib.getExe config.services.forgejo.package;
-    passwordFile = config.age.secrets.forgejo-admin.path;
-    user = "helvetica";
-    email = "helvetica@helveticanonstandard.net";
-  in ''
-    if ! \
-      ${forgejo} admin user change-password \
-        --username ${lib.escapeShellArg user} \
-        --password "$(cat -- ${lib.escapeShellArg passwordFile})"
-    then
-      ${forgejo} admin user create \
-        --admin \
-        --email ${lib.escapeShellArg email} \
-        --username ${lib.escapeShellArg user} \
-        --password "$(cat -- ${lib.escapeShellArg passwordFile})"
-    fi
-  '';
+  systemd.services.forgejo.preStart = lib.getExe pkgs.writeShellApplication {
+    name = "forgejo-init-admin";
+    runtimeInputs = [
+      config.services.forgejo.package
+    ];
+    text = let
+      passwordFile = config.age.secrets.forgejo-admin.path;
+    in ''
+      admins=$(admin user list --admin)
+      admins=$((admins - 1))
+
+      if ((admins < 1)); then
+        gitea admin user create \
+          --admin \
+          --email helvetica@helveticanonstandard.net \
+          --username helvetica \
+          --password "$(cat -- ${passwordFile})"
+      fi
+    '';
+  };
 
   services.nginx.virtualHosts.${virtualHostName} = {
     enableACME = true;

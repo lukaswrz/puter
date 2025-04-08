@@ -1,9 +1,14 @@
 {
+  inputs,
   self,
   lib,
   pkgs,
   ...
 }: {
+  imports = [
+    inputs.musicomp.nixosModules.default
+  ];
+
   services.musicomp.jobs.main = {
     music = "/srv/music";
     comp = "/srv/compmusic";

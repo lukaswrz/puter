@@ -12,6 +12,12 @@
     paths = [
       config.services.vaultwarden.backupDir
       config.services.syncthing.dataDir
+      config.services.forgejo.stateDir
+      config.services.postgresqlBackup.location
+      config.services.postgresqlBackup.location
+      # TODO: Add stateDir options for these
+      "/var/lib/headscale"
+      "/var/lib/navidrome"
     ];
     passwordFile = config.age.secrets."restic-${attrName}".path;
     pruneOpts = ["--keep-daily 7" "--keep-weekly 5" "--keep-monthly 12"];
