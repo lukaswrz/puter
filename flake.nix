@@ -70,10 +70,16 @@
           ];
         };
 
-        packages = lib.packagesFromDirectoryRecursive {
-          inherit (pkgs) callPackage;
-          directory = ./packages;
-        };
+        packages =
+          lib.packagesFromDirectoryRecursive {
+            inherit (pkgs) callPackage;
+            directory = ./packages;
+          }
+          // {
+            symfony-cli = pkgs.callPackage ./symfony-cli/package.nix {
+              fossarPhps = inputs'.phps.packages;
+            };
+          };
       };
     };
 }
