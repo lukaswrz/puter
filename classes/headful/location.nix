@@ -1,3 +1,0 @@
-{
-  location.provider = "geoclue2";
-}

@@ -1,5 +1,6 @@
+{ config, ... }:
 {
-  fileSystems."/boot" = {
+  fileSystems.${config.boot.loader.efi.efiSysMountPoint} = {
     label = "BOOT";
     fsType = "vfat";
   };
@@ -16,6 +17,12 @@
         efiSysMountPoint = "/boot";
       };
     };
-    tmp.cleanOnBoot = true;
+
+    # TODO
+    tmp = {
+      useTmpfs = true;
+      tmpfsSize = "50%";
+      cleanOnBoot = true;
+    };
   };
 }

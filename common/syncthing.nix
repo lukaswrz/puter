@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   inherit (config.networking) hostName;
-in {
+in
+{
   services.syncthing = {
     enable = true;
     systemService = true;

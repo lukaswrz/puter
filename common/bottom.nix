@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  environment.systemPackages = [pkgs.bottom];
+{ pkgs, ... }:
+{
+  environment.systemPackages = [ pkgs.bottom ];
 }

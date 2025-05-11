@@ -1,3 +1,0 @@
-{
-  setups.secureBoot.enable = true;
-}

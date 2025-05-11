@@ -1,6 +1,8 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) types;
-in {
+in
+{
   options = {
     users.mainUser = lib.mkOption {
       type = types.passwdEntry types.str;

@@ -2,10 +2,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (config.users) mainUser;
-in {
-  age.secrets = lib.mkSecrets {"user-${mainUser}" = {};};
+in
+{
+  age.secrets = lib.mkSecrets { "user-${mainUser}" = { }; };
 
   users = {
     mutableUsers = false;
@@ -20,7 +22,7 @@ in {
         isNormalUser = true;
         hashedPasswordFile = config.age.secrets."user-${mainUser}".path;
         openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
-        extraGroups = ["wheel"]; #TODO remove
+        extraGroups = [ "wheel" ]; # TODO remove
       };
     };
   };
