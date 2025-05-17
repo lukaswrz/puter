@@ -3,13 +3,10 @@
   services.tailscale = {
     enable = true;
     openFirewall = true;
+    useRoutingFeatures = "both"; # TODO
   };
 
-  networking.firewall = {
-    trustedInterfaces = [
-      config.services.tailscale.interfaceName
-    ];
-    # Required to connect to Tailscale exit nodes
-    checkReversePath = "loose";
-  };
+  networking.firewall.trustedInterfaces = [
+    config.services.tailscale.interfaceName
+  ];
 }

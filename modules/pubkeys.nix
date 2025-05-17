@@ -13,6 +13,7 @@
       description = ''
         Public keys.
       '';
+      readOnly = true;
     };
 
   config.pubkeys = lib.mkForce (import (self + /pubkeys.nix));

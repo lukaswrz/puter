@@ -1,13 +1,13 @@
 lib: _: {
-  findModules = paths:
-    builtins.concatMap (path:
+  findModules =
+    paths:
+    builtins.concatMap (
+      path:
       lib.pipe path [
-        (lib.fileset.fileFilter (
-          file: file.hasExt "nix"
-        ))
+        (lib.fileset.fileFilter (file: file.hasExt "nix"))
         lib.fileset.toList
-      ])
-    paths;
+      ]
+    ) paths;
 
   mkIfElse =
     condition: trueContent: falseContent:
@@ -48,13 +48,12 @@ lib: _: {
             attrName = name;
           };
 
-          modules =
-            (lib.findModules [
-              modulesDir
-              profilesDir
-              commonDir
-              (hostsDir + /${name})
-            ]);
+          modules = lib.findModules [
+            modulesDir
+            profilesDir
+            commonDir
+            (hostsDir + /${name})
+          ];
         };
 
       hosts = lib.pipe hostsDir [

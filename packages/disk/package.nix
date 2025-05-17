@@ -15,5 +15,5 @@ writeShellApplication {
     dosfstools
   ];
 
-  text = builtins.readFile ./disk.bash;
+  text = builtins.readFile ./disk;
 }

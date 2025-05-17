@@ -8,6 +8,6 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-  time.timeZone = "UTC";
+    time.timeZone = "UTC";
   };
 }

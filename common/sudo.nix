@@ -3,6 +3,8 @@
     enable = true;
     execWheelOnly = true;
     wheelNeedsPassword = true;
-    extraConfig = "Defaults lecture=\"never\"";
+    extraConfig = ''
+      Defaults lecture="never"
+    '';
   };
 }

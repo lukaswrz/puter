@@ -1,13 +1,13 @@
 {
+  self,
   config,
-  lib,
   ...
 }:
 let
   inherit (config.users) mainUser;
 in
 {
-  age.secrets = lib.mkSecrets { "user-${mainUser}" = { }; };
+  age.secrets."user-${mainUser}".file = self + /secrets/users/${mainUser}.age;
 
   users = {
     mutableUsers = false;

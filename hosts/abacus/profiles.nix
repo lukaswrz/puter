@@ -1,0 +1,3 @@
+{
+  profiles.server.enable = true;
+}

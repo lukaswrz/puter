@@ -18,8 +18,9 @@ in
       config.services.vaultwarden.backupDir
       config.services.syncthing.dataDir
       config.services.forgejo.stateDir
+      config.services.forgejo.dump.backupDir
       config.services.postgresqlBackup.location
-      config.services.postgresqlBackup.location
+      config.services.navidrome.settings.Backup.Path
       # TODO: Add stateDir options for these
       "/var/lib/headscale"
       "/var/lib/navidrome"

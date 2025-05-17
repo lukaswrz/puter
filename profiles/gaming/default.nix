@@ -7,8 +7,6 @@ in
     enable = lib.mkEnableOption "gaming";
   };
 
-  imports = lib.optionals cfg.enable (lib.findModules { } [ ./profile ]);
-
   config.assertions = lib.mkIf cfg.enable [
     {
       assertion = config.profiles.desktop.enable;

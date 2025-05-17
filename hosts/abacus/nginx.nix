@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   services.nginx = {
     enable = true;
@@ -23,7 +24,7 @@
           default = true;
           rejectSSL = true;
 
-          globalRedirect = "wrz.one";
+          globalRedirect = config.networking.domain;
         };
         # Redirect www to non-www
         ${matchWww}.globalRedirect = "$domain";

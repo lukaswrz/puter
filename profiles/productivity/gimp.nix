@@ -9,8 +9,8 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-  environment.systemPackages = [
-    pkgs.gimp3-with-plugins
-  ];
+    environment.systemPackages = [
+      pkgs.gimp3-with-plugins
+    ];
   };
 }

@@ -2,7 +2,6 @@
   attrName,
   config,
   lib,
-  pkgs,
   ...
 }:
 let

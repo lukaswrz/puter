@@ -1,28 +1,22 @@
-{ config, ... }:
-{
+{config, inputs, ...}: {
+  imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
+
   fileSystems.${config.boot.loader.efi.efiSysMountPoint} = {
     label = "BOOT";
     fsType = "vfat";
   };
 
   boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        consoleMode = "max";
-      };
-
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
     };
 
-    # TODO
-    tmp = {
-      useTmpfs = true;
-      tmpfsSize = "50%";
-      cleanOnBoot = true;
+    loader.efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
     };
   };
 }

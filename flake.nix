@@ -16,11 +16,11 @@
     hxwrap.url = "git+https://codeberg.org/helvetica/hxwrap.git";
     myphps.url = "git+https://codeberg.org/helvetica/myphps.git";
     forgesync.url = "git+https://codeberg.org/helvetica/forgesync.git";
-  };
-
-  nixConfig = {
-    extra-substituters = "https://cosmic.cachix.org";
-    extra-trusted-public-keys = "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=";
+    nini.url = "git+https://codeberg.org/helvetica/nini.git";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

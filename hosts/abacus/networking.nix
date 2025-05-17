@@ -7,7 +7,7 @@
       domain = "wrz.one";
       interfaces.${interface}.ipv6.addresses = [
         {
-          address = "2a01:4f9:c012:92b5::2";
+          address = "2a01:4f8:c013:e64a::2";
           prefixLength = 64;
         }
       ];

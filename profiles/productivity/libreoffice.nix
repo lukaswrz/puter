@@ -9,8 +9,8 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-  environment.systemPackages = [
-    pkgs.libreoffice-fresh
-  ];
+    environment.systemPackages = [
+      pkgs.libreoffice-fresh
+    ];
   };
 }

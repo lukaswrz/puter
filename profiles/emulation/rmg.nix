@@ -10,7 +10,7 @@ in
 {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
-    pkgs.rmg-wayland
+      pkgs.rmg-wayland
     ];
   };
 }

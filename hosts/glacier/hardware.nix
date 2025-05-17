@@ -27,7 +27,6 @@
       kernelModules = [ "amdgpu" ];
     };
     kernelModules = [ "kvm-amd" ];
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
   powerManagement.cpuFreqGovernor = "performance";

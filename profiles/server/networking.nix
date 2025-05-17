@@ -8,6 +8,6 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-  networking.useNetworkd = true;
+    networking.useNetworkd = true;
   };
 }

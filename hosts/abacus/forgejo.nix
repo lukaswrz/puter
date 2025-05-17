@@ -1,21 +1,26 @@
 {
+  self,
   config,
   lib,
   pkgs,
   ...
 }:
 let
-  virtualHostName = "forgejo.helveticanonstandard.net";
+  cfg = config.services.forgejo;
+  inherit (config.age) secrets;
 in
 {
-  age.secrets = lib.mkSecrets {
+  age.secrets = {
     forgejo-mailer = {
+      file = self + /secrets/forgejo/mailer.age;
       mode = "400";
-      owner = "forgejo";
+      owner = cfg.user;
     };
+
     forgejo-admin = {
+      file = self + /secrets/forgejo/admin.age;
       mode = "400";
-      owner = "forgejo";
+      owner = cfg.user;
     };
   };
 
@@ -24,10 +29,15 @@ in
     package = pkgs.forgejo;
     database.type = "postgres";
     lfs.enable = true;
+    dump = {
+      enable = true;
+      interval = "*-*-* 02:00:00";
+      backupDir = "/srv/backup/forgejo";
+    };
     settings = {
       server = {
-        DOMAIN = virtualHostName;
-        ROOT_URL = "https://${virtualHostName}/";
+        DOMAIN = "forgejo.helveticanonstandard.net";
+        ROOT_URL = "https://${cfg.settings.server.DOMAIN}/";
         HTTP_ADDR = "127.0.0.1";
         HTTP_PORT = 8060;
       };
@@ -51,34 +61,36 @@ in
       };
     };
 
-    secrets.mailer.PASSWD = config.age.secrets.forgejo-mailer.path;
+    secrets.mailer.PASSWD = secrets.forgejo-mailer.path;
   };
 
-  # TODO what
-  systemd.services.forgejo.preStart = lib.getExe pkgs.writeShellApplication {
-    name = "forgejo-init-admin";
-    runtimeInputs = [
-      config.services.forgejo.package
-    ];
-    text =
-      let
-        passwordFile = config.age.secrets.forgejo-admin.path;
-      in
-      ''
-        admins=$(admin user list --admin)
-        admins=$((admins - 1))
+  # TODO
+  systemd.services.forgejo.preStart = lib.getExe (
+    pkgs.writeShellApplication {
+      name = "forgejo-init-admin";
+      runtimeInputs = [
+        cfg.package
+      ];
+      text =
+        let
+          passwordFile = secrets.forgejo-admin.path;
+        in
+        ''
+          admins=$(admin user list --admin)
+          admins=$((admins - 1))
 
-        if ((admins < 1)); then
-          gitea admin user create \
-            --admin \
-            --email helvetica@helveticanonstandard.net \
-            --username helvetica \
-            --password "$(cat -- ${passwordFile})"
-        fi
-      '';
-  };
+          if ((admins < 1)); then
+            gitea admin user create \
+              --admin \
+              --email helvetica@helveticanonstandard.net \
+              --username helvetica \
+              --password "$(cat -- ${passwordFile})"
+          fi
+        '';
+    }
+  );
 
-  services.nginx.virtualHosts.${virtualHostName} = {
+  services.nginx.virtualHosts.${cfg.settings.server.DOMAIN} = {
     enableACME = true;
     forceSSL = true;
 
@@ -88,8 +100,8 @@ in
 
     locations."/".proxyPass =
       let
-        host = config.services.forgejo.settings.server.HTTP_ADDR;
-        port = builtins.toString config.services.forgejo.settings.server.HTTP_PORT;
+        host = cfg.settings.server.HTTP_ADDR;
+        port = builtins.toString cfg.settings.server.HTTP_PORT;
       in
       "http://${host}:${port}";
   };
