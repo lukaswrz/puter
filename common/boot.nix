@@ -14,6 +14,8 @@
       pkiBundle = "/var/lib/sbctl";
     };
 
+    initrd.systemd.enable = true;
+
     loader.efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
