@@ -76,7 +76,7 @@ in
           passwordFile = secrets.forgejo-admin.path;
         in
         ''
-          admins=$(admin user list --admin)
+          admins=$(gitea admin user list --admin)
           admins=$((admins - 1))
 
           if ((admins < 1)); then
