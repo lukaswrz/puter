@@ -20,7 +20,9 @@
     inhibitsSleep = true;
     post =
       let
-        remoteDir = self.nixosConfigurations.abacus.config.services.navidrome.settings.MusicFolder;
+        abacusConfig = self.nixosConfigurations.abacus.config;
+        remoteDir = abacusConfig.services.navidrome.settings.MusicFolder;
+        remoteDomain = abacusConfig.networking.domain;
         package = pkgs.writeShellApplication {
           name = "sync";
           runtimeInputs = [
@@ -36,7 +38,7 @@
               --mkpath \
               --verbose --verbose \
               --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
-              /srv/void/compmusic/ root@wrz.one:${lib.escapeShellArg remoteDir}
+              /srv/void/compmusic/ root@${lib.escapeShellArg remoteDomain}:${lib.escapeShellArg remoteDir}/
           '';
         };
       in

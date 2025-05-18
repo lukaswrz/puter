@@ -4,9 +4,11 @@
   ...
 }:
 let
-  virtualHostName = "vault.wrz.one";
+  virtualHostName = "vault.helveticanonstandard.net";
 in
 {
+  # TODO: tailscale
+
   age.secrets = lib.mkSecrets { vaultwarden = { }; };
 
   services.vaultwarden = {

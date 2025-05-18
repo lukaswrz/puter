@@ -64,23 +64,20 @@ in
     secrets.mailer.PASSWD = secrets.forgejo-mailer.path;
   };
 
-  # TODO
   systemd.services.forgejo.preStart = lib.getExe (
     pkgs.writeShellApplication {
       name = "forgejo-init-admin";
-      runtimeInputs = [
-        cfg.package
-      ];
       text =
         let
+          forgejoExe = lib.getExe cfg.package;
           passwordFile = secrets.forgejo-admin.path;
         in
         ''
-          admins=$(gitea admin user list --admin | wc --lines)
+          admins=$(${forgejoExe} admin user list --admin | wc --lines)
           admins=$((admins - 1))
 
           if ((admins < 1)); then
-            gitea admin user create \
+            ${forgejoExe} admin user create \
               --admin \
               --email helvetica@helveticanonstandard.net \
               --username helvetica \
