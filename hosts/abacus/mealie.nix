@@ -7,7 +7,7 @@ in
     enable = true;
     settings = {
       BASE_URL = "https://${virtualHostName}";
-      ALLOW_SIGNUP = false;
+      ALLOW_SIGNUP = "false";
     };
     listenAddress = "127.0.0.1";
     port = 8040;
