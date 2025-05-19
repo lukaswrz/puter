@@ -7,7 +7,6 @@ in{
     settings = {
       address = "localhost";
       port = 8090;
-      database = "/var/lib/filebrowser/filebrowser.db";
     };
   };
 

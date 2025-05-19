@@ -2,15 +2,12 @@
   config,
   pkgs,
   lib,
-  utils,
   ...
 }:
 let
   cfg = config.services.filebrowser;
   inherit (lib) types;
   format = pkgs.formats.json { };
-  defaultUser = "filebrowser";
-  defaultGroup = "filebrowser";
 in
 {
   options = {
@@ -18,22 +15,6 @@ in
       enable = lib.mkEnableOption "FileBrowser";
 
       package = lib.mkPackageOption pkgs "filebrowser" { };
-
-      user = lib.mkOption {
-        type = types.str;
-        default = defaultUser;
-        description = ''
-          The name of the user account under which FileBrowser should run.
-        '';
-      };
-
-      group = lib.mkOption {
-        type = types.str;
-        default = defaultGroup;
-        description = ''
-          The name of the user group under which FileBrowser should run.
-        '';
-      };
 
       openFirewall = lib.mkOption {
         default = false;
@@ -44,11 +25,19 @@ in
       };
 
       stateDir = lib.mkOption {
-        default = "/var/lib/filebrowser";
+        default = "filebrowser";
         description = ''
-          The directory where FileBrowser stores its state.
+          The directory below `/var/lib` where FileBrowser stores its state.
         '';
-        type = types.path;
+        type = types.str;
+      };
+
+      cacheDir = lib.mkOption {
+        default = "cache";
+        description = ''
+          The directory below `/var/cache` where FileBrowser stores its cache.
+        '';
+        type = types.nullOr types.str;
       };
 
       settings = lib.mkOption {
@@ -77,9 +66,9 @@ in
             };
 
             root = lib.mkOption {
-              default = "${cfg.stateDir}/data";
+              default = "/var/lib/${cfg.stateDir}/data";
               defaultText = lib.literalExpression ''
-                "''${config.services.filebrowser.stateDir}/data"
+                "/var/lib/''${config.services.filebrowser.stateDir}/data"
               '';
               description = ''
                 The directory where FileBrowser stores files.
@@ -88,9 +77,9 @@ in
             };
 
             database = lib.mkOption {
-              default = "/var/lib//database.db";
+              default = "/var/lib/${cfg.stateDir}/database.db";
               defaultText = lib.literalExpression ''
-                "''${config.services.filebrowser.stateDir}/database.db"
+                "/var/lib/''${config.services.filebrowser.stateDir}/database.db"
               '';
               description = ''
                 The path to FileBrowser's Bolt database.
@@ -99,14 +88,15 @@ in
             };
 
             cache-dir = lib.mkOption {
-              default = "${cfg.stateDir}/cache";
+              default = "/var/cache/${cfg.cacheDir}";
               defaultText = lib.literalExpression ''
-                "''${config.services.filebrowser.stateDir}/cache"
+                "/var/cache/''${config.services.filebrowser.cacheDir}"
               '';
               description = ''
                 The directory where FileBrowser stores its cache.
               '';
               type = types.nullOr types.path;
+              readOnly = true;
             };
           };
         };
@@ -121,25 +111,13 @@ in
         description = "FileBrowser";
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
-          ExecStart =
-            let
-              args = [
-                (lib.getExe cfg.package)
-                "--config"
-                (format.generate "config.json" cfg.settings)
-              ];
-            in
-            utils.escapeSystemdExecArgs args;
-
           StateDirectory = cfg.stateDir;
-          WorkingDirectory = cfg.settings.root;
+          CacheDirectory = lib.mkIf (cfg.cacheDir != null) cfg.cacheDir;
 
-          User = cfg.user;
-          Group = cfg.group;
+          DynamicUser = true;
 
           NoNewPrivileges = true;
           PrivateDevices = true;
-          ProtectSystem = "full";
           ProtectKernelTunables = true;
           ProtectKernelModules = true;
           ProtectControlGroups = true;
@@ -150,42 +128,26 @@ in
             "AF_INET"
             "AF_INET6"
           ];
-          PrivateTmp = true;
           DevicePolicy = "closed";
           RestrictNamespaces = true;
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
         };
-      };
 
-      tmpfiles.settings.filebrowser =
-        lib.genAttrs
-          (
-            [
-              cfg.stateDir
-              cfg.settings.root
-              (builtins.dirOf cfg.settings.database)
-            ]
-            ++ (lib.optional (cfg.settings.cache-dir != null) cfg.settings.cache-dir)
-          )
-          (_: {
-            d = {
-              inherit (cfg) user group;
-              mode = "0700";
-            };
-          });
+        script = ''
+          mkdir --parents -- ${lib.escapeShellArgs [
+            cfg.settings.root
+            (builtins.dirOf cfg.settings.database)
+          ]}
+
+          cd -- ${lib.escapeShellArg cfg.settings.root}
+
+          exec ${lib.getExe cfg.package} --config ${format.generate "config.json" cfg.settings}
+        '';
+      };
     };
 
     networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ cfg.settings.port ];
-
-    users = {
-      users.${cfg.user} = lib.mkIf (cfg.user == defaultUser) {
-        home = cfg.stateDir;
-        group = cfg.group;
-        isSystemUser = true;
-      };
-      groups.${cfg.group} = lib.mkIf (cfg.group == defaultGroup) { };
-    };
   };
 
   meta.maintainers = [
