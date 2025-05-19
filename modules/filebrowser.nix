@@ -43,13 +43,10 @@ in
         type = types.bool;
       };
 
-      storage = lib.mkOption {
-        default = "${cfg.settings.root}/data";
-        defaultText = lib.literalExpression ''
-          "''${config.services.filebrowser.settings.root}/data"
-        '';
+      stateDir = lib.mkOption {
+        default = "/var/lib/filebrowser";
         description = ''
-          The directory where FileBrowser stores files.
+          The directory where FileBrowser stores its state.
         '';
         type = types.path;
       };
@@ -80,26 +77,32 @@ in
             };
 
             root = lib.mkOption {
-              default = "/var/lib/filebrowser";
+              default = "${cfg.stateDir}/data";
+              defaultText = lib.literalExpression ''
+                "''${config.services.filebrowser.stateDir}/data"
+              '';
               description = ''
-                The directory where FileBrowser stores its state.
+                The directory where FileBrowser stores files.
               '';
               type = types.path;
             };
 
             database = lib.mkOption {
-              default = "${cfg.settings.root}/database.db";
+              default = "/var/lib//database.db";
               defaultText = lib.literalExpression ''
-                "''${config.services.filebrowser.settings.root}/database.db"
+                "''${config.services.filebrowser.stateDir}/database.db"
               '';
               description = ''
-                The path to FileBrowser's database.
+                The path to FileBrowser's Bolt database.
               '';
               type = types.path;
             };
 
             cache-dir = lib.mkOption {
-              default = null;
+              default = "${cfg.stateDir}/cache";
+              defaultText = lib.literalExpression ''
+                "''${config.services.filebrowser.stateDir}/cache"
+              '';
               description = ''
                 The directory where FileBrowser stores its cache.
               '';
@@ -128,8 +131,8 @@ in
             in
             utils.escapeSystemdExecArgs args;
 
-          StateDirectory = cfg.settings.root;
-          WorkingDirectory = cfg.storage;
+          StateDirectory = cfg.stateDir;
+          WorkingDirectory = cfg.settings.root;
 
           User = cfg.user;
           Group = cfg.group;
