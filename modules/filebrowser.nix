@@ -162,8 +162,8 @@ in
         lib.genAttrs
           (
             [
+              cfg.stateDir
               cfg.settings.root
-              cfg.storage
               (builtins.dirOf cfg.settings.database)
             ]
             ++ (lib.optional (cfg.settings.cache-dir != null) cfg.settings.cache-dir)
@@ -180,7 +180,7 @@ in
 
     users = {
       users.${cfg.user} = lib.mkIf (cfg.user == defaultUser) {
-        home = cfg.storage;
+        home = cfg.stateDir;
         group = cfg.group;
         isSystemUser = true;
       };
