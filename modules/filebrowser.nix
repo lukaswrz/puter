@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  utils,
   ...
 }:
 let
@@ -112,8 +113,19 @@ in
         description = "FileBrowser";
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
+          ExecStart =
+            let
+              args = [
+                (lib.getExe cfg.package)
+                "--config"
+                (format.generate "config.json" cfg.settings)
+              ];
+            in
+            utils.escapeSystemdExecArgs args;
+
           StateDirectory = cfg.stateDir;
           CacheDirectory = lib.mkIf (cfg.cacheDir != null) cfg.cacheDir;
+          WorkingDirectory = cfg.settings.root;
 
           DynamicUser = true;
 
@@ -134,12 +146,6 @@ in
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
         };
-
-        script = ''
-          cd -- ${lib.escapeShellArg cfg.settings.root}
-
-          exec ${lib.getExe cfg.package} --config ${format.generate "config.json" cfg.settings}
-        '';
       };
 
       tmpfiles.settings.filebrowser =
