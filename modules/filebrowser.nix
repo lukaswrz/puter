@@ -33,7 +33,7 @@ in
       };
 
       cacheDir = lib.mkOption {
-        default = "cache";
+        default = "filebrowser";
         description = ''
           The directory below `/var/cache` where FileBrowser stores its cache.
         '';
@@ -48,6 +48,7 @@ in
         '';
         type = types.submodule {
           freeformType = format.type;
+
           options = {
             address = lib.mkOption {
               default = "localhost";
@@ -135,16 +136,21 @@ in
         };
 
         script = ''
-          mkdir --parents -- ${lib.escapeShellArgs [
-            cfg.settings.root
-            (builtins.dirOf cfg.settings.database)
-          ]}
-
           cd -- ${lib.escapeShellArg cfg.settings.root}
 
           exec ${lib.getExe cfg.package} --config ${format.generate "config.json" cfg.settings}
         '';
       };
+
+      tmpfiles.settings.filebrowser =
+        lib.genAttrs
+          [
+            cfg.settings.root
+            (builtins.dirOf cfg.settings.database)
+          ]
+          (_: {
+            d.mode = "0700";
+          });
     };
 
     networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ cfg.settings.port ];
