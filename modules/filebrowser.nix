@@ -90,9 +90,9 @@ in
             };
 
             cache-dir = lib.mkOption {
-              default = "/var/cache/${cfg.cacheDir}";
+              default = if cfg.cacheDir != null then "/var/cache/${cfg.cacheDir}" else null;
               defaultText = lib.literalExpression ''
-                "/var/cache/''${config.services.filebrowser.cacheDir}"
+                if config.services.filebrowser.cacheDir != null then "/var/cache/''${config.services.filebrowser.cacheDir}" else null
               '';
               description = ''
                 The directory where FileBrowser stores its cache.

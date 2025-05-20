@@ -4,6 +4,7 @@
 in{
   services.filebrowser = {
     enable = true;
+    cacheDir = null;
     settings = {
       address = "localhost";
       port = 8090;
