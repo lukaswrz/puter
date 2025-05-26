@@ -11,8 +11,8 @@
   ];
 
   services.musicomp.jobs.main = {
-    music = "/srv/music";
-    comp = "/srv/compmusic";
+    music = "/srv/vault/music";
+    comp = "/srv/void/compmusic";
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
