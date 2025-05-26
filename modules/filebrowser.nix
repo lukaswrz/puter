@@ -25,22 +25,6 @@ in
         type = types.bool;
       };
 
-      stateDir = lib.mkOption {
-        default = "filebrowser";
-        description = ''
-          The directory below `/var/lib` where FileBrowser stores its state.
-        '';
-        type = types.str;
-      };
-
-      cacheDir = lib.mkOption {
-        default = "filebrowser";
-        description = ''
-          The directory below `/var/cache` where FileBrowser stores its cache.
-        '';
-        type = types.nullOr types.str;
-      };
-
       settings = lib.mkOption {
         default = { };
         description = ''
@@ -68,10 +52,7 @@ in
             };
 
             root = lib.mkOption {
-              default = "/var/lib/${cfg.stateDir}/data";
-              defaultText = lib.literalExpression ''
-                "/var/lib/''${config.services.filebrowser.stateDir}/data"
-              '';
+              default = "/var/lib/filebrowser/data";
               description = ''
                 The directory where FileBrowser stores files.
               '';
@@ -79,10 +60,7 @@ in
             };
 
             database = lib.mkOption {
-              default = "/var/lib/${cfg.stateDir}/database.db";
-              defaultText = lib.literalExpression ''
-                "/var/lib/''${config.services.filebrowser.stateDir}/database.db"
-              '';
+              default = "/var/lib/filebrowser/database.db";
               description = ''
                 The path to FileBrowser's Bolt database.
               '';
@@ -90,11 +68,7 @@ in
             };
 
             cache-dir = lib.mkOption {
-              # default = if cfg.cacheDir != null then "/var/cache/${cfg.cacheDir}" else null;
-              default = lib.mkIf (cfg.cacheDir != null) "/var/cache/${cfg.cacheDir}";
-              defaultText = lib.literalExpression ''
-                if config.services.filebrowser.cacheDir != null then "/var/cache/''${config.services.filebrowser.cacheDir}" else null
-              '';
+              default = "/var/cache/filebrowser";
               description = ''
                 The directory where FileBrowser stores its cache.
               '';
@@ -124,8 +98,8 @@ in
             in
             utils.escapeSystemdExecArgs args;
 
-          StateDirectory = cfg.stateDir;
-          CacheDirectory = lib.mkIf (cfg.cacheDir != null) cfg.cacheDir;
+          StateDirectory = "filebrowser";
+          CacheDirectory = "filebrowser";
           WorkingDirectory = cfg.settings.root;
 
           DynamicUser = true;
