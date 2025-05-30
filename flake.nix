@@ -4,10 +4,19 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    hardware.url = "github:NixOS/nixos-hardware";
+    hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix.url = "github:ryantm/agenix";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    hardware.url = "github:NixOS/nixos-hardware";
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,38 +37,54 @@
       self,
       nixpkgs,
       flake-parts,
+      hooks,
+      treefmt,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
+      imports = [
+        hooks.flakeModule
+        treefmt.flakeModule
       ];
+
+      systems = nixpkgs.lib.systems.flakeExposed;
+
+      perSystem =
+        {
+          config,
+          pkgs,
+          inputs',
+          ...
+        }:
+        {
+          treefmt = {
+            projectRootFile = "flake.nix";
+
+            programs.nixfmt = {
+              enable = true;
+              package = pkgs.nixfmt-rfc-style;
+            };
+          };
+
+          pre-commit.settings.hooks = {
+            treefmt.enable = true;
+          };
+
+          devShells.default = pkgs.mkShellNoCC {
+            packages = [
+              inputs'.agenix.packages.default
+            ];
+
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
+          };
+        };
 
       flake = {
         lib = nixpkgs.lib.extend (import ./lib.nix);
 
         nixosConfigurations = self.lib.genNixosConfigurations inputs;
       };
-
-      perSystem =
-        {
-          pkgs,
-          inputs',
-          lib,
-          ...
-        }:
-        {
-          devShells.default = pkgs.mkShellNoCC {
-            packages = [
-              inputs'.agenix.packages.default
-            ];
-          };
-
-          packages = lib.packagesFromDirectoryRecursive {
-            inherit (pkgs) callPackage newScope;
-            directory = ./packages;
-          };
-        };
     };
 }

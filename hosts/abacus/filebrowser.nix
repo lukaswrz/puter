@@ -1,7 +1,9 @@
-{config, ...}: let
+{ config, ... }:
+let
   virtualHostName = "filebrowser.helveticanonstandard.net";
   cfg = config.services.filebrowser;
-in{
+in
+{
   services.filebrowser = {
     enable = true;
     settings = {

@@ -1,4 +1,5 @@
-{config, inputs, ...}: {
+{ config, inputs, ... }:
+{
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
