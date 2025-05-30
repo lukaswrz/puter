@@ -60,9 +60,24 @@
           treefmt = {
             projectRootFile = "flake.nix";
 
-            programs.nixfmt = {
-              enable = true;
-              package = pkgs.nixfmt-rfc-style;
+            settings.global.excludes = [
+              "LICENSE"
+              "*.age"
+              ".envrc"
+            ];
+
+            programs = {
+              nixfmt = {
+                enable = true;
+                package = pkgs.nixfmt-rfc-style;
+              };
+
+              shfmt = {
+                enable = true;
+                indent_size = 2;
+              };
+
+              mdformat.enable = true;
             };
           };
 
