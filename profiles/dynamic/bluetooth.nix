@@ -4,10 +4,10 @@
   ...
 }:
 let
-  cfg = config.profiles.desktop;
+  cfg = config.profiles.dynamic;
 in
 {
   config = lib.mkIf cfg.enable {
-    xdg.portal.xdgOpenUsePortal = true;
+    hardware.bluetooth.enable = true;
   };
 }

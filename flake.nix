@@ -26,6 +26,7 @@
     myphps.url = "git+https://codeberg.org/helvetica/myphps.git";
     forgesync.url = "git+https://codeberg.org/helvetica/forgesync.git";
     nini.url = "git+https://codeberg.org/helvetica/nini.git";
+    xenumenu.url = "git+https://codeberg.org/helvetica/xenumenu.git";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
