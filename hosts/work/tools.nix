@@ -7,5 +7,7 @@
     pkgs.jq
     pkgs.mariadb
     pkgs.openssl
+    pkgs.kubectl
+    pkgs.awscli2
   ];
 }
