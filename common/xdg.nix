@@ -1,0 +1,3 @@
+{
+  xdg.portal.xdgOpenUsePortal = true;
+}

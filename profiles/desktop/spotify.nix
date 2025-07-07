@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -8,6 +9,8 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    location.provider = "geoclue2";
+    environment.systemPackages = [
+      pkgs.spotify
+    ];
   };
 }

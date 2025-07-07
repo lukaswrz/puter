@@ -7,7 +7,6 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 - common: Sane defaults that make sense to use for every host.
 - modules: Regular NixOS modules.
 - profiles: Higher-level NixOS modules that conform to different roles that a host may have.
-- packages: Packages that I couldn't fit anywhere else.
 - secrets: Agenix secrets.
 - hosts: Hosts exposed in `nixosConfigurations`.
 - pubkeys.nix: Nix expression with all my SSH public keys, used for OpenSSH, Agenix and Restic.
@@ -21,7 +20,7 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 ## Installation
 
 ```bash
-nix run git+https://codeberg.org/helvetica/puter.git#disk /path/to/disk
+nix run git+https://codeberg.org/helvetica/zap.git /path/to/disk
 # TODO: Configure additional disks
 mkdir -p /mnt/etc/ssh
 cat > /mnt/etc/ssh/ssh_host_ed25519_key

@@ -21,4 +21,5 @@ in
   "secure-boot/abacus.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
   "secure-boot/flamingo.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.flamingo ];
   "secure-boot/vessel.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
+  "secure-boot/work.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.work ];
 }

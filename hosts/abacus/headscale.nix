@@ -9,7 +9,15 @@ in
     port = 8010;
     settings = {
       server_url = "https://${virtualHostName}";
-      dns.base_domain = "tailnet.helveticanonstandard.net";
+      dns = {
+        base_domain = "tailnet.helveticanonstandard.net";
+        nameservers.global = [
+          "1.1.1.1"
+          "1.0.0.1"
+          "2606:4700:4700::1111"
+          "2606:4700:4700::1001"
+        ];
+      };
       logtail.enabled = false;
     };
   };

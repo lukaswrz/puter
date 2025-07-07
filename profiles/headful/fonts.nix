@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.profiles.desktop;
+  cfg = config.profiles.headful;
 in
 {
   config = lib.mkIf cfg.enable {
