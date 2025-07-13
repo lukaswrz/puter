@@ -791,11 +791,11 @@
         "treefmt": "treefmt_3"
       },
       "locked": {
-        "lastModified": 1752083810,
-        "narHash": "sha256-tg8vOWF0zkHy713ZsUrIbXEtHNCHSkhIuDQ6ACDf+zc=",
+        "lastModified": 1752369177,
+        "narHash": "sha256-o7+dwGoPXj2c0hWyVitxYJUq9NyK3BFUM3Icpv0WU20=",
         "ref": "refs/heads/main",
-        "rev": "4ebb58559da32beb024a91fea4a50a72c4b27342",
-        "revCount": 2,
+        "rev": "bf600ff64f5c7b5789033aca48a0ab86ce5a8eef",
+        "revCount": 3,
         "type": "git",
         "url": "https://codeberg.org/helvetica/mympv.git"
       },
@@ -852,11 +852,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752305182,
-        "narHash": "sha256-6i4Q68G7wzNq1m2+l3lJUYgGZ9PwULvSVJpRSTTC46o=",
+        "lastModified": 1752378829,
+        "narHash": "sha256-LVqpSiYJ+zcxLvA6YUn9udrq8+NFBJ9oSwiEePPa9+g=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "ad29e2961dd0d58372384563bf00d510fc9f2e15",
+        "rev": "12201a430ee613bc720cef21a130b416cb1b5108",
         "type": "github"
       },
       "original": {
