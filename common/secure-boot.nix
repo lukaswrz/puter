@@ -1,5 +1,5 @@
 {
-  self,
+  inputs,
   attrName,
   config,
   lib,
@@ -10,7 +10,7 @@ let
   inherit (config.age) secrets;
 in
 {
-  age.secrets.secure-boot.file = self + /secrets/secure-boot/${attrName}.tar.age;
+  age.secrets.secure-boot.file = inputs.self + /secrets/secure-boot/${attrName}.tar.age;
 
   system.activationScripts.secureboot =
     let

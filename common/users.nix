@@ -1,5 +1,5 @@
 {
-  self,
+  inputs,
   config,
   ...
 }:
@@ -7,7 +7,7 @@ let
   inherit (config.users) mainUser;
 in
 {
-  age.secrets."user-${mainUser}".file = self + /secrets/users/${mainUser}.age;
+  age.secrets."user-${mainUser}".file = inputs.self + /secrets/users/${mainUser}.age;
 
   users = {
     mutableUsers = false;

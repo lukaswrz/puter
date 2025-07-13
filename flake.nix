@@ -98,10 +98,52 @@
           };
         };
 
-      flake = {
-        lib = nixpkgs.lib.extend (import ./lib.nix);
+      flake.nixosConfigurations =
+        let
+          inherit (nixpkgs) lib;
 
-        nixosConfigurations = self.lib.genNixosConfigurations inputs;
-      };
+          findModules =
+            paths:
+            builtins.concatMap (
+              path:
+              lib.pipe path [
+                (lib.fileset.fileFilter (file: file.hasExt "nix"))
+                lib.fileset.toList
+              ]
+            ) paths;
+
+          genNixosConfigurations =
+            inputs:
+            let
+              modulesDir = ./modules;
+              profilesDir = ./profiles;
+              commonDir = ./common;
+              hostsDir = ./hosts;
+
+              commonNixosSystem =
+                name:
+                lib.nixosSystem {
+                  specialArgs = {
+                    inherit inputs lib;
+                    attrName = name;
+                  };
+
+                  modules = findModules [
+                    modulesDir
+                    profilesDir
+                    commonDir
+                    (hostsDir + /${name})
+                  ];
+                };
+
+              hosts = lib.pipe hostsDir [
+                builtins.readDir
+                (lib.filterAttrs (_: type: type == "directory"))
+                builtins.attrNames
+              ];
+            in
+            lib.genAttrs hosts commonNixosSystem;
+        in
+        genNixosConfigurations inputs;
     };
 }

@@ -1,6 +1,5 @@
 {
   inputs,
-  self,
   lib,
   pkgs,
   ...
@@ -20,7 +19,7 @@
     inhibitsSleep = true;
     post =
       let
-        abacusConfig = self.nixosConfigurations.abacus.config;
+        abacusConfig = inputs.self.nixosConfigurations.abacus.config;
         remoteDir = abacusConfig.services.navidrome.settings.MusicFolder;
         remoteDomain = abacusConfig.networking.domain;
         package = pkgs.writeShellApplication {

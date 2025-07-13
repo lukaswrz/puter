@@ -1,7 +1,7 @@
 {
   attrName,
   config,
-  lib,
+  inputs,
   ...
 }:
 let
@@ -9,7 +9,7 @@ let
   secret = config.age.secrets.${secretName};
 in
 {
-  age.secrets = lib.mkSecrets { ${secretName} = { }; };
+  age.secrets.${secretName}.file = inputs.self + /secrets/restic/${attrName}.age;
 
   services.restic.backups = {
     local = {

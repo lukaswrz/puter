@@ -1,6 +1,6 @@
 {
   config,
-  lib,
+  inputs,
   ...
 }:
 let
@@ -9,7 +9,7 @@ in
 {
   # TODO: tailscale
 
-  age.secrets = lib.mkSecrets { vaultwarden = { }; };
+  age.secrets.vaultwarden.path = inputs.self + /secrets/vaultwarden.age;
 
   services.vaultwarden = {
     enable = true;

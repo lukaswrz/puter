@@ -1,5 +1,5 @@
 {
-  self,
+  inputs,
   config,
   lib,
   pkgs,
@@ -12,13 +12,13 @@ in
 {
   age.secrets = {
     forgejo-mailer = {
-      file = self + /secrets/forgejo/mailer.age;
+      file = inputs.self + /secrets/forgejo/mailer.age;
       mode = "400";
       owner = cfg.user;
     };
 
     forgejo-admin = {
-      file = self + /secrets/forgejo/admin.age;
+      file = inputs.self + /secrets/forgejo/admin.age;
       mode = "400";
       owner = cfg.user;
     };

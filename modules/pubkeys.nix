@@ -1,6 +1,6 @@
 {
   lib,
-  self,
+  inputs,
   ...
 }:
 {
@@ -16,5 +16,5 @@
       readOnly = true;
     };
 
-  config.pubkeys = lib.mkForce (import (self + /pubkeys.nix));
+  config.pubkeys = import (inputs.self + /pubkeys.nix);
 }
