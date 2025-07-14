@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   ...
 }:
@@ -25,7 +24,7 @@ lib.mkMerge (
       };
 
       systemd.tmpfiles.settings."10-static-sites".${root}.d = {
-        user = config.users.mainUser;
+        user = "helvetica";
         group = "users";
         mode = "0755";
       };

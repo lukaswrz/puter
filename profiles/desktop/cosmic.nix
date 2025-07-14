@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }:
 let
@@ -23,6 +24,11 @@ in
       desktopManager.cosmic.enable = true;
       displayManager.cosmic-greeter.enable = true;
     };
+
+    environment.cosmic.excludePackages = [
+      pkgs.cosmic-edit
+      pkgs.cosmic-player
+    ];
 
     environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
   };
