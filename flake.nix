@@ -15,8 +15,6 @@
 
     agenix.url = "github:ryantm/agenix";
     hardware.url = "github:NixOS/nixos-hardware";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
