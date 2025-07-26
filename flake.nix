@@ -29,6 +29,8 @@
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
     flendor.url = "./vendor/flendor";
     musicomp.url = "./vendor/musicomp";
@@ -102,6 +104,7 @@
           devShells.default = pkgs.mkShellNoCC {
             packages = [
               inputs'.agenix.packages.default
+              inputs'.flendor.packages.default
             ];
 
             shellHook = ''
