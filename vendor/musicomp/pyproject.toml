@@ -1,0 +1,18 @@
+[project]
+name = "musicomp"
+version = "0.1.0"
+description = "Music compression tool"
+authors = [{ name = "Lukas Wurzinger", email = "lukas@wrz.one" }]
+readme = "README.md"
+requires-python = ">=3.12"
+license = "GPL-3.0"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+musicomp = "musicomp.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/musicomp"]

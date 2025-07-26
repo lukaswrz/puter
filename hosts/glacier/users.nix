@@ -10,4 +10,13 @@
     openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
     extraGroups = [ "wheel" ]; # TODO remove
   };
+
+  users.users.futura = {
+    description = "Futura";
+    uid = 1001;
+    isNormalUser = true;
+    password = "futura";
+    openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
+    extraGroups = [ "wheel" ]; # TODO remove
+  };
 }

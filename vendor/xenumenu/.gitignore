@@ -1,0 +1,8 @@
+.direnv/
+
+.pre-commit-config.yaml
+
+tmp/
+
+xenumenu
+!xenumenu/
