@@ -29,17 +29,84 @@
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     nixpkgs.follows = "nixos-cosmic/nixpkgs";
 
-    flendor.url = "./vendor/flendor";
-    musicomp.url = "./vendor/musicomp";
-    hxwrap.url = "./vendor/hxwrap";
-    myphps.url = "./vendor/myphps";
-    forgesync.url = "./vendor/forgesync";
-    nini.url = "./vendor/nini";
-    xenumenu.url = "./vendor/xenumenu";
-    mympv.url = "./vendor/mympv";
+    flendor = {
+      url = "./vendor/flendor";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt.follows = "treefmt";
+        hooks.follows = "hooks";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    musicomp = {
+      url = "./vendor/musicomp";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    xenumenu = {
+      url = "./vendor/xenumenu";
+      inputs = {
+        treefmt.follows = "treefmt";
+        hooks.follows = "hooks";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    nini = {
+      url = "./vendor/nini";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt.follows = "treefmt";
+        hooks.follows = "hooks";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    forgesync = {
+      url = "./vendor/forgesync";
+      inputs = {
+        treefmt.follows = "treefmt";
+        hooks.follows = "hooks";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    myphps = {
+      url = "./vendor/myphps";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    hxwrap = {
+      url = "./vendor/hxwrap";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt.follows = "treefmt";
+        hooks.follows = "hooks";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    mympv = {
+      url = "./vendor/mympv";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt.follows = "treefmt";
+        hooks.follows = "hooks";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+    zap = {
+      url = "./vendor/zap";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt.follows = "treefmt";
+        hooks.follows = "hooks";
+        flake-parts.follows = "flake-parts";
+      };
+    };
   };
 
   outputs =
@@ -105,12 +172,15 @@
             packages = [
               inputs'.agenix.packages.default
               inputs'.flendor.packages.default
+              inputs'.zap.packages.default
             ];
 
             shellHook = ''
               ${config.pre-commit.installationScript}
             '';
           };
+
+          packages.zap = inputs'.zap.packages.default;
         };
 
       flake.nixosConfigurations =
