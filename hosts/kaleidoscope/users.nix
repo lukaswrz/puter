@@ -23,4 +23,6 @@
       openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
     };
   };
+
+  services.displayManager.hiddenUsers = [ "helvetica" ];
 }
