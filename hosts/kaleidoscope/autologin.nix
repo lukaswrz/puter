@@ -1,6 +1,6 @@
 {
   services.displayManager.autoLogin = {
     enable = true;
-    user = "insomniac";
+    user = "helvetica";
   };
 }

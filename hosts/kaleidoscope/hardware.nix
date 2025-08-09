@@ -9,8 +9,7 @@
 
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-gpu-amd
-    inputs.hardware.nixosModules.common-pc-laptop-ssd
-    inputs.hardware.nixosModules.lenovo-thinkpad
+    inputs.hardware.nixosModules.common-pc-ssd
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -19,14 +18,16 @@
     initrd = {
       availableKernelModules = [
         "nvme"
+        "ahci"
         "xhci_pci"
-        "thunderbolt"
+        "usbhid"
         "usb_storage"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [ "amdgpu" ];
     };
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
   };
+
+  powerManagement.cpuFreqGovernor = "performance";
 }

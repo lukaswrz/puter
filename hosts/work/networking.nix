@@ -1,3 +1,0 @@
-{
-  networking.networkmanager.enableStrongSwan = true;
-}

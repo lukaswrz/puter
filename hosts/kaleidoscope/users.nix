@@ -1,10 +1,7 @@
-{
-  config,
-  ...
-}:
+{ config, ... }:
 {
   users.users.helvetica = {
-    description = "Insomniac";
+    description = "Helvetica";
     uid = 1000;
     isNormalUser = true;
     password = "";
