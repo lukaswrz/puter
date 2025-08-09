@@ -40,9 +40,6 @@ in
           ];
         };
       };
-
-      # TODO
-      fontDir.enable = true;
     };
   };
 }

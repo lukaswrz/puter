@@ -29,17 +29,21 @@ ssh-keygen -f /mnt/etc/ssh/ssh_host_ed25519_key -y > /mnt/etc/ssh/ssh_host_ed255
 nixos-install --no-root-password --flake git+https://codeberg.org/helvetica/puter.git#hostname
 ```
 
-## systemd-cryptenroll
+## Enroll disk keys
 
 ```bash
 systemd-cryptenroll /dev/sdX --tpm2-device=auto
 ```
 
-## Create tar for sbctl
+## Secure boot (TODO)
 
 ```bash
 sudo sbctl create-keys
-sudo tar --create --directory /var/lib/sbctl . | agenix -e secure-boot/hostname.tar.age
+sudo tar --create --directory /var/lib/sbctl . | base64
+```
+
+```bash
+cat keys | base64 --decode | sudo tar --extract
 ```
 
 ## TODO

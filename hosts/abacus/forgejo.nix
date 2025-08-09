@@ -56,7 +56,7 @@ in
       mailer = {
         ENABLED = true;
         SMTP_ADDR = "smtp.fastmail.com";
-        FROM = "tea@wrz.one";
+        FROM = "forge@helveticanonstandard.net";
         USER = "lukas@wrz.one";
       };
     };

@@ -11,7 +11,7 @@ in
     services.tailscale = {
       enable = true;
       openFirewall = true;
-      useRoutingFeatures = "both"; # TODO
+      useRoutingFeatures = "both";
     };
 
     networking.firewall.trustedInterfaces = [
