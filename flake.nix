@@ -30,9 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
-
     flendor = {
       url = "./vendor/flendor";
       inputs = {
@@ -185,21 +182,21 @@
 
       flake.nixosConfigurations =
         let
-          inherit (nixpkgs) lib;
-
-          findModules =
-            paths:
-            builtins.concatMap (
-              path:
-              lib.pipe path [
-                (lib.fileset.fileFilter (file: file.hasExt "nix"))
-                lib.fileset.toList
-              ]
-            ) paths;
-
           genNixosConfigurations =
             inputs:
             let
+              inherit (nixpkgs) lib;
+
+              findModules =
+                paths:
+                builtins.concatMap (
+                  path:
+                  lib.pipe path [
+                    (lib.fileset.fileFilter (file: file.hasExt "nix"))
+                    lib.fileset.toList
+                  ]
+                ) paths;
+
               modulesDir = ./modules;
               profilesDir = ./profiles;
               commonDir = ./common;
@@ -209,7 +206,7 @@
                 name:
                 lib.nixosSystem {
                   specialArgs = {
-                    inherit inputs lib;
+                    inherit inputs;
                     attrName = name;
                   };
 
