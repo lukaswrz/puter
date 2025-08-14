@@ -70,13 +70,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    myphps = {
-      url = "./vendor/myphps";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     hxwrap = {
       url = "./vendor/hxwrap";
       inputs = {

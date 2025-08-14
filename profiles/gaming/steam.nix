@@ -16,11 +16,5 @@ in
       remotePlay.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-
-    # TODO
-    programs.gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
   };
 }
