@@ -16,7 +16,7 @@ in
 
   "syncserver.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
-  "secure-boot/glacier.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.glacier ];
+  "secure-boot/orchard.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.orchard ];
   "secure-boot/abacus.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
   "secure-boot/flamingo.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.flamingo ];
   "secure-boot/vessel.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
