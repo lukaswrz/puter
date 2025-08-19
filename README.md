@@ -10,7 +10,6 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 - secrets: Agenix secrets.
 - hosts: Hosts exposed in `nixosConfigurations`.
 - pubkeys.nix: Nix expression with all my SSH public keys, used for OpenSSH, Agenix and Restic.
-- lib.nix: Nixpkgs' lib with some extra functionality.
 
 ## Ports
 
@@ -48,8 +47,7 @@ cat keys | base64 --decode | sudo tar --extract
 
 ## TODO
 
-- [ ] Lanzaboote
 - [ ] Monitoring
 - [ ] Rom sync
-- [ ] insomniac backups
+- [ ] kaleidoscope backups
 - [ ] nginx websites

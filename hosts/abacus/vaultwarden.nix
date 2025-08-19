@@ -9,7 +9,7 @@ in
 {
   # TODO: tailscale
 
-  age.secrets.vaultwarden.path = inputs.self + /secrets/vaultwarden.age;
+  age.secrets.vaultwarden.file = inputs.self + /secrets/vaultwarden.age;
 
   services.vaultwarden = {
     enable = true;
