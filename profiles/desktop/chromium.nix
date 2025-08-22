@@ -9,9 +9,8 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    programs.chromium = {
-      enable = true;
-      package = pkgs.ungoogled-chromium;
-    };
+    environment.systemPackages = [
+      pkgs.ungoogled-chromium
+    ];
   };
 }
