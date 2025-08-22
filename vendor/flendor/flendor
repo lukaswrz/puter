@@ -68,6 +68,7 @@ if [[ ! -v vendor ]]; then
     vendor=$(jq --exit-status --raw-output '.vendor' <<<"$json")
 fi
 
+updates=()
 keeppaths=()
 
 while IFS= read -r k; do
@@ -87,8 +88,14 @@ while IFS= read -r k; do
 
     src=$(nix "${nixflags[@]}" flake prefetch --json "${prefetchflags[@]}" -- "$flake" | jq --exit-status --raw-output '.storePath')
 
-    rsync --recursive --delete --mkpath "${rsyncflags[@]}" -- "$src/" "$dest"
+    rsync --recursive --delete --mkpath --chmod=D750,F640 "${rsyncflags[@]}" -- "$src/" "$dest"
+
+    updates+=("$name")
 done < <(jq '.flakes | keys[]' <<<"$json")
+
+for name in "${updates[@]}"; do
+    nix "${nixflags[@]}" flake update -- "$name"
+done
 
 for path in "$vendor"/{,.}*; do
     keep=0
@@ -105,4 +112,10 @@ for path in "$vendor"/{,.}*; do
         warn "removing old flake at $path"
         rm --recursive --force "${rmflags[@]}" -- "$path"
     fi
+
+    name=$(basename -- "$path")
+
+    nix "${nixflags[@]}" flake update -- "$name" || {
+        warn "could not update lockfile to remove $name, is it still being referenced in flake.nix?"
+    }
 done

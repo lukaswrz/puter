@@ -1,6 +1,6 @@
 # Forgesync
 
-Forgesync automatically synchronizes all your Forgejo repositories to GitHub and any Forgejo instance such as Codeberg.
+Forgesync automatically synchronizes all your Forgejo repositories to GitHub or any Forgejo instance (e.g. Codeberg).
 
 While Forgejo supports periodic Git mirroring out of the box, setting these mirrors up can be a lot of manual work. Forgesync resolves this by:
 
@@ -12,9 +12,11 @@ While Forgejo supports periodic Git mirroring out of the box, setting these mirr
 
 ## Getting Forgesync
 
-Currently, a Nix package is provided as part of this Nix flake. To use it in an ephemeral shell, run `nix shell git+https://codeberg.org/helvetica/forgesync.git`.
+Forgesync is currently available as:
 
-If you can't or don't want to use Nix for this, the best option right now is cloning the repository and using `uv run forgesync`.
+* A Nix package provided as part of this Nix flake. To use it in an ephemeral shell, run `nix shell git+https://forgejo.helveticanonstandard.net/helvetica/forgesync.git`.
+* A (currently experimental) NixOS module. Check the [module source](module.nix).
+* A container. See [container usage](#container-usage).
 
 ## 💻 CLI usage
 
@@ -41,9 +43,38 @@ forgesync \
   --log INFO
 ```
 
-## ❄️ Usage as a NixOS module
+## 📦 Container usage
 
-Not yet.
+Alternatively, Forgesync can also be ran in a container with Podman, Docker, Kubernetes, etc.
+
+### Building the container
+
+Build with your favorite image building tool (Podman, Buildah, Docker, etc.):
+
+```bash
+podman build -t localhost/forgesync .
+```
+
+### Running the container
+
+The FROM_TOKEN, TO_TOKEN, and MIRROR_TOKEN tokens must be passed to the container at runtime (`-e` for Podman/Docker, or as a Kubernetes secret).
+
+Example with Podman:
+
+```bash
+podman run --rm -it \
+  -e FROM_TOKEN=my_forgejo_token \
+  -e TO_TOKEN=my_github_token \
+  -e MIRROR_TOKEN=my_github_mirror_roken \
+  localhost/forgesync \
+    --from-instance https://codeberg.org/api/v1 \
+    --to github \
+    --to-instance https://api.github.com \
+    --remirror \
+    --mirror-interval 8h0m0s \
+    --immediate \
+    --log INFO
+```
 
 ## ⚠️ Be careful with your data!
 

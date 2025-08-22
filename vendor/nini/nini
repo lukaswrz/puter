@@ -21,16 +21,16 @@ error() {
 
 args=$(
     getopt \
-        --options F:f:o:t:v \
-        --longoptions flakeref:,flake:,on:,to:,verbose \
+        --options o:t:v \
+        --longoptions on:,to:,verbose \
         --name "$progname" \
         -- "$@"
 )
 
 eval set -- "$args"
 
-if [[ -v NINI_FLAKEREF && -n $NINI_FLAKEREF ]]; then
-    flakeref=$NINI_FLAKEREF
+if [[ -v NINI_FLAKE && -n $NINI_FLAKE ]]; then
+    flake=$NINI_FLAKE
 fi
 flags=(
     --refresh
@@ -40,14 +40,6 @@ flags=(
 verbose=false
 while true; do
     case $1 in
-    -F | --flakeref)
-        flakeref=$2
-        shift 2
-        ;;
-    -f | --flake)
-        flake=$2
-        shift 2
-        ;;
     -o | --on)
         flags+=(--build-host "$2")
         shift 2
@@ -69,29 +61,24 @@ while true; do
     esac
 done
 
+if (($# == 0)); then
+    error 'a subcommand is required'
+fi
+
+sub=$1
+
+shift
+
 if [[ ! -v flake ]]; then
-    if [[ -v flakeref ]]; then
-        warn "using flake reference $flakeref"
-        if [[ -v host ]]; then
-            hostname=$(ssh -- "$host" hostname)
-        else
-            hostname=$(hostname)
-        fi
-        if [[ -z $hostname ]]; then
-            error 'hostname could not be resolved and no flake specified'
-        fi
-        flake=$flakeref#$hostname
-        warn "resolved to $flake"
-    else
-        error 'no flake or flake reference specified'
+    if (($# == 0)); then
+        error 'no flake has been specified'
     fi
+    flake=$1
 fi
 
 flags+=(--flake "$flake")
 
-if (($# == 0)); then
-    error 'a subcommand is required'
-fi
+shift
 
 run() {
     cmd=(nixos-rebuild "${flags[@]}" "$@")
@@ -103,12 +90,8 @@ run() {
     "${cmd[@]}"
 }
 
-sub=$1
-
 case $sub in
 s | switch)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -116,8 +99,6 @@ s | switch)
     run switch
     ;;
 b | boot)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -125,8 +106,6 @@ b | boot)
     run boot
     ;;
 t | test)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -134,8 +113,6 @@ t | test)
     run test
     ;;
 bld | build)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -143,8 +120,6 @@ bld | build)
     run build
     ;;
 dbld | dry-build)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -152,8 +127,6 @@ dbld | dry-build)
     run dry-build
     ;;
 da | dry-activate)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -161,8 +134,6 @@ da | dry-activate)
     run dry-activate
     ;;
 vm | build-vm)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -170,8 +141,6 @@ vm | build-vm)
     run build-vm
     ;;
 r | repl)
-    shift
-
     if (($# > 0)); then
         error 'too many arguments'
     fi
@@ -179,8 +148,6 @@ r | repl)
     run repl
     ;;
 i | img | build-image)
-    shift
-
     if (($# < 1)); then
         error 'image variant is required'
     fi
