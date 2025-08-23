@@ -26,6 +26,4 @@
     };
     kernelModules = [ "kvm-amd" ];
   };
-
-  powerManagement.cpuFreqGovernor = "performance";
 }

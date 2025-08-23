@@ -10,6 +10,7 @@
       hashedPasswordFile = config.age.secrets.user-helvetica.path;
       openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
       extraGroups = [ "wheel" ];
+      linger = true;
     };
 
     futura = {
