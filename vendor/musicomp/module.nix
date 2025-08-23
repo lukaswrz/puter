@@ -59,7 +59,7 @@ in {
           '';
         };
 
-        package = lib.mkPackageOption self.packages.${pkgs.system} "musicomp" {};
+        package = lib.mkPackageOption self.packages.${pkgs.system} "default" {};
 
         inhibitsSleep = lib.mkOption {
           default = false;
