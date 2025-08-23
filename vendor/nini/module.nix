@@ -13,10 +13,10 @@ in
   options.programs.nini = {
     enable = lib.mkEnableOption "nini";
     package = lib.mkPackageOption self.packages.${pkgs.system} "default" { };
-    flakeref = lib.mkOption {
+    flake = lib.mkOption {
       type = types.str;
       description = ''
-        The flake reference for nini.
+        The flake for nini.
       '';
     };
   };
@@ -26,7 +26,7 @@ in
       systemPackages = [
         cfg.package
       ];
-      sessionVariables.NINI_FLAKEREF = cfg.flakeref;
+      sessionVariables.NINI_FLAKE = cfg.flake;
     };
   };
 }
