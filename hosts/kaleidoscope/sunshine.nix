@@ -25,4 +25,6 @@
         21
       ];
     };
+
+  systemd.user.services.sunshine.wantedBy = [ "default.target" ];
 }
