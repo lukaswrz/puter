@@ -31,6 +31,8 @@ let
     pkgs.nodePackages_latest.typescript-language-server
     # Bash
     pkgs.nodePackages_latest.bash-language-server
+    # Nu
+    pkgs.nushell
 
     # HTML & CSS tooling
     pkgs.emmet-ls

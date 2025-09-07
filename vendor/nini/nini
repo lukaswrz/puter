@@ -69,11 +69,12 @@ sub=$1
 
 shift
 
-if [[ ! -v flake ]]; then
-    if (($# == 0)); then
-        error 'no flake has been specified'
-    fi
+if (($# > 0)); then
     flake=$1
+fi
+
+if [[ ! -v flake ]]; then
+    error 'no flake has been specified'
 fi
 
 flags+=(--flake "$flake")
