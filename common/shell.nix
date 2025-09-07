@@ -15,4 +15,8 @@
   };
 
   users.defaultUserShell = config.programs.fish.package;
+
+  environment.systemPackages = [
+    config.programs.starship.package
+  ];
 }
