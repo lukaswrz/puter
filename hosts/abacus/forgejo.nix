@@ -59,6 +59,11 @@ in
         FROM = "forge@helveticanonstandard.net";
         USER = "lukas@wrz.one";
       };
+
+      repository = {
+        DEFAULT_REPO_UNITS = "repo.code,repo.issues,repo.pulls";
+        DEFAULT_FORK_REPO_UNITS = "repo.code,repo.issues,repo.pulls";
+      };
     };
 
     secrets.mailer.PASSWD = secrets.forgejo-mailer.path;
