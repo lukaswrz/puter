@@ -59,6 +59,8 @@ in
         FROM = "forge@helveticanonstandard.net";
         USER = "lukas@wrz.one";
       };
+
+      log.LEVEL = "Debug";
     };
 
     secrets.mailer.PASSWD = secrets.forgejo-mailer.path;
