@@ -1,10 +1,6 @@
 {
-  users = {
-    "helvetica@flamingo" =
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAztZgcRBHqX8Wb2nAlP1qCKF205M3un/D1YnREcO7Dy";
-    "helvetica@orchard" =
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILLA4kxQblSZUaHYmW7lfYHD3jBlpVDMe7uhdqua1Zq7";
-  };
+  users."helvetica@orchard" =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILLA4kxQblSZUaHYmW7lfYHD3jBlpVDMe7uhdqua1Zq7";
 
   hosts = {
     abacus = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHoUgClpkOlBEffQOb9KkVn970RwnIhU0OiVr7P2WVzg";
