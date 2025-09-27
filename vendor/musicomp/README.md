@@ -35,7 +35,7 @@ Here's an example of how to use it:
       OnCalendar = "daily";
       Persistent = true;
     };
-    inhibitsSleep = true;
+    inhibit = ["sleep"];
     post = let
       remoteDir = "/my/music/folder";
       rsyncExe = lib.getExe pkgs.rsync;

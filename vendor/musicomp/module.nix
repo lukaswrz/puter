@@ -61,12 +61,15 @@ in {
 
         package = lib.mkPackageOption self.packages.${pkgs.system} "default" {};
 
-        inhibitsSleep = lib.mkOption {
-          default = false;
-          type = lib.types.bool;
-          example = true;
+        inhibit = lib.mkOption {
+          default = [ ];
+          type = types.listOf (types.strMatching "^[^:]+$");
+          example = [
+            "sleep"
+          ];
           description = ''
-            Prevents the system from sleeping while running the job.
+            Run the musicomp process with an inhibition lock taken;
+            see {manpage}`systemd-inhibit(1)` for a list of possible operations.
           '';
         };
       };
@@ -78,39 +81,47 @@ in {
       lib.mapAttrsToList (
         jobName: job:
         let
-          systemdName = "musicomp-job-${jobName}";
+          unitName = "musicomp-job-${jobName}";
           description = "musicomp job ${jobName}";
         in
         {
-          timers.${systemdName} = {
+          timers.${unitName} = {
             wantedBy = [ "timers.target" ];
             inherit description;
             inherit (job) timerConfig;
           };
 
-          services.${systemdName} = {
+          services.${unitName} = {
             inherit description;
 
             serviceConfig = {
               Type = "oneshot";
               User = "root";
               Group = "root";
+
+              ExecStart =
+                let
+                  inhibitArgs = [
+                    (lib.getExe' config.systemd.package "systemd-inhibit")
+                    "--mode"
+                    "block"
+                    "--who"
+                    description
+                    "--what"
+                    (lib.concatStringsSep ":" job.inhibit)
+                    "--why"
+                    "Scheduled musicomp job ${jobName}"
+                    "--"
+                  ];
+
+                  args =
+                    (lib.optionals (job.inhibit != [ ]) inhibitArgs)
+                    ++ [ (lib.getExe cfg.package) ]
+                    ++ lib.optional (job.workers > 0) "--workers ${lib.escapeShellArg job.workers}"
+                    ++ ["--verbose" "--" job.music job.comp];
+                in
+                utils.escapeSystemdExecArgs args;
             };
-
-            script = ''
-                ${lib.optionalString job.inhibitsSleep ''
-                  ${lib.getExe' config.systemd.package "systemd-inhibit"} \
-                    --mode block \
-                    --who ${lib.escapeShellArg systemdName} \
-                    --what sleep \
-                    --why ${lib.escapeShellArg "Scheduled musicomp job ${jobName}"}
-                ''}
-
-                ${lib.getExe job.package} \
-                  ${lib.optionalString (job.workers > 0) "--workers ${lib.escapeShellArg job.workers}"} \
-                  --verbose \
-                  -- ${lib.escapeShellArg job.music} ${lib.escapeShellArg job.comp}
-              '';
 
             postStart = job.post;
           };
