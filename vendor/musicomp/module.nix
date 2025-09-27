@@ -1,79 +1,88 @@
-self: {
+self:
+{
   lib,
   pkgs,
   utils,
   config,
   ...
-}: let
+}:
+let
   cfg = config.services.musicomp;
   inherit (lib) types;
   inherit (utils.systemdUtils.unitOptions) unitOption;
-in {
-  options.services.musicomp.jobs = lib.mkOption {
-    description = ''
-      Compression jobs to run with musicomp.
-    '';
-    default = {};
-    type = types.attrsOf (types.submodule {
-      options = {
-        music = lib.mkOption {
-          type = types.str;
-          description = ''
-            Source directory.
-          '';
-          example = "/srv/music";
-        };
+in
+{
+  options.services.musicomp = {
+    enable = lib.mkEnableOption "musicomp";
 
-        comp = lib.mkOption {
-          type = types.str;
-          description = ''
-            Destination directory for compressed music.
-          '';
-          example = "/srv/comp";
-        };
+    package = lib.mkPackageOption self.packages.${pkgs.system} "default" { };
 
-        post = lib.mkOption {
-          type = types.lines;
-          default = "";
-          description = ''
-            Shell commands that are run after compression has finished.
-          '';
-        };
+    jobs = lib.mkOption {
+      description = ''
+        Compression jobs to run with musicomp.
+      '';
+      default = { };
+      type = types.attrsOf (
+        types.submodule {
+          options = {
+            music = lib.mkOption {
+              type = types.str;
+              description = ''
+                Source directory.
+              '';
+              example = "/srv/music";
+            };
 
-        workers = lib.mkOption {
-          type = lib.types.int;
-          default = 0;
-          description = ''
-            Number of workers. A number less than 1 means that musicomp will use the amount of available processor threads.
-          '';
-        };
+            comp = lib.mkOption {
+              type = types.str;
+              description = ''
+                Destination directory for compressed music.
+              '';
+              example = "/srv/comp";
+            };
 
-        timerConfig = lib.mkOption {
-          type = lib.types.nullOr (lib.types.attrsOf unitOption);
-          default = {
-            OnCalendar = "daily";
-            Persistent = true;
+            post = lib.mkOption {
+              type = types.lines;
+              default = "";
+              description = ''
+                Shell commands that are run after compression has finished.
+              '';
+            };
+
+            workers = lib.mkOption {
+              type = lib.types.int;
+              default = 0;
+              description = ''
+                Number of workers. A number less than 1 means that musicomp will use the amount of available processor threads.
+              '';
+            };
+
+            timerConfig = lib.mkOption {
+              type = lib.types.nullOr (lib.types.attrsOf unitOption);
+              default = {
+                OnCalendar = "daily";
+                Persistent = true;
+              };
+              description = ''
+                When to run the job.
+              '';
+            };
+
+            inhibit = lib.mkOption {
+              default = [ ];
+              type = types.listOf (types.strMatching "^[^:]+$");
+              example = [
+                "sleep"
+              ];
+              description = ''
+                Run the musicomp process with an inhibition lock taken;
+                see {manpage}`systemd-inhibit(1)` for a list of possible operations.
+              '';
+            };
           };
-          description = ''
-            When to run the job.
-          '';
-        };
-
-        package = lib.mkPackageOption self.packages.${pkgs.system} "default" {};
-
-        inhibit = lib.mkOption {
-          default = [ ];
-          type = types.listOf (types.strMatching "^[^:]+$");
-          example = [
-            "sleep"
-          ];
-          description = ''
-            Run the musicomp process with an inhibition lock taken;
-            see {manpage}`systemd-inhibit(1)` for a list of possible operations.
-          '';
-        };
-      };
-    });
+        }
+      );
+    };
   };
 
   config = {
@@ -118,7 +127,12 @@ in {
                     (lib.optionals (job.inhibit != [ ]) inhibitArgs)
                     ++ [ (lib.getExe cfg.package) ]
                     ++ lib.optional (job.workers > 0) "--workers ${lib.escapeShellArg job.workers}"
-                    ++ ["--verbose" "--" job.music job.comp];
+                    ++ [
+                      "--verbose"
+                      "--"
+                      job.music
+                      job.comp
+                    ];
                 in
                 utils.escapeSystemdExecArgs args;
             };
