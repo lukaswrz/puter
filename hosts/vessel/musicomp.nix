@@ -16,7 +16,7 @@
       OnCalendar = "daily";
       Persistent = true;
     };
-    inhibitsSleep = true;
+    inhibit = [ "sleep" ];
     post =
       let
         abacusConfig = inputs.self.nixosConfigurations.abacus.config;
