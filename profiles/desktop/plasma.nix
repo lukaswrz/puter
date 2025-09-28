@@ -22,7 +22,7 @@ in
         pkgs.kdePackages.sddm-kcm
       ];
 
-      plasma6.exclude-packages = [
+      plasma6.excludePackages = [
         pkgs.kdePackages.elisa
       ];
     };
