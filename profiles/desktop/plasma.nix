@@ -17,8 +17,14 @@ in
       };
     };
 
-    environment.systemPackages = [
-      pkgs.kdePackages.sddm-kcm
-    ];
+    environment = {
+      systemPackages = [
+        pkgs.kdePackages.sddm-kcm
+      ];
+
+      plasma6.exclude-packages = [
+        pkgs.kdePackages.elisa
+      ];
+    };
   };
 }
