@@ -17,13 +17,21 @@ in
       };
     };
 
-    environment = {
-      systemPackages = [
-        pkgs.kdePackages.sddm-kcm
-      ];
+    environment.plasma6.excludePackages = [
+      pkgs.kdePackages.elisa
+    ];
 
-      plasma6.excludePackages = [
-        pkgs.kdePackages.elisa
+    specialisation.cosmic.configuration = {
+      services = {
+        desktopManager.plasma6.enable = lib.mkForce false;
+        displayManager.sddm.enable = lib.mkForce false;
+        desktopManager.cosmic.enable = true;
+        displayManager.cosmic-greeter.enable = true;
+      };
+
+      environment.cosmic.excludePackages = [
+        pkgs.cosmic-edit
+        pkgs.cosmic-player
       ];
     };
   };

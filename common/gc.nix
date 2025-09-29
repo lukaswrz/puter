@@ -5,5 +5,5 @@
     options = "--delete-older-than 30d";
   };
 
-  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader.systemd-boot.configurationLimit = 10;
 }
