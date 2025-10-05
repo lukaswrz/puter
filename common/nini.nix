@@ -6,6 +6,6 @@
 
   programs.nini = {
     enable = true;
-    flake = "git+https://forgejo.helveticanonstandard.net/helvetica/puter.git";
+    flake = "git+https://hack.helveticanonstandard.net/helvetica/puter.git";
   };
 }
