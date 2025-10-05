@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  virtualHostName = "filebrowser.helveticanonstandard.net";
+  virtualHostName = "bits.helveticanonstandard.net";
   cfg = config.services.filebrowser;
 in
 {
@@ -8,7 +8,7 @@ in
     enable = true;
     settings = {
       address = "localhost";
-      port = 8090;
+      port = 8050;
     };
   };
 

@@ -6,7 +6,6 @@
     "hxwrap": "git+https://forgejo.helveticanonstandard.net/helvetica/hxwrap.git",
     "forgesync": "git+https://forgejo.helveticanonstandard.net/helvetica/forgesync.git",
     "nini": "git+https://forgejo.helveticanonstandard.net/helvetica/nini.git",
-    "xenumenu": "git+https://forgejo.helveticanonstandard.net/helvetica/xenumenu.git",
     "mympv": "git+https://forgejo.helveticanonstandard.net/helvetica/mympv.git",
     "zap": "git+https://forgejo.helveticanonstandard.net/helvetica/zap.git"
   }

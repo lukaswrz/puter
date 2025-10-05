@@ -8,13 +8,13 @@ in
 
   "vaultwarden.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
+  "miniflux.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+
   "forgejo/mailer.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
   "forgejo/admin.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "restic/vessel.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
   "restic/abacus.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
-
-  "syncserver.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "secure-boot/orchard.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.orchard ];
   "secure-boot/abacus.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];

@@ -45,14 +45,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    xenumenu = {
-      url = "./vendor/xenumenu";
-      inputs = {
-        treefmt.follows = "treefmt";
-        hooks.follows = "hooks";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     nini = {
       url = "./vendor/nini";
       inputs = {

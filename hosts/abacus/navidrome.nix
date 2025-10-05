@@ -1,20 +1,20 @@
 { config, ... }:
 let
-  virtualHostName = "navidrome.helveticanonstandard.net";
+  virtualHostName = "jam.helveticanonstandard.net";
 in
 {
   services.navidrome = {
     enable = true;
     settings = {
       Address = "localhost";
-      Port = 8050;
+      Port = 8030;
       MusicFolder = "/srv/music";
       EnableSharing = true;
-      # Backup = {
-      #   Path = "/srv/backup/navidrome";
-      #   Count = 1;
-      #   Schedule = "0 2 * * *";
-      # };
+      Backup = {
+        Path = "/srv/backup/navidrome";
+        Count = 1;
+        Schedule = "0 2 * * *";
+      };
     };
   };
 

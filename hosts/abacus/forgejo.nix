@@ -36,10 +36,10 @@ in
     };
     settings = {
       server = {
-        DOMAIN = "forgejo.helveticanonstandard.net";
+        DOMAIN = "hack.helveticanonstandard.net";
         ROOT_URL = "https://${cfg.settings.server.DOMAIN}/";
         HTTP_ADDR = "127.0.0.1";
-        HTTP_PORT = 8060;
+        HTTP_PORT = 8020;
       };
 
       service = {
