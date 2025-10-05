@@ -5,7 +5,7 @@
   ...
 }:
 let
-  virtualHostName = "flux.helveticanonstandard.net";
+  virtualHostName = "boat.helveticanonstandard.net";
 in
 {
   age.secrets.miniflux.file = inputs.self + /secrets/miniflux.age;
