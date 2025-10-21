@@ -45,15 +45,6 @@
         flake-parts.follows = "flake-parts";
       };
     };
-    nini = {
-      url = "./vendor/nini";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt.follows = "treefmt";
-        hooks.follows = "hooks";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     forgesync = {
       url = "./vendor/forgesync";
       inputs = {
