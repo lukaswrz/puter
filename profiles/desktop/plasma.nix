@@ -34,5 +34,29 @@ in
         pkgs.cosmic-player
       ];
     };
+
+    specialisation.gnome.configuration = {
+      services = {
+        desktopManager.plasma6.enable = lib.mkForce false;
+        displayManager.sddm.enable = lib.mkForce false;
+        desktopManager.gnome.enable = true;
+        displayManager.gdm.enable = true;
+      };
+
+      services.gnome.core-apps.enable = true;
+
+      environment.gnome.excludePackages = [
+        pkgs.epiphany
+        pkgs.gnome-music
+        pkgs.loupe
+        pkgs.simple-scan
+        pkgs.snapshot
+        pkgs.yelp
+      ];
+
+      environment.systemPackages = [
+        pkgs.gnomeExtensions.appindicator
+      ];
+    };
   };
 }
