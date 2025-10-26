@@ -4,7 +4,7 @@
     enable = true;
     jobs =
       let
-        ssh = lib.getExe pkgs.openssh;
+        ssh = "${lib.getExe pkgs.openssh} -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null";
       in
       {
         vault = {
