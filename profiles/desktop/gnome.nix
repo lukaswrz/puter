@@ -19,10 +19,6 @@ in
       gnome.excludePackages = [
         pkgs.epiphany
         pkgs.gnome-music
-        pkgs.loupe
-        pkgs.simple-scan
-        pkgs.snapshot
-        pkgs.yelp
       ];
 
       systemPackages = [
