@@ -2,7 +2,6 @@
 {
   services.rsync = {
     enable = true;
-    package = pkgs.rsync;
     jobs = {
       vault = {
         sources = [ "/srv/vault/" ];

@@ -151,11 +151,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-C/yaVitS7uZm9Cs/gPCqXAJvJ9WHMokAi107XNUs670=",
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/flendor",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/flendor",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/flendor",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/flendor",
         "type": "path"
       }
     },
@@ -178,11 +178,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-ewO6KpE8TaqKTpuzlBCr6QZXn8hI8VUhuIIjUeUnLQY=",
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/forgesync",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/forgesync",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/forgesync",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/forgesync",
         "type": "path"
       }
     },
@@ -305,11 +305,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-AWOnpDD2zJcpK8mSXQRkSq7f92SfmTytmT3aW1OOvRA=",
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/hxwrap",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/hxwrap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/hxwrap",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/hxwrap",
         "type": "path"
       }
     },
@@ -349,11 +349,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-70xA0CzFwIBaSpKmdcTXkl6hSBpxE9KDhNMdwGOoa44=",
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/musicomp",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/musicomp",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/musicomp",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/musicomp",
         "type": "path"
       }
     },
@@ -375,11 +375,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-r1/srPoDe+297bYtfIAWMO2MVhf0YQwU27Crl+rwJsg=",
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/mympv",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/mympv",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/mympv",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/mympv",
         "type": "path"
       }
     },
@@ -390,11 +390,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760846226,
-        "narHash": "sha256-xmU8kAsRprJiTGBTaGrwmjBP3AMA9ltlrxHKFuy5JWc=",
+        "lastModified": 1761451000,
+        "narHash": "sha256-qBJL6xEIjqYq9zOcG2vf2nPTeVBppNJzvO0LuQWMwMo=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "5024e1901239a76b7bf94a4cd27f3507e639d49e",
+        "rev": "ed6b293161b378a7368cda38659eb8d3d9a0dac4",
         "type": "github"
       },
       "original": {
@@ -453,17 +453,17 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1761342734,
-        "narHash": "sha256-qInHCj11BFx50K/Cc2pBx1JRGTILj3zSvaJC1J3WftU=",
+        "lastModified": 1761373498,
+        "narHash": "sha256-Q/uhWNvd7V7k1H1ZPMy/vkx3F8C13ZcdrKjO7Jv7v0c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d818453c946cb2da3d729883ee017272369b4a4c",
+        "rev": "6a08e6bb4e46ff7fcbb53d409b253f6bad8a28ce",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "d818453c946cb2da3d729883ee017272369b4a4c",
         "type": "github"
       }
     },
@@ -661,11 +661,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-kzL6Sh2pTVcqruAQWFobzVBGkw69/WCkB2YGyF393Rw=",
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/zap",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/zap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/yc6lbsbjlcq5473wvccfbqxq2sgikcb6-source/vendor/zap",
+        "path": "/nix/store/jv0k2sacb9m9pcs0s7jbhqf7jqa7p65z-source/vendor/zap",
         "type": "path"
       }
     }
