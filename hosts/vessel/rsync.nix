@@ -15,6 +15,10 @@
             archive = true;
             delete = true;
             mkpath = true;
+            verbose = [
+              true
+              true
+            ];
             exclude = "lost+found/";
           };
         };
@@ -27,6 +31,10 @@
             archive = true;
             delete = true;
             mkpath = true;
+            verbose = [
+              true
+              true
+            ];
             rsh = ssh;
           };
         };
@@ -39,6 +47,10 @@
             archive = true;
             delete = true;
             mkpath = true;
+            verbose = [
+              true
+              true
+            ];
             rsh = ssh;
           };
         };
