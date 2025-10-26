@@ -20,7 +20,9 @@
       uid = 1001;
       isNormalUser = true;
       hashedPasswordFile = config.age.secrets.user-insomniac.path;
-      openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
+      openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users ++ [
+        config.pubkeys.hosts.vessel
+      ];
     };
   };
 
