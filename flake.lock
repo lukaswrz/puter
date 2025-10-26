@@ -151,11 +151,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-C/yaVitS7uZm9Cs/gPCqXAJvJ9WHMokAi107XNUs670=",
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/flendor",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/flendor",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/flendor",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/flendor",
         "type": "path"
       }
     },
@@ -178,11 +178,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-ewO6KpE8TaqKTpuzlBCr6QZXn8hI8VUhuIIjUeUnLQY=",
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/forgesync",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/forgesync",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/forgesync",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/forgesync",
         "type": "path"
       }
     },
@@ -305,11 +305,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-AWOnpDD2zJcpK8mSXQRkSq7f92SfmTytmT3aW1OOvRA=",
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/hxwrap",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/hxwrap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/hxwrap",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/hxwrap",
         "type": "path"
       }
     },
@@ -349,11 +349,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-70xA0CzFwIBaSpKmdcTXkl6hSBpxE9KDhNMdwGOoa44=",
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/musicomp",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/musicomp",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/musicomp",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/musicomp",
         "type": "path"
       }
     },
@@ -375,11 +375,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-r1/srPoDe+297bYtfIAWMO2MVhf0YQwU27Crl+rwJsg=",
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/mympv",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/mympv",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/mympv",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/mympv",
         "type": "path"
       }
     },
@@ -431,6 +431,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable-small": {
+      "locked": {
+        "lastModified": 1761373498,
+        "narHash": "sha256-Q/uhWNvd7V7k1H1ZPMy/vkx3F8C13ZcdrKjO7Jv7v0c=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6a08e6bb4e46ff7fcbb53d409b253f6bad8a28ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -558,6 +574,7 @@
         "mympv": "mympv",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "treefmt": "treefmt",
         "zap": "zap"
       }
@@ -661,11 +678,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-kzL6Sh2pTVcqruAQWFobzVBGkw69/WCkB2YGyF393Rw=",
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/zap",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/zap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/cic46h6n2bs34sjxc5w2wjp4nfqmaf0y-source/vendor/zap",
+        "path": "/nix/store/8hrn28v61rs1l0lsdqc3mkhznnzhwchp-source/vendor/zap",
         "type": "path"
       }
     }
