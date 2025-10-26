@@ -1,9 +1,5 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [
-    "${inputs.nixpkgs-unstable-small}/nixos/modules/services/misc/rsync.nix"
-  ];
-
   services.rsync = {
     enable = true;
     package = pkgs.rsync;
