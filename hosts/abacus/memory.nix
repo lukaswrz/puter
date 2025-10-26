@@ -5,5 +5,5 @@
     algorithm = "zstd";
   };
 
-  boot.tmp.clearOnBoot = true;
+  boot.tmp.cleanOnBoot = true;
 }
