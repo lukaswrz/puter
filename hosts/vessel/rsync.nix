@@ -11,7 +11,7 @@
       vault = {
         sources = [ "/srv/vault/" ];
         destination = "/srv/sync";
-        inhibits = [ "sleep" ];
+        inhibit = [ "sleep" ];
         settings = {
           archive = true;
           delete = true;
@@ -23,7 +23,7 @@
       roms = {
         sources = [ "/srv/vault/roms/" ];
         destination = "insomniac@kaleidoscope:~/Roms";
-        inhibits = [ "sleep" ];
+        inhibit = [ "sleep" ];
         settings = {
           archive = true;
           delete = true;
@@ -34,7 +34,7 @@
       movies = {
         sources = [ "/srv/vault/movies/" ];
         destination = "insomniac@kaleidoscope:~/Videos/Movies";
-        inhibits = [ "sleep" ];
+        inhibit = [ "sleep" ];
         settings = {
           archive = true;
           delete = true;
