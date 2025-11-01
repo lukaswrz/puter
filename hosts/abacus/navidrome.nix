@@ -1,9 +1,12 @@
 { config, ... }:
+let
+  tailnet = config.services.headscale.settings.dns.base_domain;
+in
 {
   services.navidrome = {
     enable = true;
     settings = {
-      Address = "abacus.tailnet.helveticanonstandard.net";
+      Address = "abacus.${tailnet}";
       Port = 6000;
       MusicFolder = "/srv/music";
       EnableSharing = true;

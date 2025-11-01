@@ -1,4 +1,12 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  tailnet = config.services.headscale.settings.dns.base_domain;
+in
 {
   services.rsync = {
     enable = true;
@@ -30,7 +38,7 @@
 
         roms-kaleidoscope = {
           sources = [ "/srv/vault/roms/" ];
-          destination = "insomniac@kaleidoscope:~/Roms";
+          destination = "insomniac@kaleidoscope.${tailnet}:~/Roms";
           inhibit = [ "sleep" ];
           settings = {
             archive = true;
@@ -51,7 +59,7 @@
 
         movies-kaleidoscope = {
           sources = [ "/srv/vault/movies/" ];
-          destination = "insomniac@kaleidoscope:~/Videos/Movies";
+          destination = "insomniac@kaleidoscope.${tailnet}:~/Videos/Movies";
           inhibit = [ "sleep" ];
           settings = {
             archive = true;
