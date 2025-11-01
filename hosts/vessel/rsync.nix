@@ -7,7 +7,7 @@
         ssh = "${lib.getExe pkgs.openssh} -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null";
       in
       {
-        vault = {
+        vault-sync = {
           sources = [ "/srv/vault/" ];
           destination = "/srv/sync";
           inhibit = [ "sleep" ];
@@ -15,15 +15,20 @@
             archive = true;
             delete = true;
             mkpath = true;
+            checksum = true;
             verbose = [
               true
               true
             ];
             exclude = "lost+found/";
           };
+          timerConfig = {
+            OnCalendar = "hourly";
+            Persistent = true;
+          };
         };
 
-        roms = {
+        roms-kaleidoscope = {
           sources = [ "/srv/vault/roms/" ];
           destination = "insomniac@kaleidoscope:~/Roms";
           inhibit = [ "sleep" ];
@@ -31,15 +36,20 @@
             archive = true;
             delete = true;
             mkpath = true;
+            checksum = true;
             verbose = [
               true
               true
             ];
             rsh = ssh;
           };
+          timerConfig = {
+            OnCalendar = "hourly";
+            Persistent = true;
+          };
         };
 
-        movies = {
+        movies-kaleidoscope = {
           sources = [ "/srv/vault/movies/" ];
           destination = "insomniac@kaleidoscope:~/Videos/Movies";
           inhibit = [ "sleep" ];
@@ -47,11 +57,16 @@
             archive = true;
             delete = true;
             mkpath = true;
+            checksum = true;
             verbose = [
               true
               true
             ];
             rsh = ssh;
+          };
+          timerConfig = {
+            OnCalendar = "hourly";
+            Persistent = true;
           };
         };
       };

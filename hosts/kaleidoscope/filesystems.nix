@@ -6,7 +6,7 @@
     device = "/dev/mapper/main";
     options = [
       "noatime"
-      "acl"
+
     ];
   };
 }

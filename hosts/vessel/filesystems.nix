@@ -12,7 +12,7 @@
       fsType = "ext4";
       options = [
         "noatime"
-        "acl"
+
       ];
     };
     "/srv/vault" = {
@@ -20,7 +20,7 @@
       fsType = "ext4";
       options = [
         "noatime"
-        "acl"
+
       ];
     };
     "/srv/void" = {
@@ -28,7 +28,7 @@
       fsType = "ext4";
       options = [
         "noatime"
-        "acl"
+
       ];
     };
     "/srv/sync" = {
@@ -36,7 +36,7 @@
       fsType = "ext4";
       options = [
         "noatime"
-        "acl"
+
       ];
     };
   };

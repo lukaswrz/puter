@@ -6,3 +6,9 @@
 - Vault: Black, 2TB, primary for all data
 - Void: Green, 1TB, for throwaway data
 - Sync: Red, 2TB, synced from the vault
+
+## ACLs for Syncthing
+
+```
+setfacl --recursive --default --modify user:syncthing:rwx /srv/{vault,void}
+```
