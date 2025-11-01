@@ -4,9 +4,6 @@
   inputs,
   ...
 }:
-let
-  virtualHostName = "boat.helveticanonstandard.net";
-in
 {
   age.secrets.miniflux.file = inputs.self + /secrets/miniflux.age;
 
@@ -15,17 +12,10 @@ in
     createDatabaseLocally = true;
     adminCredentialsFile = config.age.secrets.miniflux.path;
     config = {
-      LISTEN_ADDR = "localhost:8040";
+      LISTEN_ADDR = "${config.networking.hostName}.tailent.helveticanonstandard.net:6010";
       BASE_URL = "https://${virtualHostName}";
       CREATE_ADMIN = 1;
       WEBAUTHN = 1;
     };
-  };
-
-  services.nginx.virtualHosts.${virtualHostName} = {
-    enableACME = true;
-    forceSSL = true;
-
-    locations."/".proxyPass = "http://${config.services.miniflux.config.LISTEN_ADDR}";
   };
 }

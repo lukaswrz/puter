@@ -28,6 +28,11 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "lanzaboote-rust-overlay";
+    };
+    lanzaboote-rust-overlay = {
+      url = "github:oxalica/rust-overlay/59c45eb69d9222a4362673141e00ff77842cd219";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flendor = {

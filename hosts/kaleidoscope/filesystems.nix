@@ -4,6 +4,9 @@
   fileSystems."/" = {
     fsType = "ext4";
     device = "/dev/mapper/main";
-    options = [ "noatime" ];
+    options = [
+      "noatime"
+      "acl"
+    ];
   };
 }

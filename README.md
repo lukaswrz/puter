@@ -11,10 +11,23 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 - hosts: Hosts exposed in `nixosConfigurations`.
 - pubkeys.nix: Nix expression with all my SSH public keys, used for OpenSSH, Agenix and Restic.
 
-## Ports
+## Services
 
+General rules:
+
+- Lower X = more important.
+- Fewer services = more better.
+
+Ports:
+
+- 40X0: Syncthing instances behind Tailscale (4000 being the system instance, subsequent ones are for individual users)
+- 60X0: Services behind Tailscale
+  - 6000: Navidrome
+  - 6010: Miniflux
 - 80X0: Public HTTP services that are proxied through nginx
-- 40X0: Syncthing instances (4000 being the system instance, subsequent ones are for individual users)
+  - 8000: Headscale
+  - 8010: Vaultwarden
+  - 8020: Forgejo
 
 ## Installation
 

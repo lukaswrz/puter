@@ -10,11 +10,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1760836749,
-        "narHash": "sha256-wyT7Pl6tMFbFrs8Lk/TlEs81N6L+VSybPfiIgzU8lbQ=",
+        "lastModified": 1761656077,
+        "narHash": "sha256-lsNWuj4Z+pE7s0bd2OKicOFq9bK86JE0ZGeKJbNqb94=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "2f0f812f69f3eb4140157fe15e12739adf82e32a",
+        "rev": "9ba0d85de3eaa7afeab493fed622008b6e4924f5",
         "type": "github"
       },
       "original": {
@@ -151,11 +151,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-C/yaVitS7uZm9Cs/gPCqXAJvJ9WHMokAi107XNUs670=",
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/flendor",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/flendor",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/flendor",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/flendor",
         "type": "path"
       }
     },
@@ -178,11 +178,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-ewO6KpE8TaqKTpuzlBCr6QZXn8hI8VUhuIIjUeUnLQY=",
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/forgesync",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/forgesync",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/forgesync",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/forgesync",
         "type": "path"
       }
     },
@@ -231,11 +231,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1760958188,
-        "narHash": "sha256-2m1S4jl+GEDtlt2QqeHil8Ny456dcGSKJAM7q3j/BFU=",
+        "lastModified": 1761933221,
+        "narHash": "sha256-rNHeoG3ZrA94jczyLSjxCtu67YYPYIlXXr0uhG3wNxM=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "d6645c340ef7d821602fd2cd199e8d1eed10afbc",
+        "rev": "7467f155fcba189eb088a7601f44fbef7688669b",
         "type": "github"
       },
       "original": {
@@ -305,11 +305,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-AWOnpDD2zJcpK8mSXQRkSq7f92SfmTytmT3aW1OOvRA=",
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/hxwrap",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/hxwrap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/hxwrap",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/hxwrap",
         "type": "path"
       }
     },
@@ -322,7 +322,9 @@
           "nixpkgs"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": [
+          "lanzaboote-rust-overlay"
+        ]
       },
       "locked": {
         "lastModified": 1737639419,
@@ -339,6 +341,27 @@
         "type": "github"
       }
     },
+    "lanzaboote-rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761791894,
+        "narHash": "sha256-myRIDh+PxaREz+z9LzbqBJF+SnTFJwkthKDX9zMyddY=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "59c45eb69d9222a4362673141e00ff77842cd219",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "59c45eb69d9222a4362673141e00ff77842cd219",
+        "type": "github"
+      }
+    },
     "musicomp": {
       "inputs": {
         "flake-parts": [
@@ -349,11 +372,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-70xA0CzFwIBaSpKmdcTXkl6hSBpxE9KDhNMdwGOoa44=",
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/musicomp",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/musicomp",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/musicomp",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/musicomp",
         "type": "path"
       }
     },
@@ -375,11 +398,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-r1/srPoDe+297bYtfIAWMO2MVhf0YQwU27Crl+rwJsg=",
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/mympv",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/mympv",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/mympv",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/mympv",
         "type": "path"
       }
     },
@@ -453,11 +476,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1761373498,
-        "narHash": "sha256-Q/uhWNvd7V7k1H1ZPMy/vkx3F8C13ZcdrKjO7Jv7v0c=",
+        "lastModified": 1761907660,
+        "narHash": "sha256-kJ8lIZsiPOmbkJypG+B5sReDXSD1KGu2VEPNqhRa/ew=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6a08e6bb4e46ff7fcbb53d409b253f6bad8a28ce",
+        "rev": "2fb006b87f04c4d3bdf08cfdbc7fab9c13d94a15",
         "type": "github"
       },
       "original": {
@@ -554,33 +577,13 @@
         "hooks": "hooks",
         "hxwrap": "hxwrap",
         "lanzaboote": "lanzaboote",
+        "lanzaboote-rust-overlay": "lanzaboote-rust-overlay",
         "musicomp": "musicomp",
         "mympv": "mympv",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_3",
         "treefmt": "treefmt",
         "zap": "zap"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "lanzaboote",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731897198,
-        "narHash": "sha256-Ou7vLETSKwmE/HRQz4cImXXJBr/k9gp4J4z/PF8LzTE=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "0be641045af6d8666c11c2c40e45ffc9667839b5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
       }
     },
     "systems": {
@@ -661,11 +664,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-kzL6Sh2pTVcqruAQWFobzVBGkw69/WCkB2YGyF393Rw=",
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/zap",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/zap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/lz09hvcwwqdnap7sslv5nfsw654i5lq0-source/vendor/zap",
+        "path": "/nix/store/sxkiqndl0jl1wl87ryh5iwjb6s5pfbwj-source/vendor/zap",
         "type": "path"
       }
     }

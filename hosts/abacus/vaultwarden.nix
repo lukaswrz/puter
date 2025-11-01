@@ -22,7 +22,7 @@ in
       INVITATIONS_ALLOWED = false;
       ENABLE_WEBSOCKET = true;
       ROCKET_ADDRESS = "127.0.0.1";
-      ROCKET_PORT = 8000;
+      ROCKET_PORT = 8010;
     };
 
     environmentFile = config.age.secrets.vaultwarden.path;

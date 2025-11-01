@@ -4,12 +4,18 @@
     "/" = {
       fsType = "ext4";
       label = "main";
-      options = [ "noatime" ];
+      options = [
+        "noatime"
+        "acl"
+      ];
     };
     ${config.services.navidrome.settings.MusicFolder} = {
       label = "music";
       fsType = "ext4";
-      options = [ "noatime" ];
+      options = [
+        "noatime"
+        "acl"
+      ];
     };
   };
 }

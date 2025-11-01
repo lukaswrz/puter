@@ -10,22 +10,34 @@
     "/" = {
       device = "/dev/mapper/main";
       fsType = "ext4";
-      options = [ "noatime" ];
+      options = [
+        "noatime"
+        "acl"
+      ];
     };
     "/srv/vault" = {
       device = "/dev/mapper/vault";
       fsType = "ext4";
-      options = [ "noatime" ];
+      options = [
+        "noatime"
+        "acl"
+      ];
     };
     "/srv/void" = {
       device = "/dev/mapper/void";
       fsType = "ext4";
-      options = [ "noatime" ];
+      options = [
+        "noatime"
+        "acl"
+      ];
     };
     "/srv/sync" = {
       device = "/dev/mapper/sync";
       fsType = "ext4";
-      options = [ "noatime" ];
+      options = [
+        "noatime"
+        "acl"
+      ];
     };
   };
 }
