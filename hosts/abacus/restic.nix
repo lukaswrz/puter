@@ -16,12 +16,11 @@ in
     initialize = true;
     paths = [
       config.services.vaultwarden.backupDir
-      config.services.syncthing.dataDir
+      "/var/lib/syncthing"
       config.services.forgejo.stateDir
       config.services.forgejo.dump.backupDir
       config.services.postgresqlBackup.location
-      # config.services.navidrome.settings.Backup.Path
-      # TODO: Add stateDir options for these
+      # TODO: config.services.navidrome.settings.Backup.Path
       "/var/lib/headscale"
       "/var/lib/navidrome"
     ];

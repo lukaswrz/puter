@@ -34,7 +34,7 @@ in
       repository = "sftp:u459482@u459482.your-storagebox.de:/${attrName}";
       initialize = true;
       paths = [
-        config.services.syncthing.dataDir
+        "/var/lib/syncthing"
         "/srv/vault"
       ];
       passwordFile = secret.path;
