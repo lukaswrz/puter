@@ -6,6 +6,5 @@
     gaming.enable = true;
     piracy.enable = true;
     productivity.enable = true;
-
   };
 }

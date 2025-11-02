@@ -106,11 +106,13 @@ in
           {
             ${systemdName} = {
               description = "Syncthing instance ${instanceName}";
+
               requires = [ "tailscaled.service" ];
               after = [
                 "network.target"
                 "tailscaled.service"
               ];
+              wantedBy = [ "multi-user.target" ];
 
               environment = {
                 STNORESTART = "yes";

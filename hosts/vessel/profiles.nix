@@ -1,6 +1,5 @@
 {
   profiles = {
     server.enable = true;
-
   };
 }
