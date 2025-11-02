@@ -20,7 +20,9 @@ General rules:
 
 Ports:
 
-- 40X0: Syncthing instances behind Tailscale (4000 being the system instance, subsequent ones are for individual users)
+- 40X0: Syncthing instances behind Tailscale
+  - 4000: The system instance
+  - Subsequent ones are for individual users
 - 60X0: Services behind Tailscale
   - 6000: Navidrome
   - 6010: Miniflux

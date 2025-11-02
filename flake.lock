@@ -99,11 +99,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760948891,
-        "narHash": "sha256-TmWcdiUUaWk8J4lpjzu4gCGxWY6/Ok7mOK4fIFfBuU4=",
+        "lastModified": 1762040540,
+        "narHash": "sha256-z5PlZ47j50VNF3R+IMS9LmzI5fYRGY/Z5O5tol1c9I4=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "864599284fc7c0ba6357ed89ed5e2cd5040f0c04",
+        "rev": "0010412d62a25d959151790968765a70c436598b",
         "type": "github"
       },
       "original": {
@@ -149,15 +149,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-C/yaVitS7uZm9Cs/gPCqXAJvJ9WHMokAi107XNUs670=",
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/flendor",
+        "path": "./vendor/flendor",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/flendor",
+        "path": "./vendor/flendor",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "forgesync": {
       "inputs": {
@@ -176,15 +175,14 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-ewO6KpE8TaqKTpuzlBCr6QZXn8hI8VUhuIIjUeUnLQY=",
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/forgesync",
+        "path": "./vendor/forgesync",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/forgesync",
+        "path": "./vendor/forgesync",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "gitignore": {
       "inputs": {
@@ -303,15 +301,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-AWOnpDD2zJcpK8mSXQRkSq7f92SfmTytmT3aW1OOvRA=",
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/hxwrap",
+        "path": "./vendor/hxwrap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/hxwrap",
+        "path": "./vendor/hxwrap",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "lanzaboote": {
       "inputs": {
@@ -370,15 +367,14 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-70xA0CzFwIBaSpKmdcTXkl6hSBpxE9KDhNMdwGOoa44=",
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/musicomp",
+        "path": "./vendor/musicomp",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/musicomp",
+        "path": "./vendor/musicomp",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "mympv": {
       "inputs": {
@@ -396,15 +392,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-r1/srPoDe+297bYtfIAWMO2MVhf0YQwU27Crl+rwJsg=",
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/mympv",
+        "path": "./vendor/mympv",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/mympv",
+        "path": "./vendor/mympv",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "nix-index-database": {
       "inputs": {
@@ -413,11 +408,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761451000,
-        "narHash": "sha256-qBJL6xEIjqYq9zOcG2vf2nPTeVBppNJzvO0LuQWMwMo=",
+        "lastModified": 1762055842,
+        "narHash": "sha256-Pu1v3mlFhRzZiSxVHb2/i/f5yeYyRNqr0RvEUJ4UgHo=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "ed6b293161b378a7368cda38659eb8d3d9a0dac4",
+        "rev": "359ff6333a7b0b60819d4c20ed05a3a1f726771f",
         "type": "github"
       },
       "original": {
@@ -662,15 +657,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-kzL6Sh2pTVcqruAQWFobzVBGkw69/WCkB2YGyF393Rw=",
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/zap",
+        "path": "./vendor/zap",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/ilq4aknmdc91isskid4ifv3qj364ap4h-source/vendor/zap",
+        "path": "./vendor/zap",
         "type": "path"
-      }
+      },
+      "parent": []
     }
   },
   "root": "root",

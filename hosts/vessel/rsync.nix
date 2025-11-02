@@ -2,10 +2,11 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
-  tailnet = config.services.headscale.settings.dns.base_domain;
+  tailnet = inputs.self.nixosConfigurations.abacus.config.services.headscale.settings.dns.base_domain;
 in
 {
   services.rsync = {

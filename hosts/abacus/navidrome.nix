@@ -6,7 +6,7 @@ in
   services.navidrome = {
     enable = true;
     settings = {
-      Address = "abacus.${tailnet}";
+      Address = "${config.networking.hostName}.${tailnet}";
       Port = 6000;
       MusicFolder = "/srv/music";
       EnableSharing = true;
