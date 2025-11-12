@@ -23,8 +23,8 @@ in
       config.services.navidrome.settings.Backup.Path
     ];
 
-    ReadWritePaths = [
-      config.services.navidrome.settings.Backup.Path
-    ];
+    # ReadWritePaths = [
+    # config.services.navidrome.settings.Backup.Path
+    # ];
   };
 }
