@@ -9,6 +9,6 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.rmg-wayland ];
+    environment.systemPackages = [ pkgs.gopher64 ];
   };
 }

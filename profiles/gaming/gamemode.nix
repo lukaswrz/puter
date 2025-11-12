@@ -15,10 +15,27 @@ in
         general = {
           renice = 10;
         };
-        custom = {
-          start = "${lib.getExe pkgs.libnotify} 'GameMode started'";
-          end = "${lib.getExe pkgs.libnotify} 'GameMode stopped'";
-        };
+        custom =
+          let
+            notifyCommand =
+              message:
+              lib.escapeShellArgs (
+                [ (lib.getExe pkgs.libnotify) ]
+                ++ (lib.cli.toCommandLineGNU { } {
+                  transient = true;
+                  urgency = "low";
+                  app-name = "GameMode";
+                })
+                ++ [
+                  "--"
+                  message
+                ]
+              );
+          in
+          {
+            start = notifyCommand "GameMode started";
+            end = notifyCommand "GameMode stopped";
+          };
       };
     };
 

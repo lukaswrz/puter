@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ config, ... }:
 {
+  programs.starship.enable = true;
+
   environment.systemPackages = [
-    pkgs.starship
+    config.programs.starship.package
   ];
 }
