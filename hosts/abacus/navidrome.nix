@@ -17,4 +17,8 @@ in
       };
     };
   };
+
+  systemd.services.navidrome.serviceConfig.ReadWritePaths = [
+    config.services.navidrome.settings.Backup.Path
+  ];
 }
