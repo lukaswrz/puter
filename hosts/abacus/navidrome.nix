@@ -18,7 +18,13 @@ in
     };
   };
 
-  systemd.services.navidrome.serviceConfig.ReadWritePaths = [
-    (builtins.dirOf config.services.navidrome.settings.Backup.Path)
-  ];
+  systemd.services.navidrome.serviceConfig = {
+    BindPaths = [
+      config.services.navidrome.settings.Backup.Path
+    ];
+
+    ReadWritePaths = [
+      config.services.navidrome.settings.Backup.Path
+    ];
+  };
 }
