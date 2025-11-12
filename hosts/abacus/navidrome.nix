@@ -10,11 +10,11 @@ in
       Port = 6000;
       MusicFolder = "/srv/music";
       EnableSharing = true;
-      Backup = {
-        Path = "/srv/backup/navidrome";
-        Count = 1;
-        Schedule = "0 2 * * *";
-      };
+      # Backup = {
+      #   Path = "/srv/backup/navidrome";
+      #   Count = 1;
+      #   Schedule = "0 2 * * *";
+      # };
     };
   };
 }
