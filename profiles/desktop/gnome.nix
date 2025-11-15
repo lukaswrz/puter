@@ -23,6 +23,7 @@ in
 
       systemPackages = [
         pkgs.gnomeExtensions.appindicator
+        pkgs.hydrapaper
       ];
     };
   };
