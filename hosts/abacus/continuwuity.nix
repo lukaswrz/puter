@@ -35,7 +35,7 @@ in
 
       trusted_servers = [ "matrix.org" ];
 
-      allow_registration = false;
+      allow_registration = true;
       registration_token_file = config.age.secrets.matrix-register.path;
       allow_federation = true;
       allow_encryption = true;
