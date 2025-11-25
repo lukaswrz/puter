@@ -18,7 +18,11 @@ let
   };
 in
 {
-  age.secrets.matrix-register.file = inputs.self + /secrets/matrix/register.age;
+  age.secrets.matrix-register = {
+    file = inputs.self + /secrets/matrix/register.age;
+    mode = "400";
+    owner = config.services.matrix-continuwuity.user;
+  };
 
   services.matrix-continuwuity = {
     enable = true;
