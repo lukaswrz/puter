@@ -1,0 +1,3 @@
+{
+  hardware.nitrokey.enable = true;
+}

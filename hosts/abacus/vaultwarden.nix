@@ -7,8 +7,6 @@ let
   virtualHostName = "vault.helveticanonstandard.net";
 in
 {
-  # TODO: tailscale
-
   age.secrets.vaultwarden.file = inputs.self + /secrets/vaultwarden.age;
 
   services.vaultwarden = {
@@ -21,7 +19,7 @@ in
       SIGNUPS_ALLOWED = false;
       INVITATIONS_ALLOWED = false;
       ENABLE_WEBSOCKET = true;
-      ROCKET_ADDRESS = "127.0.0.1";
+      ROCKET_ADDRESS = "localhost";
       ROCKET_PORT = 8010;
     };
 

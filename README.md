@@ -30,3 +30,6 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
   - 8000: Headscale
   - 8010: Vaultwarden
   - 8020: Forgejo
+  - 8030: Continuwuity
+  - 8040: Mollysocket
+  - 8050: Ntfy

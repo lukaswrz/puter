@@ -5,7 +5,7 @@ in
 {
   services.headscale = {
     enable = true;
-    address = "127.0.0.1";
+    address = "localhost";
     port = 8000;
     settings = {
       server_url = "https://${virtualHostName}";
