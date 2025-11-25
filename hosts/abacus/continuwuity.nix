@@ -5,7 +5,7 @@
   ...
 }:
 let
-  listenAddress = "localhost";
+  listenAddress = "127.0.0.1";
   port = 8030;
   serverName = "helveticanonstandard.net";
   fqdn = "matrix.${serverName}";
