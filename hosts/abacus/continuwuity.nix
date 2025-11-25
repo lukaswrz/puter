@@ -5,6 +5,8 @@
   ...
 }:
 let
+  listenAddress = "localhost";
+  port = 8030;
   serverName = "helveticanonstandard.net";
   fqdn = "matrix.${serverName}";
   jsonFormat = pkgs.formats.json { };
@@ -24,8 +26,8 @@ in
     settings.global = {
       server_name = serverName;
 
-      address = "localhost";
-      port = 8030;
+      address = [ listenAddress ];
+      port = [ port ];
 
       trusted_servers = [ "matrix.org" ];
 
@@ -66,7 +68,7 @@ in
         "/".return = "404";
 
         "/_matrix/" = {
-          proxyPass = "http://${config.services.matrix-conduit.settings.global.address}:${toString config.services.matrix-conduit.settings.global.port}";
+          proxyPass = "http://${listenAddress}:${toString port}";
           proxyWebsockets = true;
 
           extraConfig = ''
