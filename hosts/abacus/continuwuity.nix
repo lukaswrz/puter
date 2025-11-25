@@ -62,7 +62,6 @@ in
     ${fqdn} = {
       enableACME = true;
       forceSSL = true;
-      quic = true;
 
       locations = {
         "/".return = "404";
