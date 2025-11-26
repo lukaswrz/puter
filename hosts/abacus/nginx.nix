@@ -3,10 +3,10 @@
   services.nginx = {
     enable = true;
 
-    recommendedGzipSettings = true;
+    recommendedZstdSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+    # recommendedTlsSettings = true;
 
     commonHttpConfig = ''
       error_log stderr;
