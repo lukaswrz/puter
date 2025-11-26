@@ -11,14 +11,14 @@
     createDatabaseLocally = true;
     adminCredentialsFile = config.age.secrets.miniflux.path;
     config = {
-      LISTEN_ADDR = "${config.networking.hostName}.tailent.helveticanonstandard.net:6010";
+      LISTEN_ADDR = "127.0.0.1:6010";
       BASE_URL = "http://${config.networking.hostName}.tailent.helveticanonstandard.net";
       CREATE_ADMIN = 1;
       WEBAUTHN = 1;
     };
   };
 
-  services.nginx.virtualHosts."miniflux.helveticanonstandard.net" = {
+  services.nginx.virtualHosts."flux.helveticanonstandard.net" = {
     listen = [
       {
         addr = "localhost";
