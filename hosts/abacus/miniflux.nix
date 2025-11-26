@@ -21,7 +21,7 @@
   services.nginx.virtualHosts."flux.helveticanonstandard.net" = {
     listen = [
       {
-        addr = "localhost";
+        addr = "127.0.0.1";
         port = 80;
       }
     ];
