@@ -12,7 +12,7 @@
     adminCredentialsFile = config.age.secrets.miniflux.path;
     config = {
       LISTEN_ADDR = "127.0.0.1:6010";
-      BASE_URL = "http://flux.helveticanonstandard.net";
+      BASE_URL = "http://testing.helveticanonstandard.net";
       CREATE_ADMIN = 1;
       WEBAUTHN = 1;
     };
