@@ -3,7 +3,7 @@
   services.nginx = {
     enable = true;
 
-    recommendedZstdSettings = true;
+    recommendedBrotliSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     # recommendedTlsSettings = true;
