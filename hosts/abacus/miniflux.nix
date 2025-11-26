@@ -17,4 +17,24 @@
       WEBAUTHN = 1;
     };
   };
+
+  services.nginx.virtualHosts."miniflux.helveticanonstandard.net" = {
+    listen = [
+      {
+        addr = "localhost";
+        port = 80;
+      }
+    ];
+
+    #extraConfig = ''
+    #  allow 100.64.0.0/10;
+    #  allow fd7a:115c:a1e0::/48;
+    #  deny all;
+    #'';
+
+    locations."/" = {
+      proxyPass = "http://${config.services.miniflux.config.LISTEN_ADDR}";
+      proxyWebsockets = true;
+    };
+  };
 }
