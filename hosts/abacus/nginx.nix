@@ -20,14 +20,14 @@
       in
       {
         # Redirect anything that doesn't match any server name to networking.domain
-        ${matchAll} = {
-          default = true;
-          rejectSSL = true;
+        #${matchAll} = {
+        #  default = true;
+        #  rejectSSL = true;
 
-          globalRedirect = config.networking.domain;
-        };
+        #  globalRedirect = config.networking.domain;
+        #};
         # Redirect www to non-www
-        ${matchWww}.globalRedirect = "$domain";
+        # ${matchWww}.globalRedirect = "$domain";
       };
   };
 }

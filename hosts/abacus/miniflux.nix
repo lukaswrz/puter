@@ -18,7 +18,7 @@
     };
   };
 
-  services.nginx.virtualHosts."flux.helveticanonstandard.net" = {
+  services.nginx.virtualHosts."testing.helveticanonstandard.net" = {
     listen = [
       {
         addr = "127.0.0.1";
