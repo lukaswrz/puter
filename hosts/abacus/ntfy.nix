@@ -3,7 +3,11 @@ let
   virtualHostName = "poke.helveticanonstandard.net";
 in
 {
-  age.secrets.ntfy.file = inputs.self + /secrets/ntfy.age;
+  age.secrets.ntfy = {
+    file = inputs.self + /secrets/ntfy.age;
+    mode = "400";
+    owner = config.services.ntfy-sh.user;
+  };
 
   services.ntfy-sh = {
     enable = true;
