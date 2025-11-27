@@ -27,7 +27,7 @@ in
         let
           inherit (config.services.navidrome.settings) Address Port;
         in
-        "http://${Address}:${Port}";
+        "http://${Address}:${toString Port}";
       proxyWebsockets = true;
     };
   };
