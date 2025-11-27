@@ -8,7 +8,9 @@
     settings = {
       host = "abacus.tailnet.helveticanonstandard.net";
       webserver = false;
-      allowed_uuids = [ ];
+      allowed_uuids = [
+        "7b30192b-2220-4ea3-9570-87251cb3148e"
+      ];
       allowed_endpoints = [
         "https://poke.helveticanonstandard.net"
       ];
