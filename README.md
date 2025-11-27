@@ -23,13 +23,10 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 - 40X0: Syncthing instances behind Tailscale
   - 4000: The system instance
   - Subsequent ones are for individual users
-- 60X0: Services behind Tailscale
-  - 6000: Navidrome
-  - 6010: Miniflux
 - 80X0: Public HTTP services that are proxied through nginx
   - 8000: Headscale
   - 8010: Vaultwarden
   - 8020: Forgejo
   - 8030: Continuwuity
-  - 8040: Mollysocket
-  - 8050: Ntfy
+  - 8040: Ntfy
+  - 8050: Navidrome
