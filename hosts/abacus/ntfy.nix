@@ -1,8 +1,10 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
   virtualHostName = "poke.helveticanonstandard.net";
 in
 {
+  age.secrets.ntfy.file = inputs.self + /secrets/ntfy.age;
+
   services.ntfy-sh = {
     enable = true;
     settings = {
@@ -10,6 +12,8 @@ in
       auth-default-access = "deny-all";
       base-url = "https://${virtualHostName}";
     };
+
+    environmentFile = config.age.secrets.ntfy.path;
   };
 
   services.nginx.virtualHosts.${virtualHostName} = {

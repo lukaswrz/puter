@@ -14,6 +14,8 @@ in
 
   "matrix/register.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
+  "ntfy.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+
   "forgejo/mailer.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
   "forgejo/admin.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
