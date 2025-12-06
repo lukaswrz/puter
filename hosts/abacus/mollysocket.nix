@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 {
   age.secrets.mollysocket.file = inputs.self + /secrets/mollysocket.age;
 
@@ -18,4 +23,7 @@
 
     environmentFile = config.age.secrets.mollysocket.path;
   };
+
+  systemd.services.mollysocket.serviceConfig.WorkingDirectory =
+    lib.mkForce "/var/lib/private/mollysocket";
 }
