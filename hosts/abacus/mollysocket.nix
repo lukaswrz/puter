@@ -26,4 +26,5 @@
 
   systemd.services.mollysocket.serviceConfig.WorkingDirectory =
     lib.mkForce "/var/lib/private/mollysocket";
+  systemd.services.mollysocket.serviceConfig.ProtectSystem = lib.mkForce "full";
 }
