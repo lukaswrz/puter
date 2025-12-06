@@ -13,7 +13,6 @@
       target = "github";
 
       settings = {
-        immediate = true;
         remirror = true;
         feature = [
           "issues"

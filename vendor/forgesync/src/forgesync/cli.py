@@ -20,7 +20,6 @@ from .sync import (
     SyncError,
 )
 from .mirror import MirrorError, PushMirrorConfig, PushMirrorer
-from .remirror import should_remirror
 
 
 class ArgumentParser(Tap):
@@ -32,8 +31,6 @@ class ArgumentParser(Tap):
     "the repository description template"
     remirror: bool = False
     "whether mirrors should be recreated"
-    remirror_rule: str | None = None
-    "when mirrors should be recreated"
     mirror_interval: str = "8h0m0s"
     "repository mirror interval"
     log: str = "INFO"
@@ -42,9 +39,9 @@ class ArgumentParser(Tap):
     "include repositories by these regular expressions"
     exclude: list[str] = []
     "exclude repositories by these regular expressions"
-    immediate: bool = False
-    "tell Forgejo to mirror Git repositories immediately"
-    sync_on_push: bool = False
+    skip_initial: bool = False
+    "don't tell Forgejo to mirror Git repositories immediately after creating the push mirror"
+    on_commit: bool = False
     "tell Forgejo to sync as soon as commits are pushed"
     feature: list[RepositoryFeature] = []
     "allow a repository feature"
@@ -105,11 +102,9 @@ def main() -> None:
 
     push_mirror_config = PushMirrorConfig(
         interval=args.mirror_interval,
-        remirror=should_remirror(rule=args.remirror_rule)
-        if args.remirror_rule is not None
-        else args.remirror,
-        immediate=args.immediate,
-        sync_on_push=args.sync_on_push,
+        remirror=args.remirror,
+        immediate=not args.skip_initial,
+        on_commit=args.on_commit,
     )
 
     push_mirrorer = PushMirrorer(
