@@ -11,12 +11,4 @@
     extraGroups = [ "wheel" ];
     linger = true;
   };
-
-  users.users.futura = {
-    description = "Futura";
-    uid = 1001;
-    isNormalUser = true;
-    hashedPasswordFile = config.age.secrets.user-helvetica.path;
-    openssh.authorizedKeys.keys = builtins.attrValues config.pubkeys.users;
-  };
 }

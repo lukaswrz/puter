@@ -5,7 +5,7 @@
   ...
 }:
 let
-  package = inputs.hxwrap.packages.${pkgs.system}.default;
+  package = inputs.hxwrap.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   environment = {
