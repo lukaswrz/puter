@@ -6,7 +6,6 @@
       label = "main";
       options = [
         "noatime"
-
       ];
     };
     ${config.services.navidrome.settings.MusicFolder} = {
@@ -14,7 +13,6 @@
       fsType = "ext4";
       options = [
         "noatime"
-
       ];
     };
   };

@@ -11,7 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
-      package = pkgs.librewolf-bin;
+      package = pkgs.librewolf;
     };
   };
 }

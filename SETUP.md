@@ -20,25 +20,22 @@ systemd-cryptenroll /dev/sdX --tpm2-device=auto
 
 ## Secure boot
 
-### Create keys
+### rbw
+
+### Generate keys
 
 ```bash
 sudo sbctl create-keys
-sudo tar --create --directory /var/lib/sbctl . | base64
 ```
 
-### Use keys (wl-paste)
+### Put keys into clipboard
 
 ```bash
-wl-paste | base64 --decode | sudo tar --extract
+sudo tar --create --directory /var/lib/sbctl . | base64 | wl-copy
 ```
 
-### Use keys (rbw)
+### Use keys from clipboard
 
 ```bash
-rbw config set email EMAIL
-rbw config set base_url BASE_URL
-rbw login
-rbw unlock
-rbw get --folder 'Secure Boot' HOST | base64 --decode | sudo tar --extract
+wl-paste | base64 --decode | sudo tar --extract --directory /var/lib/sbctl
 ```
