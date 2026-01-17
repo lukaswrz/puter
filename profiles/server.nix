@@ -14,5 +14,8 @@ in
         message = "The server profile is not compatible with the desktop profile.";
       }
     ];
+
+    networking.useNetworkd = true;
+    time.timeZone = "UTC";
   };
 }

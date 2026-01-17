@@ -2,10 +2,13 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 {
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
+
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
@@ -24,5 +27,17 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (final: prev: {
+        inherit (prev.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
+  };
 }

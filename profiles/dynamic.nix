@@ -14,5 +14,16 @@ in
         message = "The dynamic profile is not compatible with the server profile.";
       }
     ];
+
+    location.provider = "geoclue2";
+
+    networking.networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+    };
+
+    services.resolved.enable = true;
+
+    users.groups.networkmanager.members = config.users.normalUsers;
   };
 }

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.profiles.gaming;
+  cfg = config.profiles.desktop;
 in
 {
   config = lib.mkIf cfg.enable {

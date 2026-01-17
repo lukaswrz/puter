@@ -31,7 +31,7 @@
     };
 
     flendor = {
-      url = "./vendor/flendor";
+      url = "path:./vendor/flendor";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -40,13 +40,13 @@
       };
     };
     musicomp = {
-      url = "./vendor/musicomp";
+      url = "path:./vendor/musicomp";
       inputs = {
         flake-parts.follows = "flake-parts";
       };
     };
     forgesync = {
-      url = "./vendor/forgesync";
+      url = "path:./vendor/forgesync";
       inputs = {
         treefmt.follows = "treefmt";
         hooks.follows = "hooks";
@@ -54,7 +54,7 @@
       };
     };
     hxwrap = {
-      url = "./vendor/hxwrap";
+      url = "path:./vendor/hxwrap";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -63,7 +63,7 @@
       };
     };
     mympv = {
-      url = "./vendor/mympv";
+      url = "path:./vendor/mympv";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -72,7 +72,7 @@
       };
     };
     zap = {
-      url = "./vendor/zap";
+      url = "path:./vendor/zap";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -146,6 +146,7 @@
               inputs'.agenix.packages.default
               inputs'.flendor.packages.default
               inputs'.zap.packages.default
+              pkgs.nixos-facter
             ];
 
             shellHook = ''

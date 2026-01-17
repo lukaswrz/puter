@@ -8,7 +8,29 @@ let
   cfg = config.profiles.headful;
 in
 {
+  options.profiles.headful = {
+    enable = lib.mkEnableOption "headful";
+  };
+
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = !config.profiles.server.enable;
+        message = "The headful profile is not compatible with the server profile.";
+      }
+    ];
+
+    environment = {
+      systemPackages = [
+        pkgs.wl-clipboard
+      ];
+
+      sessionVariables = {
+        NIXOS_OZONE_WL = "1";
+        SDL_VIDEODRIVER = "wayland,x11";
+      };
+    };
+
     fonts = {
       enableDefaultPackages = true;
       packages = [
@@ -39,6 +61,15 @@ in
           ];
         };
       };
+    };
+
+    security.rtkit.enable = true;
+    services.pipewire = {
+      enable = true;
+      wireplumber.enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
   };
 }
