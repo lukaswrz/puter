@@ -31,7 +31,7 @@
     };
 
     flendor = {
-      url = "path:./vendor/flendor";
+      url = "./vendor/flendor";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -40,13 +40,13 @@
       };
     };
     musicomp = {
-      url = "path:./vendor/musicomp";
+      url = "./vendor/musicomp";
       inputs = {
         flake-parts.follows = "flake-parts";
       };
     };
     forgesync = {
-      url = "path:./vendor/forgesync";
+      url = "./vendor/forgesync";
       inputs = {
         treefmt.follows = "treefmt";
         hooks.follows = "hooks";
@@ -54,7 +54,7 @@
       };
     };
     hxwrap = {
-      url = "path:./vendor/hxwrap";
+      url = "./vendor/hxwrap";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -63,7 +63,7 @@
       };
     };
     mympv = {
-      url = "path:./vendor/mympv";
+      url = "./vendor/mympv";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -72,7 +72,7 @@
       };
     };
     zap = {
-      url = "path:./vendor/zap";
+      url = "./vendor/zap";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
