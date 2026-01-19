@@ -127,6 +127,9 @@ in
 
                 WorkingDirectory = instance.workDir;
 
+                Restart = "always";
+                RestartSec = 10;
+
                 ExecStart =
                   let
                     settingsToCommandLine = lib.cli.toCommandLineGNU {

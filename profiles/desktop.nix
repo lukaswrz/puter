@@ -29,9 +29,11 @@ in
     ];
 
     services = {
-      desktopManager.gnome.enable = true;
-      displayManager.gdm.enable = true;
-      gnome.core-apps.enable = true;
+      desktopManager.plasma6.enable = true;
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
       flatpak.enable = true;
       printing = {
         enable = true;
@@ -40,9 +42,9 @@ in
     };
 
     environment = {
-      gnome.excludePackages = [
-        pkgs.epiphany
-        pkgs.gnome-music
+      plasma6.excludePackages = [
+        pkgs.kdePackages.plasma-browser-integration
+        pkgs.kdePackages.elisa
       ];
 
       systemPackages = [
