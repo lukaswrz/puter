@@ -31,7 +31,7 @@
     };
 
     flendor = {
-      url = "./vendor/flendor";
+      url = "git+https://hack.helveticanonstandard.net/helvetica/flendor.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -40,13 +40,13 @@
       };
     };
     musicomp = {
-      url = "./vendor/musicomp";
+      url = "git+https://hack.helveticanonstandard.net/helvetica/musicomp.git";
       inputs = {
         flake-parts.follows = "flake-parts";
       };
     };
     forgesync = {
-      url = "./vendor/forgesync";
+      url = "git+https://hack.helveticanonstandard.net/helvetica/forgesync.git";
       inputs = {
         treefmt.follows = "treefmt";
         hooks.follows = "hooks";
@@ -54,7 +54,7 @@
       };
     };
     hxwrap = {
-      url = "./vendor/hxwrap";
+      url = "git+https://hack.helveticanonstandard.net/helvetica/hxwrap.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -63,7 +63,7 @@
       };
     };
     mympv = {
-      url = "./vendor/mympv";
+      url = "git+https://hack.helveticanonstandard.net/helvetica/mympv.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";
@@ -72,7 +72,7 @@
       };
     };
     zap = {
-      url = "./vendor/zap";
+      url = "git+https://hack.helveticanonstandard.net/helvetica/zap.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         treefmt.follows = "treefmt";

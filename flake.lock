@@ -149,14 +149,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
+        "lastModified": 1759172949,
         "narHash": "sha256-C/yaVitS7uZm9Cs/gPCqXAJvJ9WHMokAi107XNUs670=",
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/flendor",
-        "type": "path"
+        "ref": "refs/heads/main",
+        "rev": "09d4e625a2c1d47b09ca4e0ea4c3aa14552fdfe0",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/flendor.git"
       },
       "original": {
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/flendor",
-        "type": "path"
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/flendor.git"
       }
     },
     "forgesync": {
@@ -176,14 +179,17 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1,
+        "lastModified": 1765043981,
         "narHash": "sha256-XSSr95t8aGMLTwOQCQLu8JvO7V41up5rHp5GmuKeWFI=",
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/forgesync",
-        "type": "path"
+        "ref": "refs/heads/main",
+        "rev": "74a217b0c5ea5c8f1b06cfd4dec2d0631a02bd15",
+        "revCount": 30,
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/forgesync.git"
       },
       "original": {
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/forgesync",
-        "type": "path"
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/forgesync.git"
       }
     },
     "gitignore": {
@@ -274,11 +280,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768834646,
-        "narHash": "sha256-sZq+qm+Pg1jw+hxncm5LDujLxgPcAop3G55jPSvWhfU=",
+        "lastModified": 1768908798,
+        "narHash": "sha256-98kaVYyT0tb8CFSkXPxLs+Ezv2FnBH84pwvQVAXrMWw=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "2f927757d32bcd2b11e5017bdb9f11fd9719af53",
+        "rev": "be7d943c905ac39110153679404546625757ec5a",
         "type": "github"
       },
       "original": {
@@ -303,14 +309,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
+        "lastModified": 1757267796,
         "narHash": "sha256-AWOnpDD2zJcpK8mSXQRkSq7f92SfmTytmT3aW1OOvRA=",
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/hxwrap",
-        "type": "path"
+        "ref": "refs/heads/main",
+        "rev": "9843bb073654c19fa8c831f0abbaa1c0cb39d443",
+        "revCount": 26,
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/hxwrap.git"
       },
       "original": {
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/hxwrap",
-        "type": "path"
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/hxwrap.git"
       }
     },
     "lanzaboote": {
@@ -347,14 +356,17 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1,
+        "lastModified": 1758987840,
         "narHash": "sha256-70xA0CzFwIBaSpKmdcTXkl6hSBpxE9KDhNMdwGOoa44=",
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/musicomp",
-        "type": "path"
+        "ref": "refs/heads/main",
+        "rev": "69e6613a711a83e454ae211d4935c308c7270efc",
+        "revCount": 9,
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/musicomp.git"
       },
       "original": {
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/musicomp",
-        "type": "path"
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/musicomp.git"
       }
     },
     "mympv": {
@@ -373,14 +385,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
+        "lastModified": 1753048826,
         "narHash": "sha256-r1/srPoDe+297bYtfIAWMO2MVhf0YQwU27Crl+rwJsg=",
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/mympv",
-        "type": "path"
+        "ref": "refs/heads/main",
+        "rev": "6f268be7ab275e09df0e8cb32d76ab1c369cbe3a",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/mympv.git"
       },
       "original": {
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/mympv",
-        "type": "path"
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/mympv.git"
       }
     },
     "nix-index-database": {
@@ -642,14 +657,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1,
+        "lastModified": 1766238042,
         "narHash": "sha256-DLeaxsSaCxsiKNKmfhSJt8PAPpXXpZ20hTympHVGk44=",
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/zap",
-        "type": "path"
+        "ref": "refs/heads/main",
+        "rev": "8544f019aa6e741f7688825d2be0bc62173c130c",
+        "revCount": 3,
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/zap.git"
       },
       "original": {
-        "path": "/nix/store/n95543p6j1ihnwh7i2gy9bgacdy1gsvv-source/vendor/zap",
-        "type": "path"
+        "type": "git",
+        "url": "https://hack.helveticanonstandard.net/helvetica/zap.git"
       }
     }
   },
