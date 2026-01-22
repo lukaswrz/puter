@@ -1,6 +1,6 @@
-{ config, ... }:
+{ pubkeys, ... }:
 {
   users.users.root.openssh.authorizedKeys.keys = [
-    config.pubkeys.hosts.vessel
+    pubkeys.hosts.vessel
   ];
 }

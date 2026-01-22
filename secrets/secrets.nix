@@ -10,8 +10,6 @@ in
 
   "miniflux.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
-  "mollysocket.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
-
   "matrix/register.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "forgesync/github.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];

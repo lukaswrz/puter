@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -185,6 +186,8 @@
                   specialArgs = {
                     inherit inputs;
                     attrName = name;
+                    tailnet = "tailnet.helveticanonstandard.net";
+                    pubkeys = import ./pubkeys.nix;
                   };
 
                   modules = findModules [

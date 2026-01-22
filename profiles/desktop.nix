@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  inputs,
   pkgs,
   ...
 }:
@@ -29,12 +30,8 @@ in
     ];
 
     services = {
-      desktopManager.plasma6.enable = true;
-      displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-      };
-      flatpak.enable = true;
+      desktopManager.cosmic.enable = true;
+      displayManager.cosmic-greeter.enable = true;
       printing = {
         enable = true;
         webInterface = true;
@@ -42,13 +39,14 @@ in
     };
 
     environment = {
-      plasma6.excludePackages = [
-        pkgs.kdePackages.plasma-browser-integration
-        pkgs.kdePackages.elisa
+      cosmic.excludePackages = [
+        pkgs.cosmic-player
       ];
 
       systemPackages = [
-        pkgs.gnomeExtensions.appindicator
+        inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.librewolf
+        pkgs.mpv
+        pkgs.tauon
         pkgs.zk
       ];
     };
