@@ -5,7 +5,7 @@
       interface = "enp1s0";
     in
     {
-      domain = config.normalDomain;
+      domain = "helveticanonstandard.net";
       interfaces.${interface}.ipv6.addresses = [
         {
           address = "2a01:4f8:c013:e64a::2";
