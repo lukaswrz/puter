@@ -28,14 +28,14 @@ in
     jovian = {
       steam = {
         enable = true;
-        desktopSession = "cosmic";
+        desktopSession = "plasma";
         autoStart = true;
         user = "insomniac";
       };
       hardware.has.amd.gpu = true;
     };
 
-    services.desktopManager.cosmic.enable = true;
+    services.desktopManager.plasma6.enable = true;
 
     environment.systemPackages = [
       pkgs.librewolf
