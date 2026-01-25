@@ -42,6 +42,7 @@ in
       pkgs.dolphin-emu
       pkgs.flycast
       pkgs.duckstation
+      pkgs.azahar
 
       # Decompilations
       pkgs.shipwright

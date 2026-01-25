@@ -11,7 +11,7 @@
 
   services.musicomp.jobs.main = {
     music = "/srv/vault/music";
-    comp = "/srv/void/compmusic";
+    comp = "/srv/shrink";
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
@@ -37,7 +37,7 @@
               --mkpath \
               --verbose --verbose \
               --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
-              /srv/void/compmusic/ root@${lib.escapeShellArg remoteDomain}:${lib.escapeShellArg remoteDir}/
+              /srv/shrink/ root@${lib.escapeShellArg remoteDomain}:${lib.escapeShellArg remoteDir}/
           '';
         };
       in

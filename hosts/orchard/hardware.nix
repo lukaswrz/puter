@@ -30,4 +30,5 @@
   };
 
   powerManagement.cpuFreqGovernor = "performance";
+  boot.supportedFilesystems = [ "ntfs" ];
 }

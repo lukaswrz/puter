@@ -30,6 +30,10 @@
       url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jovian = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flendor = {
       url = "git+https://hack.helveticanonstandard.net/helvetica/flendor.git";
@@ -121,7 +125,7 @@
             programs = {
               nixfmt = {
                 enable = true;
-                package = pkgs.nixfmt-rfc-style;
+                package = pkgs.nixfmt;
               };
 
               shfmt = {

@@ -38,18 +38,11 @@ in
       };
     };
 
-    environment = {
-      cosmic.excludePackages = [
-        pkgs.cosmic-player
-      ];
-
-      systemPackages = [
-        inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.librewolf
-        pkgs.mpv
-        pkgs.tauon
-        pkgs.zk
-      ];
-    };
+    environment.systemPackages = [
+      pkgs.librewolf
+      pkgs.tauon
+      pkgs.zk
+    ];
 
     boot.kernel.sysctl = {
       # This is required due to some games being unable to reuse their TCP ports

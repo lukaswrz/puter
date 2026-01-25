@@ -10,7 +10,7 @@ in
     settings = {
       server_url = "https://${virtualHostName}";
       dns = {
-        base_domain = config.facts.tailnet;
+        base_domain = "tailnet.helveticanonstandard.net";
         nameservers.global = [
           "1.1.1.1"
           "1.0.0.1"
