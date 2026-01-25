@@ -42,6 +42,7 @@ in
       pkgs.librewolf
       pkgs.tauon
       pkgs.zk
+      pkgs.vesktop
     ];
 
     boot.kernel.sysctl = {
