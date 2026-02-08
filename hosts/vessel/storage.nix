@@ -23,12 +23,21 @@
         [
           "/srv/vault"
           "/srv/void"
-          "/srv/shrink"
-          "/srv/vault"
         ]
         (_: {
           A.argument = "d:u:syncthing:rwx";
         });
-    jellyfin."/srv/vault/media".A.argument = "d:u:jellyfin:rwx";
+    helvetica =
+      lib.genAttrs
+        [
+          "/srv/vault"
+          "/srv/void"
+          "/srv/dump"
+          "/srv/media"
+        ]
+        (_: {
+          A.argument = "d:u:helvetica:rwx";
+        });
+    jellyfin."/srv/media".A.argument = "d:u:jellyfin:rwx";
   };
 }

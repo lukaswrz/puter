@@ -35,5 +35,15 @@
         "noatime"
       ];
     };
+    "/srv/media" = {
+      label = "media";
+      fsType = "ext4";
+      options = [
+        "noatime"
+        "nofail"
+        "x-systemd.automount"
+        "_netdev"
+      ];
+    };
   };
 }
