@@ -211,11 +211,11 @@
         "rev": "b916453cd3e3a5b4cd2033a8eeedc37beac8c768",
         "revCount": 37,
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/forgesync.git"
+        "url": "https://hack.moontide.ink/m64/forgesync.git"
       },
       "original": {
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/forgesync.git"
+        "url": "https://hack.moontide.ink/m64/forgesync.git"
       }
     },
     "git-hooks": {
@@ -430,11 +430,11 @@
         "rev": "8a617d85e9608ca9bd4f91f2d888dbe72aa1c9fb",
         "revCount": 28,
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/hxwrap.git"
+        "url": "https://hack.moontide.ink/m64/hxwrap.git"
       },
       "original": {
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/hxwrap.git"
+        "url": "https://hack.moontide.ink/m64/hxwrap.git"
       }
     },
     "jovian": {
@@ -493,11 +493,11 @@
         "rev": "c1372513ba7dc1a7c094303b87560ea6e6afe4fa",
         "revCount": 10,
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/musicomp.git"
+        "url": "https://hack.moontide.ink/m64/musicomp.git"
       },
       "original": {
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/musicomp.git"
+        "url": "https://hack.moontide.ink/m64/musicomp.git"
       }
     },
     "nix-github-actions": {
@@ -881,11 +881,11 @@
         "rev": "8544f019aa6e741f7688825d2be0bc62173c130c",
         "revCount": 3,
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/zap.git"
+        "url": "https://hack.moontide.ink/m64/zap.git"
       },
       "original": {
         "type": "git",
-        "url": "https://hack.helveticanonstandard.net/helvetica/zap.git"
+        "url": "https://hack.moontide.ink/m64/zap.git"
       }
     }
   },
