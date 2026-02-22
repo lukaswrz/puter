@@ -32,5 +32,5 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 
 ## TODOs
 
-* Mailserver
-* Facter (hosts left: kaleidoscope, glacier)
+- Mailserver
+- Facter (hosts left: kaleidoscope, glacier)

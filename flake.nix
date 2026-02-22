@@ -123,18 +123,19 @@
                 pubkeys = import ./pubkeys.nix;
               };
 
-              modules = findModules [
-                ./modules
-                ./profiles
-                ./common
-                (hostsPath + /${name})
-
+              modules = [
                 inputs.agenix.nixosModules.default
                 inputs.lanzaboote.nixosModules.lanzaboote
                 inputs.nix-index-database.nixosModules.nix-index
                 inputs.jovian.nixosModules.default
                 inputs.forgesync.nixosModules.default
                 inputs.musicomp.nixosModules.default
+              ]
+              ++ findModules [
+                ./modules
+                ./profiles
+                ./common
+                (hostsPath + /${name})
               ];
             };
 

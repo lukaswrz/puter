@@ -4,9 +4,9 @@
   inputs,
   ...
 }:
-  let
-    tailnet = "tailnet.moontide.ink";
-  in
+let
+  tailnet = "tailnet.moontide.ink";
+in
 {
   age.secrets.mollysocket.file = inputs.self + /secrets/mollysocket.age;
 
