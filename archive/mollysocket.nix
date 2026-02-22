@@ -4,6 +4,9 @@
   inputs,
   ...
 }:
+  let
+    tailnet = "tailnet.moontide.ink";
+  in
 {
   age.secrets.mollysocket.file = inputs.self + /secrets/mollysocket.age;
 
@@ -11,7 +14,7 @@
     enable = true;
 
     settings = {
-      host = "abacus.tailnet.helveticanonstandard.net";
+      host = "abacus.${tailnet}";
       webserver = false;
       allowed_uuids = [
         "7b30192b-2220-4ea3-9570-87251cb3148e"

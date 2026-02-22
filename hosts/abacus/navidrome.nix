@@ -1,13 +1,10 @@
 { config, ... }:
-let
-  tailnet = config.services.headscale.settings.dns.base_domain;
-in
 {
   services.navidrome = {
     enable = true;
     settings = {
       Address = "127.0.0.1";
-      Port = 8050;
+      Port = 8040;
       MusicFolder = "/srv/music";
       EnableSharing = true;
       Backup = {
@@ -18,7 +15,7 @@ in
     };
   };
 
-  services.nginx.virtualHosts."jam.helveticanonstandard.net" = {
+  services.nginx.virtualHosts."jam.moontide.ink" = {
     enableACME = true;
     forceSSL = true;
 

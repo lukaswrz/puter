@@ -15,7 +15,6 @@
 
     virtualHosts."~.*" = {
       default = true;
-      # rejectSSL = true;
 
       globalRedirect = config.networking.domain;
     };

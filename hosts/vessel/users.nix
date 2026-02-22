@@ -1,17 +1,17 @@
 {
   config,
-  inputs,
+  secretsPath,
   pubkeys,
   ...
 }:
 {
-  age.secrets.user-helvetica.file = inputs.self + /secrets/users/helvetica.age;
+  age.secrets.user-m64.file = secretsPath + /users/m64.age;
 
-  users.users.helvetica = {
-    description = "Helvetica";
+  users.users.m64 = {
+    description = "m64";
     uid = 1000;
     isNormalUser = true;
-    hashedPasswordFile = config.age.secrets.user-helvetica.path;
+    hashedPasswordFile = config.age.secrets.user-m64.path;
     openssh.authorizedKeys.keys = builtins.attrValues pubkeys.users;
     extraGroups = [ "wheel" ];
   };

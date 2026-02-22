@@ -1,22 +1,18 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
-    environment.systemPackages = [
-      # Standalone
-      pkgs.luanti
-      pkgs.veloren
-      pkgs.xonotic
-      pkgs.mindustry-wayland
-      pkgs.wesnoth
-      pkgs.sauerbraten
-      pkgs.shattered-pixel-dungeon
+  environment.systemPackages = [
+    # Standalone
+    pkgs.luanti
+    pkgs.veloren
+    pkgs.xonotic
+    pkgs.mindustry-wayland
+    pkgs.wesnoth
+    pkgs.sauerbraten
+    pkgs.shattered-pixel-dungeon
 
-      # Needs content
-      pkgs.uzdoom
-      pkgs.vkquake
-      pkgs.openmw
-
-      # Minecraft
-      pkgs.prismlauncher
-      pkgs.gamescope
-    ];
+    # Needs content
+    pkgs.uzdoom
+    pkgs.vkquake
+    pkgs.openmw
+  ];
 }

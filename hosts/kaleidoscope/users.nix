@@ -1,21 +1,21 @@
 {
   config,
-  inputs,
+  secretsPath,
   pubkeys,
   ...
 }:
 {
   age.secrets = {
-    user-helvetica.file = inputs.self + /secrets/users/helvetica.age;
-    user-insomniac.file = inputs.self + /secrets/users/insomniac.age;
+    user-m64.file = secretsPath + /users/m64.age;
+    user-insomniac.file = secretsPath + /users/insomniac.age;
   };
 
   users.users = {
-    helvetica = {
-      description = "Helvetica";
+    m64 = {
+      description = "m64";
       uid = 1000;
       isNormalUser = true;
-      hashedPasswordFile = config.age.secrets.user-helvetica.path;
+      hashedPasswordFile = config.age.secrets.user-m64.path;
       openssh.authorizedKeys.keys = builtins.attrValues pubkeys.users;
       extraGroups = [ "wheel" ];
     };
@@ -31,5 +31,5 @@
     };
   };
 
-  services.displayManager.hiddenUsers = [ "helvetica" ];
+  services.displayManager.hiddenUsers = [ "m64" ];
 }

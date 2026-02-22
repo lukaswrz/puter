@@ -1,5 +1,5 @@
 {
-  users."helvetica@orchard" =
+  users."m64@orchard" =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILLA4kxQblSZUaHYmW7lfYHD3jBlpVDMe7uhdqua1Zq7";
 
   hosts = {

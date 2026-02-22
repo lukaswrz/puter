@@ -28,5 +28,9 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
   - 8010: Vaultwarden
   - 8020: Forgejo
   - 8030: Continuwuity
-  - 8040: Ntfy
-  - 8050: Navidrome
+  - 8040: Navidrome
+
+## TODOs
+
+* Mailserver
+* Facter (hosts left: kaleidoscope, glacier)

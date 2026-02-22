@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
   ...
 }:
@@ -38,13 +37,20 @@ in
       };
     };
 
-    environment.systemPackages = [
-      pkgs.librewolf
-      pkgs.tauon
-      pkgs.zk
-      pkgs.vesktop
-      pkgs.supersonic-wayland
-    ];
+    environment = {
+      cosmic.excludePackages = [
+        pkgs.cosmic-player
+        pkgs.cosmic-reader
+        pkgs.cosmic-wallpapers
+      ];
+
+      systemPackages = [
+        pkgs.librewolf
+        pkgs.supersonic-wayland
+        pkgs.mpv
+        pkgs.fluffychat
+      ];
+    };
 
     boot.kernel.sysctl = {
       # This is required due to some games being unable to reuse their TCP ports

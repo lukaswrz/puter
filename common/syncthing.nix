@@ -1,11 +1,10 @@
 {
   config,
-  inputs,
   ...
 }:
 let
   inherit (config.networking) hostName;
-  tailnet = inputs.self.nixosConfigurations.abacus.config.services.headscale.settings.dns.base_domain;
+  tailnet = "tailnet.moontide.ink";
 in
 {
   services.syncthing-multi = {

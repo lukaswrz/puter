@@ -1,8 +1,8 @@
-{ config, inputs, ... }:
+{ config, ... }:
 let
-  tailnet = inputs.self.nixosConfigurations.abacus.config.services.headscale.settings.dns.base_domain;
+  tailnet = "tailnet.moontide.ink";
 in
 {
-  services.syncthing-multi.instances.helvetica.settings.gui-address =
+  services.syncthing-multi.instances.m64.settings.gui-address =
     "${config.networking.hostName}.${tailnet}:4010";
 }

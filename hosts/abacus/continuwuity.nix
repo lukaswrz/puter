@@ -1,13 +1,13 @@
 {
   config,
-  inputs,
+  secretsPath,
   pkgs,
   ...
 }:
 let
   listenAddress = "127.0.0.1";
   port = 8030;
-  serverName = "helveticanonstandard.net";
+  serverName = "moontide.ink";
   fqdn = "matrix.${serverName}";
   jsonFormat = pkgs.formats.json { };
   wellKnownServer = jsonFormat.generate "well-known-matrix-server" {
@@ -19,7 +19,7 @@ let
 in
 {
   age.secrets.matrix-register = {
-    file = inputs.self + /secrets/matrix/register.age;
+    file = secretsPath + /matrix/register.age;
     mode = "400";
     owner = config.services.matrix-continuwuity.user;
   };

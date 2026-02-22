@@ -1,7 +1,7 @@
 {
   attrName,
   config,
-  inputs,
+  secretsPath,
   ...
 }:
 let
@@ -9,7 +9,7 @@ let
   secret = config.age.secrets.${secretName};
 in
 {
-  age.secrets.${secretName}.file = inputs.self + /secrets/restic/${attrName}.age;
+  age.secrets.${secretName}.file = secretsPath + /restic/${attrName}.age;
 
   services.restic.backups.remote = {
     repository = "sftp:u459482@u459482.your-storagebox.de:/${attrName}";

@@ -1,5 +1,5 @@
 {
-  inputs,
+  secretsPath,
   config,
   lib,
   pkgs,
@@ -12,13 +12,13 @@ in
 {
   age.secrets = {
     forgejo-mailer = {
-      file = inputs.self + /secrets/forgejo/mailer.age;
+      file = secretsPath + /forgejo/mailer.age;
       mode = "400";
       owner = cfg.user;
     };
 
     forgejo-admin = {
-      file = inputs.self + /secrets/forgejo/admin.age;
+      file = secretsPath + /forgejo/admin.age;
       mode = "400";
       owner = cfg.user;
     };
@@ -36,7 +36,7 @@ in
     };
     settings = {
       server = {
-        DOMAIN = "hack.helveticanonstandard.net";
+        DOMAIN = "hack.moontide.ink";
         ROOT_URL = "https://${cfg.settings.server.DOMAIN}/";
         HTTP_ADDR = "localhost";
         HTTP_PORT = 8020;
@@ -54,10 +54,10 @@ in
       };
 
       mailer = {
-        ENABLED = true;
+        ENABLED = false; # TODO: Enable when mail setup is done
         SMTP_ADDR = "smtp.fastmail.com";
-        FROM = "forge@helveticanonstandard.net";
-        USER = "lukas@wrz.one";
+        FROM = "forge@moontide.ink";
+        USER = "lukas@wrz.one"; # TODO
       };
 
       log.LEVEL = "Debug";
@@ -81,8 +81,8 @@ in
           if ((admins < 1)); then
             ${forgejoExe} admin user create \
               --admin \
-              --email helvetica@helveticanonstandard.net \
-              --username helvetica \
+              --email m64@moontide.ink \
+              --username m64 \
               --password "$(cat -- ${passwordFile})"
           fi
         '';

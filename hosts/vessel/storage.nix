@@ -27,7 +27,7 @@
         (_: {
           A.argument = "d:u:syncthing:rwx";
         });
-    helvetica =
+    m64 =
       lib.genAttrs
         [
           "/srv/vault"
@@ -36,7 +36,7 @@
           "/srv/media"
         ]
         (_: {
-          A.argument = "d:u:helvetica:rwx";
+          A.argument = "d:u:m64:rwx";
         });
     jellyfin."/srv/media".A.argument = "d:u:jellyfin:rwx";
   };

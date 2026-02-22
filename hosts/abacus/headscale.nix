@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  virtualHostName = "headscale.helveticanonstandard.net";
+  virtualHostName = "headscale.moontide.ink";
 in
 {
   services.headscale = {
@@ -10,7 +10,7 @@ in
     settings = {
       server_url = "https://${virtualHostName}";
       dns = {
-        base_domain = "tailnet.helveticanonstandard.net";
+        base_domain = "tailnet.moontide.ink";
         nameservers.global = [
           "1.1.1.1"
           "1.0.0.1"

@@ -4,18 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    treefmt = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     hardware.url = "github:NixOS/nixos-hardware";
     agenix = {
@@ -34,56 +22,21 @@
       url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    snoms.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
 
-    flendor = {
-      url = "git+https://hack.helveticanonstandard.net/helvetica/flendor.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt.follows = "treefmt";
-        hooks.follows = "hooks";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-    musicomp = {
-      url = "git+https://hack.helveticanonstandard.net/helvetica/musicomp.git";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-      };
-    };
-    forgesync = {
-      url = "git+https://hack.helveticanonstandard.net/helvetica/forgesync.git";
-      inputs = {
-        treefmt.follows = "treefmt";
-        hooks.follows = "hooks";
-        flake-parts.follows = "flake-parts";
-      };
-    };
+    # musicomp.url = "git+https://hack.moontide.ink/m64/musicomp.git";
+    musicomp.url = "git+https://hack.helveticanonstandard.net/helvetica/musicomp.git";
+    # forgesync.url = "git+https://hack.moontide.ink/m64/forgesync.git";
+    forgesync.url = "git+https://hack.helveticanonstandard.net/helvetica/forgesync.git";
     hxwrap = {
+      # url = "git+https://hack.moontide.ink/m64/hxwrap.git";
       url = "git+https://hack.helveticanonstandard.net/helvetica/hxwrap.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt.follows = "treefmt";
-        hooks.follows = "hooks";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-    mympv = {
-      url = "git+https://hack.helveticanonstandard.net/helvetica/mympv.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt.follows = "treefmt";
-        hooks.follows = "hooks";
-        flake-parts.follows = "flake-parts";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     zap = {
+      # url = "git+https://hack.moontide.ink/m64/zap.git";
       url = "git+https://hack.helveticanonstandard.net/helvetica/zap.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt.follows = "treefmt";
-        hooks.follows = "hooks";
-        flake-parts.follows = "flake-parts";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -91,78 +44,64 @@
     {
       self,
       nixpkgs,
-      flake-parts,
-      hooks,
-      treefmt,
       ...
     }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        hooks.flakeModule
-        treefmt.flakeModule
-      ];
+    let
+      inherit (nixpkgs) lib;
 
       systems = nixpkgs.lib.systems.flakeExposed;
 
-      perSystem =
+      forAllSystems =
+        f:
+        lib.genAttrs systems (
+          system:
+          f (
+            let
+              pkgs = nixpkgs.legacyPackages.${system};
+            in
+            {
+              inherit system pkgs;
+              inherit (pkgs) treefmt;
+              agenixPackages = inputs.agenix.packages.${system};
+              zapPackages = inputs.zap.packages.${system};
+            }
+          )
+        );
+    in
+    {
+      devShells = forAllSystems (
         {
-          config,
           pkgs,
-          inputs',
+          treefmt,
+          agenixPackages,
+          zapPackages,
           ...
         }:
         {
-          treefmt = {
-            projectRootFile = "flake.nix";
-
-            settings.global.excludes = [
-              "vendor/**"
-              "LICENSE"
-              "*.age"
-              ".envrc"
-            ];
-
-            programs = {
-              nixfmt = {
-                enable = true;
-                package = pkgs.nixfmt;
-              };
-
-              shfmt = {
-                enable = true;
-                indent_size = 2;
-              };
-
-              mdformat.enable = true;
-            };
-          };
-
-          pre-commit.settings = {
-            excludes = [
-              "vendor"
-            ];
-            hooks = {
-              treefmt.enable = true;
-            };
-          };
-
-          devShells.default = pkgs.mkShellNoCC {
+          default = pkgs.mkShellNoCC {
             packages = [
-              inputs'.agenix.packages.default
-              inputs'.flendor.packages.default
-              inputs'.zap.packages.default
               pkgs.nixos-facter
+              agenixPackages.default
+              zapPackages.default
+
+              # Formatters
+              treefmt
+              pkgs.nixfmt
+              pkgs.prettier
+              pkgs.taplo
             ];
-
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-            '';
           };
+        }
+      );
 
-          packages.zap = inputs'.zap.packages.default;
-        };
+      packages = forAllSystems (
+        { zapPackages, ... }:
+        {
+          zap = zapPackages.default;
+        }
+      );
 
-      flake.nixosConfigurations =
+      nixosConfigurations =
         let
           genNixosConfigurations =
             inputs:
@@ -190,7 +129,8 @@
                   specialArgs = {
                     inherit inputs;
                     attrName = name;
-                    tailnet = "tailnet.helveticanonstandard.net";
+                    domains = import ./domains.nix;
+                    secretsPath = ./secrets;
                     pubkeys = import ./pubkeys.nix;
                   };
 
@@ -211,5 +151,7 @@
             lib.genAttrs hosts commonNixosSystem;
         in
         genNixosConfigurations inputs;
+
+      formatter = forAllSystems ({ treefmt, ... }: treefmt);
     };
 }

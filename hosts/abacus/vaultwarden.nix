@@ -1,13 +1,13 @@
 {
   config,
-  inputs,
+  secretsPath,
   ...
 }:
 let
-  virtualHostName = "vault.helveticanonstandard.net";
+  virtualHostName = "vault.moontide.ink";
 in
 {
-  age.secrets.vaultwarden.file = inputs.self + /secrets/vaultwarden.age;
+  age.secrets.vaultwarden.file = secretsPath + /vaultwarden.age;
 
   services.vaultwarden = {
     enable = true;

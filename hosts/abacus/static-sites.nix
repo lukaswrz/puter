@@ -6,7 +6,7 @@ let
   parent = "/var/www";
   sites = [
     "wrz.one"
-    "helveticanonstandard.net"
+    "moontide.ink"
   ];
 in
 lib.mkMerge (
@@ -24,7 +24,7 @@ lib.mkMerge (
       };
 
       systemd.tmpfiles.settings."10-static-sites".${root}.d = {
-        user = "helvetica";
+        user = "m64";
         group = "users";
         mode = "0755";
       };

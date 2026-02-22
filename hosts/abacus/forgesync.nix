@@ -1,15 +1,15 @@
-{ config, inputs, ... }:
+{ config, secretsPath, inputs, ... }:
 {
   imports = [
     inputs.forgesync.nixosModules.default
   ];
 
-  age.secrets.forgesync-github.file = inputs.self + /secrets/forgesync/github.age;
+  age.secrets.forgesync-github.file = secretsPath + /forgesync/github.age;
 
   services.forgesync = {
     enable = true;
     jobs.github = {
-      source = "https://hack.helveticanonstandard.net/api/v1";
+      source = "https://hack.moontide.ink/api/v1";
       target = "github";
 
       settings = {
@@ -18,7 +18,7 @@
           "issues"
           "pull-requests"
         ];
-        sync-on-push = true;
+        on-commit = true;
         mirror-interval = "0h0m0s";
       };
 
