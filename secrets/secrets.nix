@@ -11,6 +11,7 @@ in
   "matrix/register.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "forgesync/github.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+  "forgesync/codeberg.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "forgejo/mailer.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
   "forgejo/admin.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];

@@ -1,12 +1,11 @@
 {
-  #inputs,
+  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  # package = inputs.hxwrap.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  package = pkgs.neovim;
+  package = inputs.hxwrap.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   environment = {

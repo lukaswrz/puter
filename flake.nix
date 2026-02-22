@@ -125,7 +125,6 @@
                   specialArgs = {
                     inherit inputs;
                     attrName = name;
-                    domains = import ./domains.nix;
                     secretsPath = ./secrets;
                     pubkeys = import ./pubkeys.nix;
                   };

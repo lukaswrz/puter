@@ -40,6 +40,8 @@ in
         pkgs.noto-fonts-monochrome-emoji
         pkgs.noto-fonts-color-emoji
         pkgs.nerd-fonts.fira-code
+
+        pkgs.inter
       ];
 
       fontconfig = {
