@@ -1,9 +1,5 @@
-{ config, secretsPath, inputs, ... }:
+{ config, secretsPath, ... }:
 {
-  imports = [
-    inputs.forgesync.nixosModules.default
-  ];
-
   age.secrets = {
     forgesync-github.file = secretsPath + /forgesync/github.age;
     forgesync-codeberg.file = secretsPath + /forgesync/codeberg.age;

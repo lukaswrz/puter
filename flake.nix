@@ -99,53 +99,52 @@
 
       nixosConfigurations =
         let
-          genNixosConfigurations =
-            inputs:
-            let
-              inherit (nixpkgs) lib;
+          inherit (nixpkgs) lib;
 
-              findModules =
-                paths:
-                builtins.concatMap (
-                  path:
-                  lib.pipe path [
-                    (lib.fileset.fileFilter (file: file.hasExt "nix"))
-                    lib.fileset.toList
-                  ]
-                ) paths;
+          findModules =
+            paths:
+            builtins.concatMap (
+              path:
+              lib.pipe path [
+                (lib.fileset.fileFilter (file: file.hasExt "nix"))
+                lib.fileset.toList
+              ]
+            ) paths;
 
-              modulesDir = ./modules;
-              profilesDir = ./profiles;
-              commonDir = ./common;
-              hostsDir = ./hosts;
+          hostsPath = ./hosts;
 
-              commonNixosSystem =
-                name:
-                lib.nixosSystem {
-                  specialArgs = {
-                    inherit inputs;
-                    attrName = name;
-                    secretsPath = ./secrets;
-                    pubkeys = import ./pubkeys.nix;
-                  };
+          commonNixosSystem =
+            name:
+            lib.nixosSystem {
+              specialArgs = {
+                inherit inputs;
+                attrName = name;
+                secretsPath = ./secrets;
+                pubkeys = import ./pubkeys.nix;
+              };
 
-                  modules = findModules [
-                    modulesDir
-                    profilesDir
-                    commonDir
-                    (hostsDir + /${name})
-                  ];
-                };
+              modules = findModules [
+                ./modules
+                ./profiles
+                ./common
+                (hostsPath + /${name})
 
-              hosts = lib.pipe hostsDir [
-                builtins.readDir
-                (lib.filterAttrs (_: type: type == "directory"))
-                builtins.attrNames
+                inputs.agenix.nixosModules.default
+                inputs.lanzaboote.nixosModules.lanzaboote
+                inputs.nix-index-database.nixosModules.nix-index
+                inputs.jovian.nixosModules.default
+                inputs.forgesync.nixosModules.default
+                inputs.musicomp.nixosModules.default
               ];
-            in
-            lib.genAttrs hosts commonNixosSystem;
+            };
+
+          hosts = lib.pipe hostsPath [
+            builtins.readDir
+            (lib.filterAttrs (_: type: type == "directory"))
+            builtins.attrNames
+          ];
         in
-        genNixosConfigurations inputs;
+        lib.genAttrs hosts commonNixosSystem;
 
       formatter = forAllSystems ({ treefmt, ... }: treefmt);
     };

@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -9,10 +8,6 @@ let
   cfg = config.profiles.jovian;
 in
 {
-  imports = [
-    inputs.jovian.nixosModules.default
-  ];
-
   options.profiles.jovian = {
     enable = lib.mkEnableOption "jovian";
   };

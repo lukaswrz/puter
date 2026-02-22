@@ -5,10 +5,6 @@
   ...
 }:
 {
-  imports = [
-    inputs.musicomp.nixosModules.default
-  ];
-
   services.musicomp.jobs.main = {
     music = "/srv/vault/music";
     comp = "/srv/shrink";
@@ -20,8 +16,7 @@
     post =
       let
         abacusConfig = inputs.self.nixosConfigurations.abacus.config;
-        remoteDir = abacusConfig.services.navidrome.settings.MusicFolder;
-        remoteDomain = abacusConfig.networking.domain;
+        remotePath = abacusConfig.services.navidrome.settings.MusicFolder;
         package = pkgs.writeShellApplication {
           name = "sync";
           runtimeInputs = [
@@ -37,7 +32,7 @@
               --mkpath \
               --verbose --verbose \
               --rsh 'ssh -i /etc/ssh/ssh_host_ed25519_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' \
-              /srv/shrink/ root@${lib.escapeShellArg remoteDomain}:${lib.escapeShellArg remoteDir}/
+              /srv/shrink/ root@abacus.tailnet.moontide.ink:${lib.escapeShellArg remotePath}/
           '';
         };
       in

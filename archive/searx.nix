@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  virtualHostName = "search.helveticanonstandard.net";
+  virtualHostName = "search.moontide.ink";
 in
 {
   # TODO: authelia

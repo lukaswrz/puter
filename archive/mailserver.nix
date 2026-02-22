@@ -14,8 +14,8 @@
   '';
 in {
   age.secrets = {
-    mail-lukas.file = secretsPath + /users/mail/lukas.age;
-    mail-helvetica.file = secretsPath + /users/mail/helvetica.age;
+    # mail-lukas.file = secretsPath + /users/mail/lukas.age;
+    # mail-helvetica.file = secretsPath + /users/mail/helvetica.age;
     mail-m64.file = secretsPath + /users/mail/m64.age;
   };
   
@@ -29,7 +29,11 @@ in {
     enable = true;
     openFirewall = true;
     inherit fqdn;
-    domains = ["moontide.ink" "wrz.one" "helveticanonstandard.net"];
+    domains = [
+      "moontide.ink"
+      # "wrz.one"
+      # "helveticanonstandard.net"
+    ];
     
     loginAccounts = {
       "m64@moontide.ink" = {
@@ -37,15 +41,15 @@ in {
         aliases = ["postmaster@moontide.ink" "vault@moontide.ink"];
       };
       
-      "lukas@wrz.one" = {
-        hashedPasswordFile = config.age.secrets.mail-lukas.path;
-        aliases = ["postmaster@wrz.one"];
-      };
+      # "lukas@wrz.one" = {
+      #   hashedPasswordFile = config.age.secrets.mail-lukas.path;
+      #   aliases = ["postmaster@wrz.one"];
+      # };
       
-      "helvetica@helveticanonstandard.net" = {
-        hashedPasswordFile = config.age.secrets.mail-lukas.path;
-        aliases = ["postmaster@helveticanonstandard.net"];
-      };
+      # "helvetica@helveticanonstandard.net" = {
+      #   hashedPasswordFile = config.age.secrets.mail-lukas.path;
+      #   aliases = ["postmaster@helveticanonstandard.net"];
+      # };
     };
     
     certificateScheme = "acme-nginx";

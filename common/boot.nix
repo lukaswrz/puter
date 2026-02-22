@@ -1,9 +1,5 @@
-{ config, inputs, ... }:
+{ config, ... }:
 {
-  imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
-  ];
-
   fileSystems.${config.boot.loader.efi.efiSysMountPoint} = {
     label = "BOOT";
     fsType = "vfat";
