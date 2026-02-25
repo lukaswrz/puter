@@ -25,7 +25,6 @@ in
       pkgs.inkscape
       pkgs.libreoffice
       pkgs.libresprite
-      pkgs.kanban
     ];
   };
 }

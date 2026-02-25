@@ -6,6 +6,8 @@ in
   "users/m64.age".publicKeys = (builtins.attrValues users) ++ (builtins.attrValues hosts);
   "users/insomniac.age".publicKeys = (builtins.attrValues users) ++ [ hosts.kaleidoscope ];
 
+  "mail/m64.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+
   "vaultwarden.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "matrix/register.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];

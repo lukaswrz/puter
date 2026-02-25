@@ -5,25 +5,25 @@
 let
   parent = "/var/www";
   sites = [
-    "wrz.one"
     "moontide.ink"
+    "wrz.one"
   ];
 in
 lib.mkMerge (
   map (
-    virtualHostName:
+    site:
     let
-      root = "${parent}/${virtualHostName}";
+      root = "${parent}/${site}";
     in
     {
-      services.nginx.virtualHosts.${virtualHostName} = {
+      services.nginx.virtualHosts.${site} = {
         enableACME = true;
         forceSSL = true;
 
         inherit root;
       };
 
-      systemd.tmpfiles.settings."10-static-sites".${root}.d = {
+      systemd.tmpfiles.settings."10-sites".${root}.d = {
         user = "m64";
         group = "users";
         mode = "0755";

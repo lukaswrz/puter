@@ -1,6 +1,6 @@
 {
   security.acme = {
-    defaults.email = "lukas@wrz.one";
     acceptTerms = true;
+    defaults.email = "lukaswrz@posteo.net";
   };
 }

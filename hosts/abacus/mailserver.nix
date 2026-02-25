@@ -6,19 +6,12 @@
 }:
 let
   inherit (config.networking) fqdn;
-
-  wellKnownMtaSts = pkgs.writeText "" ''
-    version: STSv1
-    mode: enforce
-    mx: ${fqdn}
-    max_age: 86400
-  '';
 in
 {
   age.secrets = {
+    mail-m64.file = secretsPath + /mail/m64.age;
     # mail-lukas.file = secretsPath + /users/mail/lukas.age;
     # mail-helvetica.file = secretsPath + /users/mail/helvetica.age;
-    mail-m64.file = secretsPath + /users/mail/m64.age;
   };
 
   # environment.persistence."/persist".directories = [
@@ -36,15 +29,20 @@ in
       # "wrz.one"
       # "helveticanonstandard.net"
     ];
+    x509.useACMEHost = config.mailserver.fqdn;
+    stateVersion = 3;
 
     loginAccounts = {
       "m64@moontide.ink" = {
         hashedPasswordFile = config.age.secrets.mail-m64.path;
         aliases = [
+          "lukas@moontide.ink"
           "postmaster@moontide.ink"
-          "vault@moontide.ink"
         ];
       };
+
+      # "vault@moontide.ink".hashedPasswordFile = config.age.secrets.mail-vault.path;
+      # "forge@moontide.ink".hashedPasswordFile = config.age.secrets.mail-forge.path;
 
       # "lukas@wrz.one" = {
       #   hashedPasswordFile = config.age.secrets.mail-lukas.path;
@@ -56,23 +54,35 @@ in
       #   aliases = ["postmaster@helveticanonstandard.net"];
       # };
     };
-
-    certificateScheme = "acme-nginx";
   };
 
-  services.nginx.virtualHosts."mta-sts.moontide.ink" = {
-    enableACME = true;
-    forceSSL = true;
+  services.nginx.virtualHosts = {
+    "abacus.moontide.ink" = {
+      enableACME = true;
+      forceSSL = true;
 
-    locations = {
-      "/".return = "404";
+      globalRedirect = "moontide.ink";
+    };
 
-      "=/.well-known/mta-sts.txt" = {
-        alias = wellKnownMtaSts;
+    "mta-sts.moontide.ink" = {
+      enableACME = true;
+      forceSSL = true;
 
-        extraConfig = ''
-          default_type text/plain;
-        '';
+      locations = {
+        "/".return = "404";
+
+        "=/.well-known/mta-sts.txt" = {
+          alias = pkgs.writeText "mta-sts.txt" ''
+            version: STSv1
+            mode: enforce
+            mx: ${fqdn}
+            max_age: 86400
+          '';
+
+          extraConfig = ''
+            default_type text/plain;
+          '';
+        };
       };
     };
   };

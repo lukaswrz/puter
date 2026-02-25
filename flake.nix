@@ -125,6 +125,7 @@
 
               modules = [
                 inputs.agenix.nixosModules.default
+                inputs.snoms.nixosModules.default
                 inputs.lanzaboote.nixosModules.lanzaboote
                 inputs.nix-index-database.nixosModules.nix-index
                 inputs.jovian.nixosModules.default
