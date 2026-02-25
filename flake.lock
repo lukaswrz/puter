@@ -332,21 +332,6 @@
         "type": "github"
       }
     },
-    "hardware": {
-      "locked": {
-        "lastModified": 1771423359,
-        "narHash": "sha256-yRKJ7gpVmXbX2ZcA8nFi6CMPkJXZGjie2unsiMzj3Ig=",
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "rev": "740a22363033e9f1bb6270fbfb5a9574067af15b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -729,7 +714,6 @@
       "inputs": {
         "agenix": "agenix",
         "forgesync": "forgesync",
-        "hardware": "hardware",
         "hxwrap": "hxwrap",
         "jovian": "jovian",
         "lanzaboote": "lanzaboote",
