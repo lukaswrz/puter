@@ -1,4 +1,10 @@
-{config, pubkeys, secretsPath, ...}: {
+{
+  config,
+  pubkeys,
+  secretsPath,
+  ...
+}:
+{
   age.secrets.user-m64.file = secretsPath + /users/m64.age;
 
   users = {
