@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = [
-    pkgs.ouch
+    pkgs.jellyfin-desktop
   ];
 }

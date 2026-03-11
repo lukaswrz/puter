@@ -13,6 +13,7 @@
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.user-insomniac.path;
     openssh.authorizedKeys.keys = builtins.attrValues pubkeys.users ++ [
+      # TODO why this?
       pubkeys.hosts.vessel
     ];
   };

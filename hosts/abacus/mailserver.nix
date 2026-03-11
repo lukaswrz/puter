@@ -12,6 +12,9 @@ in
     mail-m64.file = secretsPath + /mail/m64.age;
     # mail-lukas.file = secretsPath + /users/mail/lukas.age;
     # mail-helvetica.file = secretsPath + /users/mail/helvetica.age;
+
+    mail-vault.file = secretsPath + /users/mail/vault.age;
+    mail-forge.file = secretsPath + /users/mail/forge.age;
   };
 
   # environment.persistence."/persist".directories = [
@@ -26,8 +29,8 @@ in
     inherit fqdn;
     domains = [
       "moontide.ink"
-      # "wrz.one"
-      # "helveticanonstandard.net"
+      "wrz.one"
+      "helveticanonstandard.net"
     ];
     x509.useACMEHost = config.mailserver.fqdn;
     stateVersion = 3;
@@ -35,29 +38,26 @@ in
     loginAccounts = {
       "m64@moontide.ink" = {
         hashedPasswordFile = config.age.secrets.mail-m64.path;
+
         aliases = [
           "lukas@moontide.ink"
           "postmaster@moontide.ink"
+
+          "lukas@wrz.one"
+          "postmaster@wrz.one"
+
+          "helvetica@helveticanonstandard.net"
+          "postmaster@helveticanonstandard.net"
         ];
       };
 
-      # "vault@moontide.ink".hashedPasswordFile = config.age.secrets.mail-vault.path;
-      # "forge@moontide.ink".hashedPasswordFile = config.age.secrets.mail-forge.path;
-
-      # "lukas@wrz.one" = {
-      #   hashedPasswordFile = config.age.secrets.mail-lukas.path;
-      #   aliases = ["postmaster@wrz.one"];
-      # };
-
-      # "helvetica@helveticanonstandard.net" = {
-      #   hashedPasswordFile = config.age.secrets.mail-lukas.path;
-      #   aliases = ["postmaster@helveticanonstandard.net"];
-      # };
+      "vault@moontide.ink".hashedPasswordFile = config.age.secrets.mail-vault.path;
+      "forge@moontide.ink".hashedPasswordFile = config.age.secrets.mail-forge.path;
     };
   };
 
   services.nginx.virtualHosts = {
-    "abacus.moontide.ink" = {
+    ${config.mailserver.fqdn} = {
       enableACME = true;
       forceSSL = true;
 

@@ -15,7 +15,7 @@ in
     repository = "sftp:u459482@u459482.your-storagebox.de:/${attrName}";
     initialize = true;
     paths = [
-      "/var/lib/syncthing"
+      "/var/lib/syncthing" # TODO do i need this?
       "/srv/vault"
       "/srv/void"
     ];

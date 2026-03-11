@@ -35,6 +35,10 @@ in
         enable = true;
         webInterface = true;
       };
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
     };
 
     environment = {
@@ -47,8 +51,20 @@ in
       systemPackages = [
         pkgs.librewolf
         pkgs.supersonic-wayland
+        pkgs.obs-studio
         pkgs.mpv
+        pkgs.thunderbird
         pkgs.fluffychat
+        pkgs.halloy
+        pkgs.freetube
+        pkgs.jellyfin-desktop
+        pkgs.gimp
+        pkgs.inkscape
+        pkgs.libreoffice
+        pkgs.libresprite
+        pkgs.qbittorrent
+        # pkgs.qutebrowser
+        # pkgs.aerc
       ];
     };
 

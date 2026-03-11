@@ -39,9 +39,13 @@ in
         pkgs.noto-fonts-cjk-serif
         pkgs.noto-fonts-monochrome-emoji
         pkgs.noto-fonts-color-emoji
-        pkgs.nerd-fonts.fira-code
 
         pkgs.inter
+        pkgs.libertinus
+
+        pkgs.nerd-fonts.iosevka
+        pkgs.nerd-fonts.inconsolata
+        pkgs.nerd-fonts.fira-code
       ];
 
       fontconfig = {
@@ -49,7 +53,7 @@ in
 
         defaultFonts = {
           monospace = [
-            "FiraCode Nerd Font"
+            "Noto Sans Mono"
           ];
           sansSerif = [
             "Noto Sans"

@@ -1,12 +1,15 @@
+let
+  hostKeyPath = "/etc/ssh/ssh_host_ed25519_key";
+in
 {
-  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  age.identityPaths = [ hostKeyPath ];
 
   services.openssh = {
     enable = true;
     openFirewall = true;
     hostKeys = [
       {
-        path = "/etc/ssh/ssh_host_ed25519_key";
+        path = hostKeyPath;
         type = "ed25519";
       }
     ];

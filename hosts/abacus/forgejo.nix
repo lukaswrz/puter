@@ -47,7 +47,7 @@ in
         ENABLE_NOTIFY_MAIL = true;
       };
 
-      # TODO: Enable
+      # TODO: Enable when federation is done
       federation = {
         ENABLED = false;
         SHARE_USER_STATISTICS = false;
@@ -55,9 +55,9 @@ in
 
       mailer = {
         ENABLED = false; # TODO: Enable when mail setup is done
-        SMTP_ADDR = "smtp.fastmail.com";
+        SMTP_ADDR = "abacus.moontide.ink";
         FROM = "forge@moontide.ink";
-        USER = "lukas@wrz.one"; # TODO
+        USER = "forge@moontide.ink";
       };
 
       log.LEVEL = "Debug";

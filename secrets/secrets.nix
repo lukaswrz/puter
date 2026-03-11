@@ -7,6 +7,8 @@ in
   "users/insomniac.age".publicKeys = (builtins.attrValues users) ++ [ hosts.kaleidoscope ];
 
   "mail/m64.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+  "mail/vault.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+  "mail/forge.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "vaultwarden.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
@@ -20,11 +22,4 @@ in
 
   "restic/vessel.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
   "restic/abacus.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
-
-  "secure-boot/orchard.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.orchard ];
-  "secure-boot/abacus.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
-  "secure-boot/vessel.tar.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
-  "secure-boot/kaleidoscope.tar.age".publicKeys = (builtins.attrValues users) ++ [
-    hosts.kaleidoscope
-  ];
 }

@@ -9,6 +9,7 @@
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
+      configurationLimit = 10;
     };
 
     initrd.systemd.enable = true;
