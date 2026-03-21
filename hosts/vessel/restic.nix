@@ -18,6 +18,7 @@ in
       "/var/lib/syncthing" # TODO do i need this?
       "/srv/vault"
       "/srv/void"
+      "/srv/backup/navidrome"
     ];
     passwordFile = secret.path;
     pruneOpts = [

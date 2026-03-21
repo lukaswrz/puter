@@ -5,16 +5,14 @@
   ...
 }:
 let
-  inherit (config.networking) fqdn;
+  inherit (config.networking) domain fqdn;
 in
 {
   age.secrets = {
-    mail-m64.file = secretsPath + /mail/m64.age;
-    # mail-lukas.file = secretsPath + /users/mail/lukas.age;
-    # mail-helvetica.file = secretsPath + /users/mail/helvetica.age;
+    mail-helvetica.file = secretsPath + /mail/helvetica.age;
 
-    mail-vault.file = secretsPath + /users/mail/vault.age;
-    mail-forge.file = secretsPath + /users/mail/forge.age;
+    # mail-vault.file = secretsPath + /users/mail/vault.age;
+    # mail-forge.file = secretsPath + /users/mail/forge.age;
   };
 
   # environment.persistence."/persist".directories = [
@@ -29,30 +27,26 @@ in
     inherit fqdn;
     domains = [
       "moontide.ink"
-      "wrz.one"
-      "helveticanonstandard.net"
+      # "wrz.one"
     ];
     x509.useACMEHost = config.mailserver.fqdn;
     stateVersion = 3;
 
     loginAccounts = {
-      "m64@moontide.ink" = {
-        hashedPasswordFile = config.age.secrets.mail-m64.path;
+      "helvetica@moontide.ink" = {
+        hashedPasswordFile = config.age.secrets.mail-helvetica.path;
 
         aliases = [
           "lukas@moontide.ink"
           "postmaster@moontide.ink"
 
-          "lukas@wrz.one"
-          "postmaster@wrz.one"
-
-          "helvetica@helveticanonstandard.net"
-          "postmaster@helveticanonstandard.net"
+          # "lukas@wrz.one"
+          # "postmaster@wrz.one"
         ];
       };
 
-      "vault@moontide.ink".hashedPasswordFile = config.age.secrets.mail-vault.path;
-      "forge@moontide.ink".hashedPasswordFile = config.age.secrets.mail-forge.path;
+      # "vault@moontide.ink".hashedPasswordFile = config.age.secrets.mail-vault.path;
+      # "forge@moontide.ink".hashedPasswordFile = config.age.secrets.mail-forge.path;
     };
   };
 
@@ -61,7 +55,7 @@ in
       enableACME = true;
       forceSSL = true;
 
-      globalRedirect = "moontide.ink";
+      globalRedirect = domain;
     };
 
     "mta-sts.moontide.ink" = {

@@ -4,20 +4,21 @@
     music = {
       "/srv/vault/music".d = {
         user = "root";
-        group = "users";
+        group = "root";
         mode = "0755";
       };
       "/srv/shrink".d = {
         user = "root";
-        group = "users";
+        group = "root";
         mode = "0755";
       };
     };
     dump."/srv/dump".d = {
       user = "root";
-      group = "users";
+      group = "root";
       mode = "0755";
     };
+    navidrome."/srv/shrink".A.argument = "d:u:navidrome:rx";
     syncthing =
       lib.genAttrs
         [
@@ -27,7 +28,7 @@
         (_: {
           A.argument = "d:u:syncthing:rwx";
         });
-    m64 =
+    helvetica =
       lib.genAttrs
         [
           "/srv/vault"
@@ -36,7 +37,7 @@
           "/srv/media"
         ]
         (_: {
-          A.argument = "d:u:m64:rwx";
+          A.argument = "d:u:helvetica:rwx";
         });
     jellyfin."/srv/media".A.argument = "d:u:jellyfin:rwx";
   };

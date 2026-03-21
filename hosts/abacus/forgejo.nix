@@ -81,8 +81,8 @@ in
           if ((admins < 1)); then
             ${forgejoExe} admin user create \
               --admin \
-              --email m64@moontide.ink \
-              --username m64 \
+              --email helvetica@moontide.ink \
+              --username helvetica \
               --password "$(cat -- ${passwordFile})"
           fi
         '';

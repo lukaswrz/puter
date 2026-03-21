@@ -23,14 +23,14 @@
     };
     snoms.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
 
-    musicomp.url = "git+https://hack.moontide.ink/m64/musicomp.git";
-    forgesync.url = "git+https://hack.moontide.ink/m64/forgesync.git";
+    musicomp.url = "git+https://hack.moontide.ink/helvetica/musicomp.git";
+    forgesync.url = "git+https://hack.moontide.ink/helvetica/forgesync.git";
     hxwrap = {
-      url = "git+https://hack.moontide.ink/m64/hxwrap.git";
+      url = "git+https://hack.moontide.ink/helvetica/hxwrap.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zap = {
-      url = "git+https://hack.moontide.ink/m64/zap.git";
+      url = "git+https://hack.moontide.ink/helvetica/zap.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

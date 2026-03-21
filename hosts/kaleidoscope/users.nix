@@ -18,5 +18,5 @@
     ];
   };
 
-  services.displayManager.hiddenUsers = [ "m64" ];
+  services.displayManager.hiddenUsers = [ "helvetica" ];
 }
