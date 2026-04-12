@@ -1,7 +1,6 @@
 {
   config,
   secretsPath,
-  pubkeys,
   ...
 }:
 {
@@ -12,10 +11,6 @@
     uid = 1001;
     isNormalUser = true;
     hashedPasswordFile = config.age.secrets.user-insomniac.path;
-    openssh.authorizedKeys.keys = builtins.attrValues pubkeys.users ++ [
-      # TODO why this?
-      pubkeys.hosts.vessel
-    ];
   };
 
   services.displayManager.hiddenUsers = [ "helvetica" ];

@@ -11,8 +11,8 @@ in
   age.secrets = {
     mail-helvetica.file = secretsPath + /mail/helvetica.age;
 
-    # mail-vault.file = secretsPath + /users/mail/vault.age;
-    # mail-forge.file = secretsPath + /users/mail/forge.age;
+    mail-vault.file = secretsPath + /mail/vault.age;
+    mail-forge.file = secretsPath + /mail/forge.age;
   };
 
   # environment.persistence."/persist".directories = [
@@ -27,12 +27,12 @@ in
     inherit fqdn;
     domains = [
       "moontide.ink"
-      # "wrz.one"
+      "wrz.one"
     ];
     x509.useACMEHost = config.mailserver.fqdn;
     stateVersion = 3;
 
-    loginAccounts = {
+    accounts = {
       "helvetica@moontide.ink" = {
         hashedPasswordFile = config.age.secrets.mail-helvetica.path;
 
@@ -40,13 +40,13 @@ in
           "lukas@moontide.ink"
           "postmaster@moontide.ink"
 
-          # "lukas@wrz.one"
-          # "postmaster@wrz.one"
+          "lukas@wrz.one"
+          "postmaster@wrz.one"
         ];
       };
 
-      # "vault@moontide.ink".hashedPasswordFile = config.age.secrets.mail-vault.path;
-      # "forge@moontide.ink".hashedPasswordFile = config.age.secrets.mail-forge.path;
+      "vault@moontide.ink".hashedPasswordFile = config.age.secrets.mail-vault.path;
+      "forge@moontide.ink".hashedPasswordFile = config.age.secrets.mail-forge.path;
     };
   };
 

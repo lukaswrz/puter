@@ -35,10 +35,10 @@ in
         enable = true;
         webInterface = true;
       };
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
-    };
+      mullvad-vpn = {
+        enable = true;
+        package = pkgs.mullvad-vpn;
+      };
     };
 
     environment = {
@@ -63,19 +63,7 @@ in
         pkgs.libreoffice
         pkgs.libresprite
         pkgs.qbittorrent
-        # pkgs.qutebrowser
-        # pkgs.aerc
       ];
-    };
-
-    boot.kernel.sysctl = {
-      # This is required due to some games being unable to reuse their TCP ports
-      # if they're killed and restarted quickly - the default timeout is too
-      # large.
-      "net.ipv4.tcp_fin_timeout" = 5;
-      # Use MAX_INT - MAPCOUNT_ELF_CORE_MARGIN.
-      # See comment in include/linux/mm.h in the kernel tree.
-      "vm.max_map_count" = 2147483642;
     };
   };
 }

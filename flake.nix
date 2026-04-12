@@ -17,10 +17,6 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    jovian = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     snoms.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
 
     musicomp.url = "git+https://hack.moontide.ink/helvetica/musicomp.git";
@@ -127,7 +123,6 @@
                 inputs.snoms.nixosModules.default
                 inputs.lanzaboote.nixosModules.lanzaboote
                 inputs.nix-index-database.nixosModules.nix-index
-                inputs.jovian.nixosModules.default
                 inputs.forgesync.nixosModules.default
                 inputs.musicomp.nixosModules.default
               ]

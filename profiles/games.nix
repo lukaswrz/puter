@@ -13,13 +13,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = config.profiles.desktop.enable;
-        message = "The games profile depends on the desktop profile.";
-      }
-    ];
-
     environment.systemPackages = [
       # Standalone
       pkgs.luanti

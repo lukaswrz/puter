@@ -33,5 +33,4 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 ## TODOs
 
 - Radicale
-- Facter (hosts left: glacier)
 - Remaining emails
