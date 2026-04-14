@@ -2,7 +2,13 @@
 {
   services = {
     desktopManager.cosmic.enable = true;
-    displayManager.cosmic-greeter.enable = true;
+    displayManager = {
+      cosmic-greeter.enable = true;
+      autoLogin = {
+        enable = true;
+        user = "insomniac";
+      };
+    };
   };
 
   environment = {
