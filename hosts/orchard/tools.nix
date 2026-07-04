@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = [
-    pkgs.jellyfin-desktop
+    pkgs.beets
   ];
 }

@@ -22,4 +22,6 @@ in
 
   "restic/vessel.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
   "restic/abacus.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+
+  "searx.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
 }

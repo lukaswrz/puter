@@ -4,7 +4,7 @@
     settings = {
       Address = "vessel.tailnet.moontide.ink";
       Port = 4533;
-      MusicFolder = "/srv/shrink";
+      MusicFolder = "/srv/compressed-music";
       EnableSharing = true;
       Backup = {
         Path = "/srv/backup/navidrome";

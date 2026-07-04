@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -18,14 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    musicomp.url = "git+https://hack.moontide.ink/helvetica/musicomp.git";
-    forgesync.url = "git+https://hack.moontide.ink/helvetica/forgesync.git";
-    hxwrap = {
-      url = "git+https://hack.moontide.ink/helvetica/hxwrap.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    musicomp.url = "git+https://hack.moontide.ink/pingfisher/musicomp.git";
+    forgesync.url = "git+https://codeberg.org/pingfisher/forgesync.git";
     zap = {
-      url = "git+https://hack.moontide.ink/helvetica/zap.git";
+      url = "git+https://hack.moontide.ink/pingfisher/zap.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

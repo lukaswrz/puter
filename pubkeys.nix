@@ -1,8 +1,8 @@
 {
   users = {
-    "helvetica@orchard" =
+    "pingfisher@orchard" =
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILLA4kxQblSZUaHYmW7lfYHD3jBlpVDMe7uhdqua1Zq7";
-    "helvetica@glacier" =
+    "pingfisher@glacier" =
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE3g5WrDr8Oh+Wj3yPK/HoZSLV31deRuDLfHVtTJqL9K";
   };
 

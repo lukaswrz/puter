@@ -4,5 +4,6 @@
     dynamic.enable = true;
     headful.enable = true;
     steam.enable = true;
+    code.enable = true;
   };
 }

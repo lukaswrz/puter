@@ -1,15 +1,16 @@
 {
-  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  hxwrap = inputs.hxwrap.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  editor = pkgs.helix;
 in
 {
   environment = {
     systemPackages = [
+      editor
+
       pkgs.usbutils
       pkgs.pciutils
       pkgs.dnsutils
@@ -30,13 +31,11 @@ in
       pkgs.sbctl
       pkgs.ouch
       pkgs.cava
-      hxwrap
     ];
 
-    # TODO: gram, nextvi
     sessionVariables =
       let
-        exe = builtins.baseNameOf (lib.getExe hxwrap);
+        exe = builtins.baseNameOf (lib.getExe editor);
       in
       {
         EDITOR = exe;
@@ -53,7 +52,7 @@ in
     };
     nh = {
       enable = true;
-      flake = "git+https://hack.moontide.ink/helvetica/puter.git";
+      flake = "git+https://hack.moontide.ink/pingfisher/puter.git";
     };
   };
 }

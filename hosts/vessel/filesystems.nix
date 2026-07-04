@@ -45,5 +45,15 @@
         "_netdev"
       ];
     };
+    "/srv/old-media" = {
+      label = "old-media";
+      fsType = "ext4";
+      options = [
+        "noatime"
+        "nofail"
+        "x-systemd.automount"
+        "_netdev"
+      ];
+    };
   };
 }

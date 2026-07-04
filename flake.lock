@@ -25,11 +25,11 @@
     },
     "crane": {
       "locked": {
-        "lastModified": 1779041105,
-        "narHash": "sha256-nnGD2f8OlAZT2i5OfwikJsw+ifWfiA4d6A8BWlgOXV0=",
+        "lastModified": 1781825982,
+        "narHash": "sha256-SlXKwIRIhrOSAcTjCB3ftPLzJWZStQIPS7J1FlZPnKk=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "10e6e3cb966f7cfcc789fe5eee7a85f3188ce08b",
+        "rev": "469fd08d0bcf6926321fa973c6777fbc87785dd7",
         "type": "github"
       },
       "original": {
@@ -145,11 +145,11 @@
         "rev": "ce14c406217f357b35356537acc6916763b0442a",
         "revCount": 47,
         "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/forgesync.git"
+        "url": "https://codeberg.org/pingfisher/forgesync.git"
       },
       "original": {
         "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/forgesync.git"
+        "url": "https://codeberg.org/pingfisher/forgesync.git"
       }
     },
     "gitignore": {
@@ -240,26 +240,6 @@
         "type": "github"
       }
     },
-    "hxwrap": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1775336565,
-        "narHash": "sha256-3B1Uacf96YQ4vPnlTSEXj9/jicmuINlKmcoouMEXi/w=",
-        "ref": "refs/heads/main",
-        "rev": "d30dc5e6a7bd035450aac2db97ca8ca7b675be83",
-        "revCount": 1,
-        "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/hxwrap.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/hxwrap.git"
-      }
-    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -270,11 +250,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1779135966,
-        "narHash": "sha256-FHKdAxS5TJ0mdNS/9YuIam7NGtzEXVggLEWQ00Q31yc=",
+        "lastModified": 1783176432,
+        "narHash": "sha256-tB4PG1i3y46kRdV23OhrPXEGMzFvFfTC2GsnOq0Y3H4=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "b7e492b90bcae5e9d9cb0a1d4d1e6100305de2c5",
+        "rev": "d8c989486ea69f37d35256a022fa4dd8b4571157",
         "type": "github"
       },
       "original": {
@@ -295,11 +275,11 @@
         "rev": "c1372513ba7dc1a7c094303b87560ea6e6afe4fa",
         "revCount": 10,
         "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/musicomp.git"
+        "url": "https://hack.moontide.ink/pingfisher/musicomp.git"
       },
       "original": {
         "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/musicomp.git"
+        "url": "https://hack.moontide.ink/pingfisher/musicomp.git"
       }
     },
     "nix-index-database": {
@@ -309,11 +289,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779604987,
-        "narHash": "sha256-ZQ5z+fVhxYKtIFwtqGp5O0PD84BM1riASvqDaN5Xs+s=",
+        "lastModified": 1783023993,
+        "narHash": "sha256-gaOvvY/lL1eWoSmSRO17pWry8R49AuPMrF4nzu47K5o=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "8fba98c80b48fa013820e0163c5096922fea4ddd",
+        "rev": "f8ed6cdcb1fd28a6ab7b61f4467a4f67fe2d9074",
         "type": "github"
       },
       "original": {
@@ -353,22 +333,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1779467186,
-        "narHash": "sha256-nOesoDCiXcUftqbRBMz9tt4blI5PvljMWbm3kuCA+0s=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b77b3de8775677f84492abe84635f87b0e153f0f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1770197578,
@@ -387,11 +351,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1779560665,
-        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
+        "lastModified": 1782959384,
+        "narHash": "sha256-xnJJk+ct+D2+wdRxj1wk36w5zV9RVESwRqcklPdt3fM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
+        "rev": "65179426c83bb3f6bc14898b42ea1c6f01d374b0",
         "type": "github"
       },
       "original": {
@@ -411,11 +375,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778507602,
-        "narHash": "sha256-kTwur1wV+01SdqskVMSo6JMEpg71ps3HpbFY2GsflKs=",
+        "lastModified": 1781733627,
+        "narHash": "sha256-U3yTuGBnmXvXoQI3qkpfEDsn9RovQPAjN7ndRco+3u0=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "61ab0e80d9c7ab14c256b5b453d8b3fb0189ba0a",
+        "rev": "3bbec39bc90eadfa031e6f3b77272f3f60803e39",
         "type": "github"
       },
       "original": {
@@ -478,12 +442,10 @@
       "inputs": {
         "agenix": "agenix",
         "forgesync": "forgesync",
-        "hxwrap": "hxwrap",
         "lanzaboote": "lanzaboote",
         "musicomp": "musicomp",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-stable": "nixpkgs-stable",
         "zap": "zap"
       }
     },
@@ -495,11 +457,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779074409,
-        "narHash": "sha256-6aXy8Ga41iLVM8ibddFU1O5+wYWcBGNEfZzZuL91eIc=",
+        "lastModified": 1782616745,
+        "narHash": "sha256-NN5B1cKBXF6h1Ec681gMGZ2o/99d7vKXAAfFNEvyOKA=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "2a77b5b1dc952f214e8102acdef1622b68515560",
+        "rev": "b916d014dc57eb555f84e51172a82f7f6fb560d7",
         "type": "github"
       },
       "original": {
@@ -585,11 +547,11 @@
         "rev": "8544f019aa6e741f7688825d2be0bc62173c130c",
         "revCount": 3,
         "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/zap.git"
+        "url": "https://hack.moontide.ink/pingfisher/zap.git"
       },
       "original": {
         "type": "git",
-        "url": "https://hack.moontide.ink/helvetica/zap.git"
+        "url": "https://hack.moontide.ink/pingfisher/zap.git"
       }
     }
   },

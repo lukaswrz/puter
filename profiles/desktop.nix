@@ -48,9 +48,10 @@ in
       ];
 
       systemPackages = [
-        # TODO: remove
-        pkgs.librewolf
+        pkgs.gnomeExtensions.appindicator
       ];
     };
+
+    hardware.opentabletdriver.enable = true;
   };
 }

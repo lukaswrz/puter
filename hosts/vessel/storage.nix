@@ -7,18 +7,15 @@
         group = "root";
         mode = "0755";
       };
-      "/srv/shrink".d = {
+      "/srv/compressed-music".d = {
         user = "root";
         group = "root";
         mode = "0755";
       };
     };
-    dump."/srv/dump".d = {
-      user = "root";
-      group = "root";
-      mode = "0755";
-    };
-    navidrome."/srv/shrink".A.argument = "d:u:navidrome:rx";
+
+    navidrome."/srv/compressed-music".A.argument = "d:u:navidrome:rx";
+
     syncthing =
       lib.genAttrs
         [
@@ -28,17 +25,28 @@
         (_: {
           A.argument = "d:u:syncthing:rwx";
         });
+
     helvetica =
       lib.genAttrs
         [
           "/srv/vault"
           "/srv/void"
-          "/srv/dump"
           "/srv/media"
+          "/srv/old-media"
         ]
         (_: {
           A.argument = "d:u:helvetica:rwx";
         });
-    jellyfin."/srv/media".A.argument = "d:u:jellyfin:rwx";
+
+    jellyfin =
+      lib.genAttrs
+        [
+          "/srv/media"
+          "/srv/old-media"
+          "/srv/compressed-music"
+        ]
+        (_: {
+          A.argument = "d:u:jellyfin:rwx";
+        });
   };
 }

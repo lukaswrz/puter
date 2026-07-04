@@ -1,7 +1,7 @@
 {
   services.musicomp.jobs.main = {
     music = "/srv/vault/music";
-    comp = "/srv/shrink";
+    comp = "/srv/compressed-music";
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;
