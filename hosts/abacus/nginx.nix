@@ -13,7 +13,7 @@
       access_log /var/log/nginx/access.log;
     '';
 
-    virtualHosts."~.*" = {
+    virtualHosts._ = {
       default = true;
 
       globalRedirect = config.networking.domain;
