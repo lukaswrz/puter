@@ -1,0 +1,25 @@
+{
+  services.rsync = {
+    enable = true;
+    jobs = {
+      vault-sync = {
+        sources = [ "/srv/vault/" ];
+        destination = "/srv/sync";
+        inhibit = [ "sleep" ];
+        settings = {
+          archive = true;
+          delete = true;
+          mkpath = true;
+          checksum = true;
+          itemize-changes = true;
+          verbose = true;
+          exclude = "lost+found/";
+        };
+        timerConfig = {
+          OnCalendar = "daily";
+          Persistent = true;
+        };
+      };
+    };
+  };
+}
