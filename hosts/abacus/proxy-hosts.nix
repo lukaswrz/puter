@@ -29,5 +29,11 @@
       host = "::1";
       port = 8040;
     };
+
+    muffled = {
+      virtualHostName = "jam.wrz.one";
+      host = "::1";
+      port = 8050;
+    };
   };
 }

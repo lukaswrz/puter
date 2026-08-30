@@ -5,9 +5,8 @@ in
 {
   services.headscale = {
     enable = true;
-    address = proxyHost.host;
-    inherit (proxyHost) port;
     settings = {
+      listen_addr = proxyHost.address;
       server_url = "https://${proxyHost.virtualHostName}";
       dns = {
         base_domain = "tailnet.moontide.ink";

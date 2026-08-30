@@ -24,6 +24,7 @@
       url = "git+https://hack.moontide.ink/lukas/zap.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    muffled.url = "git+https://hack.moontide.ink/lukas/muffled.git";
   };
 
   outputs =
@@ -120,6 +121,7 @@
                 inputs.nix-index-database.nixosModules.nix-index
                 inputs.forgesync.nixosModules.default
                 inputs.musicomp.nixosModules.default
+                inputs.muffled.nixosModules.default
               ]
               ++ findModules [
                 ./modules
