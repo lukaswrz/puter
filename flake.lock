@@ -283,11 +283,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1788120586,
-        "narHash": "sha256-TXmLqj/K3umOJ00/Uw7NStgquJ1AshLTS11DM7GOo6Y=",
+        "lastModified": 1788122559,
+        "narHash": "sha256-CIufyvlx3Ri0GmTr7RntSwW/oEj0Rn0A/tLrVmHwbVQ=",
         "ref": "refs/heads/main",
-        "rev": "74eafa691afa4288cf96b3f6426a2427255a0880",
-        "revCount": 35,
+        "rev": "dc1aef98c36e2e3087171a4a8f050bbab5225454",
+        "revCount": 36,
         "type": "git",
         "url": "https://hack.moontide.ink/lukas/myvim.git"
       },
