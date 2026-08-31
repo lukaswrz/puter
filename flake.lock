@@ -228,11 +228,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1787658383,
-        "narHash": "sha256-I+zCjwAtkmgnet+08H+7HV8qJjf6BoFMYsX/8lMiW/s=",
+        "lastModified": 1788173567,
+        "narHash": "sha256-C4/tvPY34n/YfQZUIMRNAHzidAG+qUaU6qBqd07OS2c=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "69cf334f9dbc11213c6228c97e9b32924d51443f",
+        "rev": "d2326588612480c96d5fefb885f57b4660a85584",
         "type": "github"
       },
       "original": {
@@ -276,24 +276,6 @@
       "original": {
         "type": "git",
         "url": "https://hack.moontide.ink/lukas/musicomp.git"
-      }
-    },
-    "myvim": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_4"
-      },
-      "locked": {
-        "lastModified": 1788122559,
-        "narHash": "sha256-CIufyvlx3Ri0GmTr7RntSwW/oEj0Rn0A/tLrVmHwbVQ=",
-        "ref": "refs/heads/main",
-        "rev": "dc1aef98c36e2e3087171a4a8f050bbab5225454",
-        "revCount": 36,
-        "type": "git",
-        "url": "https://hack.moontide.ink/lukas/myvim.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://hack.moontide.ink/lukas/myvim.git"
       }
     },
     "nix-index-database": {
@@ -380,22 +362,6 @@
       }
     },
     "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1787498568,
-        "narHash": "sha256-9i/VTdusq/+NM/tz+J1Re+ojkMB8MBf0QshnYfzHz30=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "56c02bc00adcf003215cc4bd996d6efaf4cff188",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
       "locked": {
         "lastModified": 1788039129,
         "narHash": "sha256-pa4Q0qErvCvzCaaUph7Sm37RhR4xvPrYI8Lgz6k85+A=",
@@ -490,9 +456,8 @@
         "lanzaboote": "lanzaboote",
         "muffled": "muffled",
         "musicomp": "musicomp",
-        "myvim": "myvim",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "zap": "zap"
       }
     },
@@ -504,11 +469,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787454509,
-        "narHash": "sha256-r4LDUF+zmJnkftvCVkCrUhSJazsf6EVJF+V2l4/MYbI=",
+        "lastModified": 1788077403,
+        "narHash": "sha256-c20YZQKzQ27qC6Wh729fWRTpI7oV4+7Ur4icKssD4Wc=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "f60c1b57ff805a46b5175c76fc981fb4f81efbcc",
+        "rev": "89e26eeaafa88a2ede4778734acc794ff0299beb",
         "type": "github"
       },
       "original": {

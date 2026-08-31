@@ -17,7 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    myvim.url = "git+https://hack.moontide.ink/lukas/myvim.git";
     musicomp.url = "git+https://hack.moontide.ink/lukas/musicomp.git";
     forgesync.url = "git+https://hack.moontide.ink/lukas/forgesync.git";
     zap = {
@@ -85,7 +84,7 @@
         { pkgs, zapPackages, ... }:
         {
           zap = zapPackages.default;
-          nextvi = pkgs.callPackage ./packages/nextvi/package.nix { };
+          gram = pkgs.callPackage ./packages/gram/package.nix { };
         }
       );
 

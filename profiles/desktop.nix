@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -46,11 +47,11 @@ in
       ];
 
       systemPackages = [
+        inputs.self.packages.${pkgs.system}.gram
         pkgs.gnomeExtensions.appindicator
         pkgs.mullvad-vpn
         pkgs.mpv
         pkgs.qutebrowser
-        pkgs.neovide
       ];
     };
 

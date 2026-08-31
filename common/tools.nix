@@ -1,11 +1,10 @@
 {
-  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  editor = inputs.myvim.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  editor = pkgs.nextvi;
 in
 {
   environment = {
