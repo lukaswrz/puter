@@ -13,6 +13,6 @@ This is my cobbled together NixOS configuration. There are many like it, but thi
 
 ## TODO
 
-* Tailscale profile
-* Public services
-* Caddy/nginx
+- Tailscale profile
+- Public services
+- Caddy/nginx

@@ -4,7 +4,7 @@ Public server.
 
 ## TODO
 
-* [soju](https://codeberg.org/emersion/soju)
+- [soju](https://codeberg.org/emersion/soju)
 
 ## Attic
 
