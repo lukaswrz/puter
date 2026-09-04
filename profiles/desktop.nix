@@ -49,6 +49,7 @@ in
       systemPackages = [
         inputs.self.packages.${pkgs.system}.gram
         inputs.self.packages.${pkgs.system}.yadal
+        pkgs.ffmpeg
         pkgs.gnomeExtensions.appindicator
         pkgs.mullvad-vpn
         pkgs.mpv
