@@ -246,11 +246,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1788047184,
-        "narHash": "sha256-t6IXWehKEnZJ+BGbE6KZvSespWRjusSo2zPsvZ7oH7Y=",
+        "lastModified": 1788295367,
+        "narHash": "sha256-KZHPSE4WJS2hvM/9po+uqIhkAEqAVHez/C9YiuE4szA=",
         "ref": "refs/heads/main",
-        "rev": "fcd7237a2ba02d4d917d4c9a6d6038c1335b3466",
-        "revCount": 8,
+        "rev": "d275fda5f217d9b26c80744c0f4cad492fb66c19",
+        "revCount": 9,
         "type": "git",
         "url": "https://hack.moontide.ink/lukas/muffled.git"
       },
@@ -363,11 +363,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1788039129,
-        "narHash": "sha256-pa4Q0qErvCvzCaaUph7Sm37RhR4xvPrYI8Lgz6k85+A=",
+        "lastModified": 1788316716,
+        "narHash": "sha256-bc7rSpXIdn9QWGNqfWcPZWOhEVF8NoeAZkWq0XWnf/k=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d2f67949798825fe853f7c5d0492b8bf016d3f88",
+        "rev": "3ed67ec0a4d3c7ab4ae1f04f8ee8df07bfa506a2",
         "type": "github"
       },
       "original": {
