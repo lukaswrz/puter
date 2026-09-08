@@ -83,6 +83,8 @@
               pkgs.prettier
               pkgs.taplo
             ];
+
+            env.NINI_FLAKE = ".";
           };
         }
       );
