@@ -278,6 +278,26 @@
         "url": "https://hack.moontide.ink/lukas/musicomp.git"
       }
     },
+    "nini": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788882637,
+        "narHash": "sha256-TlVwJ77v9yjmOK50LCiqtXdkKkBUutulu0HsQ2CUius=",
+        "ref": "refs/heads/main",
+        "rev": "fb82d4c7f441051c891fd2502093fa98780ab20f",
+        "revCount": 12,
+        "type": "git",
+        "url": "https://hack.moontide.ink/lukas/nini.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://hack.moontide.ink/lukas/nini.git"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -456,6 +476,7 @@
         "lanzaboote": "lanzaboote",
         "muffled": "muffled",
         "musicomp": "musicomp",
+        "nini": "nini",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_4",
         "zap": "zap"

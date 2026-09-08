@@ -23,6 +23,10 @@
       url = "git+https://hack.moontide.ink/lukas/zap.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nini = {
+      url = "git+https://hack.moontide.ink/lukas/nini.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     muffled.url = "git+https://hack.moontide.ink/lukas/muffled.git";
   };
 
@@ -50,6 +54,7 @@
               inherit (pkgs) treefmt;
               agenixPackages = inputs.agenix.packages.${system};
               zapPackages = inputs.zap.packages.${system};
+              niniPackages = inputs.nini.packages.${system};
             }
           )
         );
@@ -61,6 +66,7 @@
           treefmt,
           agenixPackages,
           zapPackages,
+          niniPackages,
           ...
         }:
         {
@@ -69,6 +75,7 @@
               pkgs.nixos-facter
               agenixPackages.default
               zapPackages.default
+              niniPackages.default
 
               # Formatters
               treefmt
@@ -121,6 +128,7 @@
                 inputs.nix-index-database.nixosModules.nix-index
                 inputs.forgesync.nixosModules.default
                 inputs.musicomp.nixosModules.default
+                inputs.nini.nixosModules.default
                 inputs.muffled.nixosModules.default
               ]
               ++ findModules [

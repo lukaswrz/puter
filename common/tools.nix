@@ -55,7 +55,7 @@ in
       enable = true;
       lfs.enable = true;
     };
-    nh = {
+    nini = {
       enable = true;
       flake = "git+https://hack.moontide.ink/lukas/puter.git";
     };
