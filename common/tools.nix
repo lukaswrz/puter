@@ -4,7 +4,7 @@
   ...
 }:
 let
-  editor = pkgs.nextvi;
+  editor = pkgs.micro;
 in
 {
   environment = {
