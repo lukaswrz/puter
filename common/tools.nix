@@ -4,7 +4,7 @@
   ...
 }:
 let
-  editor = pkgs.micro;
+  editor = pkgs.vis;
 in
 {
   environment = {
