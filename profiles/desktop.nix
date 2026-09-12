@@ -37,7 +37,6 @@ in
         enable = true;
         webInterface = true;
       };
-      mullvad-vpn.enable = true;
     };
 
     environment = {
@@ -51,7 +50,6 @@ in
         inputs.self.packages.${pkgs.system}.yadal
         pkgs.ffmpeg
         pkgs.gnomeExtensions.appindicator
-        pkgs.mullvad-vpn
         pkgs.mpv
         pkgs.qutebrowser
       ];
