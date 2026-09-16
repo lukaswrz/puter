@@ -52,6 +52,7 @@ in
         pkgs.gnomeExtensions.appindicator
         pkgs.mpv
         pkgs.qutebrowser
+        pkgs.yt-dlp
       ];
     };
 
