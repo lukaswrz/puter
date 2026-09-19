@@ -285,11 +285,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789767768,
-        "narHash": "sha256-sKNWLm6rqVBG0VDriGdOhxPYayyRadkPMXlniU8JB/g=",
+        "lastModified": 1789841028,
+        "narHash": "sha256-5Idmk+xGd72/ER7RTmtLXlHevpxTbdivzYInJ2AsplU=",
         "ref": "refs/heads/main",
-        "rev": "4950323e7b0b0cbbad097e1fc611d7eb266942f7",
-        "revCount": 14,
+        "rev": "16588a642b25363e5cf7b046f8a2127b0e0a7c19",
+        "revCount": 15,
         "type": "git",
         "url": "https://hack.moontide.ink/lukas/nini.git"
       },
