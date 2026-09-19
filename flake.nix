@@ -119,7 +119,7 @@
             lib.nixosSystem {
               specialArgs = {
                 inherit inputs;
-                attrName = name;
+                configName = name;
                 secretsPath = ./secrets;
                 pubkeys = import ./pubkeys.nix;
               };

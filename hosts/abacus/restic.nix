@@ -1,18 +1,18 @@
 {
-  attrName,
+  configName,
   config,
   secretsPath,
   ...
 }:
 let
-  secretName = "restic-${attrName}";
+  secretName = "restic-${configName}";
   secret = config.age.secrets.${secretName};
 in
 {
-  age.secrets.${secretName}.file = secretsPath + /restic/${attrName}.age;
+  age.secrets.${secretName}.file = secretsPath + /restic/${configName}.age;
 
   services.restic.backups.remote = {
-    repository = "sftp:u322470-sub3@u322470.your-storagebox.de:restic/${attrName}";
+    repository = "sftp:u322470-sub3@u322470.your-storagebox.de:restic/${configName}";
     initialize = true;
     paths = [
       config.services.vaultwarden.backupDir

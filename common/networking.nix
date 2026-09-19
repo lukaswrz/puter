@@ -1,7 +1,7 @@
-{ attrName, pkgs, ... }:
+{ configName, pkgs, ... }:
 {
   networking = {
-    hostName = attrName;
+    hostName = configName;
     nftables.enable = true;
   };
 
