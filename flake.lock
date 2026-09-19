@@ -285,11 +285,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788882637,
-        "narHash": "sha256-TlVwJ77v9yjmOK50LCiqtXdkKkBUutulu0HsQ2CUius=",
+        "lastModified": 1789767768,
+        "narHash": "sha256-sKNWLm6rqVBG0VDriGdOhxPYayyRadkPMXlniU8JB/g=",
         "ref": "refs/heads/main",
-        "rev": "fb82d4c7f441051c891fd2502093fa98780ab20f",
-        "revCount": 12,
+        "rev": "4950323e7b0b0cbbad097e1fc611d7eb266942f7",
+        "revCount": 14,
         "type": "git",
         "url": "https://hack.moontide.ink/lukas/nini.git"
       },
@@ -383,11 +383,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1789684949,
-        "narHash": "sha256-ZKhUe/2IJUq1JhKxKMu8rbkgSGmPP2ZCqlIPn40aGCM=",
+        "lastModified": 1789785513,
+        "narHash": "sha256-B44WL6h0XoLjJ41bUPJk0X5SDinLCII//6EcBLXKiJ0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e554fab72f81915600f3f449b786fd9af40439a5",
+        "rev": "20b1ddd1aa5ace70c9468305030aa4f9ef79671b",
         "type": "github"
       },
       "original": {
