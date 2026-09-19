@@ -12,7 +12,7 @@ in
   age.secrets.${secretName}.file = secretsPath + /restic/${attrName}.age;
 
   services.restic.backups.remote = {
-    repository = "sftp:u459482@u459482.your-storagebox.de:/${attrName}";
+    repository = "sftp:u322470-sub3@u322470.your-storagebox.de:restic/${attrName}";
     initialize = true;
     paths = [
       config.services.vaultwarden.backupDir
