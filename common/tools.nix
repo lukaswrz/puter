@@ -4,7 +4,7 @@
   ...
 }:
 let
-  editor = pkgs.vis;
+  editor = pkgs.vim-classic;
 in
 {
   environment = {
