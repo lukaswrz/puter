@@ -17,8 +17,10 @@ in
   "forgejo/admin.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
   "forgejo/runner.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
-  "restic/vessel.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
-  "restic/abacus.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+  "restic/locations/vessel.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
+  "restic/locations/abacus.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
+  "restic/passwords/vessel.age".publicKeys = (builtins.attrValues users) ++ [ hosts.vessel ];
+  "restic/passwords/abacus.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
 
   "searx/searx.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];
   "searx/htpasswd.age".publicKeys = (builtins.attrValues users) ++ [ hosts.abacus ];

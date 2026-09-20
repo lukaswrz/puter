@@ -5,14 +5,23 @@
   ...
 }:
 let
-  secretName = "restic-${configName}";
-  secret = config.age.secrets.${secretName};
+  passwordSecretName = "restic-password-${configName}";
+  locationSecretName = "restic-location-${configName}";
 in
 {
-  age.secrets.${secretName}.file = secretsPath + /restic/${configName}.age;
+  age.secrets = {
+    ${passwordSecretName} = {
+      file = secretsPath + /restic/passwords/${configName}.age;
+      owner = config.services.restic.backups.remote.user;
+    };
+    ${locationSecretName} = {
+      file = secretsPath + /restic/locations/${configName}.age;
+      owner = config.services.restic.backups.remote.user;
+    };
+  };
 
   services.restic.backups.remote = {
-    repository = "sftp:u322470-sub3@u322470.your-storagebox.de:restic/${configName}";
+    repositoryFile = config.age.secrets.${locationSecretName}.path;
     initialize = true;
     paths = [
       "/var/lib/syncthing"
@@ -20,7 +29,7 @@ in
       "/srv/void"
       config.services.navidrome.settings.Backup.Path
     ];
-    passwordFile = secret.path;
+    passwordFile = config.age.secrets.${passwordSecretName}.path;
     pruneOpts = [
       "--keep-daily 7"
       "--keep-weekly 5"
