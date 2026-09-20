@@ -11,31 +11,30 @@ in
     systemPackages = [
       editor
 
-      pkgs.usbutils
-      pkgs.pciutils
       pkgs.dnsutils
+      pkgs.pciutils
       pkgs.smartmontools
+      pkgs.usbutils
 
-      pkgs.lsof
-      pkgs.ncdu
-      pkgs.file
-      pkgs.nmap
-      pkgs.binutils
-      pkgs.jq
-      pkgs.shpool
-      pkgs.progress
-      pkgs.magic-wormhole-rs
       pkgs.bottom
-      pkgs.rbw
-      pkgs.pinentry-curses
-      pkgs.sbctl
-      pkgs.ouch
-      pkgs.cava
-      pkgs.hurl
-      pkgs.ripgrep
+      pkgs.curl
       pkgs.fd
-      pkgs.sd
+      pkgs.ffmpeg
+      pkgs.file
       pkgs.forgejo-cli
+      pkgs.fzf
+      pkgs.jq
+      pkgs.lsof
+      pkgs.magic-wormhole-rs
+      pkgs.ncdu
+      pkgs.nmap
+      pkgs.pinentry-curses
+      pkgs.progress
+      pkgs.rbw
+      pkgs.ripgrep
+      pkgs.sbctl
+      pkgs.shpool
+      pkgs.wget2
     ];
 
     sessionVariables =
