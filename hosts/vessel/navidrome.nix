@@ -2,6 +2,8 @@
   services.navidrome = {
     enable = true;
     settings = {
+      Address = "[::]";
+      Port = 4533;
       MusicFolder = "/srv/compressed-music";
       EnableSharing = true;
       Backup = {

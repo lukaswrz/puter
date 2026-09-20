@@ -1,8 +1,3 @@
-{ config, ... }:
-let
-  tailnet = "tailnet.moontide.ink";
-in
 {
-  services.syncthing-multi.instances.lukas.settings.gui-address =
-    "${config.networking.hostName}.${tailnet}:4010";
+  services.syncthings.instances.lukas.settings.gui-address = "[::]:4010";
 }

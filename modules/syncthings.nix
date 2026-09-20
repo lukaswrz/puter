@@ -7,13 +7,13 @@
   ...
 }:
 let
-  cfg = config.services.syncthing-multi;
+  cfg = config.services.syncthings;
   inherit (lib) types;
 in
 {
   disabledModules = [ "${modulesPath}/services/networking/syncthing.nix" ];
 
-  options.services.syncthing-multi = {
+  options.services.syncthings = {
     enable = lib.mkEnableOption "Syncthing";
 
     package = lib.mkPackageOption pkgs "syncthing" { };
@@ -107,11 +107,7 @@ in
             ${systemdName} = {
               description = "Syncthing instance ${instanceName}";
 
-              requires = [ "tailscaled.service" ];
-              after = [
-                "network.target"
-                "tailscaled.service"
-              ];
+              after = [ "network.target" ];
               wantedBy = [ "multi-user.target" ];
 
               environment = {
