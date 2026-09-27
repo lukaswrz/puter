@@ -1,7 +1,7 @@
 {
-  services.musicomp.jobs.main = {
-    music = "/srv/vault/music";
-    comp = "/srv/compressed-music";
+  services.mushrink.jobs.main = {
+    input = "/srv/vault/music";
+    output = "/srv/compressed-music";
     timerConfig = {
       OnCalendar = "daily";
       Persistent = true;

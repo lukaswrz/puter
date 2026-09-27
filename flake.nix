@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    musicomp.url = "git+https://hack.moontide.ink/lukas/musicomp.git";
+    mushrink.url = "git+https://hack.moontide.ink/lukas/mushrink.git";
     forgesync.url = "git+https://hack.moontide.ink/lukas/forgesync.git";
     zap = {
       url = "git+https://hack.moontide.ink/lukas/zap.git";
@@ -129,7 +129,7 @@
                 inputs.lanzaboote.nixosModules.lanzaboote
                 inputs.nix-index-database.nixosModules.nix-index
                 inputs.forgesync.nixosModules.default
-                inputs.musicomp.nixosModules.default
+                inputs.mushrink.nixosModules.default
                 inputs.nini.nixosModules.default
                 inputs.muffled.nixosModules.default
               ]
