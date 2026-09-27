@@ -21,9 +21,9 @@
           on-commit = true;
           mirror-interval = "0h0m0s";
           description = "{description}";
-          include = [
-            "forgesync"
-          ];
+          # include = [
+          #   "forgesync"
+          # ];
         };
 
         secretFile = config.age.secrets.forgesync-github.path;
