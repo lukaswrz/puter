@@ -20,7 +20,7 @@
           ];
           on-commit = true;
           mirror-interval = "0h0m0s";
-          description = "{description}";
+          description = "{description} (Mirror of {url})";
           # include = [
           #   "forgesync"
           # ];
@@ -46,7 +46,7 @@
           ];
           on-commit = true;
           mirror-interval = "0h0m0s";
-          description = "{description}";
+          description = "{description} (Mirror of {url})";
         };
 
         secretFile = config.age.secrets.forgesync-codeberg.path;
