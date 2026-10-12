@@ -37,6 +37,7 @@ in
         enable = true;
         webInterface = true;
       };
+      ivpn.enable = true;
     };
 
     environment = {
