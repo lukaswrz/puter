@@ -21,7 +21,7 @@
   # Zig
   pkgs.zls
   # TypeScript
-  pkgs.typescript-language-server
+  # pkgs.typescript-language-server
   # Bash
   pkgs.bash-language-server
   # Fish
