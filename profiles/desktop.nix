@@ -86,6 +86,7 @@ in
       pkgs.yt-dlp
       pkgs.gurk-rs
       pkgs.wiremix
+      pkgs.aerc
       # pkgs.senpai
 
       inputs.self.packages.${pkgs.system}.gram
