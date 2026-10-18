@@ -29,9 +29,19 @@ in
       }
     ];
 
+    boot.kernelParams = [
+      "quiet"
+      "loglevel=3"
+      "systemd.show_status=auto"
+      "rd.systemd.show_status=auto"
+      "rd.udev.log_level=3"
+    ];
+
     services = {
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      greetd = {
+        enable = true;
+        settings.default_session.command = "${lib.getExe pkgs.tuigreet} --time --asterisks --cmd river";
+      };
       flatpak.enable = true;
       printing = {
         enable = true;
@@ -40,19 +50,72 @@ in
       ivpn.enable = true;
     };
 
-    environment = {
-      gnome.excludePackages = [
-        pkgs.gnome-music
-        pkgs.epiphany
+    programs.dconf.enable = true;
+
+    xdg.portal = {
+      enable = true;
+      wlr = {
+        enable = true;
+        settings = {
+          screencast = {
+            # exec_before = "disable_notifications.sh";
+            # exec_after = "enable_notifications.sh";
+            chooser_type = "simple";
+            chooser_cmd = "${lib.getExe pkgs.slurp} -f 'Monitor: %o' -or";
+          };
+        };
+      };
+
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
       ];
 
-      systemPackages = [
-        inputs.self.packages.${pkgs.system}.yadal
-        pkgs.yt-dlp
-        inputs.self.packages.${pkgs.system}.gram
-        pkgs.gnomeExtensions.appindicator
-      ];
+      config = {
+        common = {
+          default = [ "gtk" ];
+        };
+        river = {
+          "org.freedesktop.portal.ScreenCast" = [ "wlr" ];
+          "org.freedesktop.portal.Screenshot" = [ "wlr" ];
+        };
+      };
     };
+
+    environment.systemPackages = [
+      inputs.self.packages.${pkgs.system}.yadal
+      pkgs.yt-dlp
+      pkgs.gurk-rs
+      pkgs.wiremix
+      # pkgs.senpai
+
+      inputs.self.packages.${pkgs.system}.gram
+      pkgs.qutebrowser
+      pkgs.mpv
+      pkgs.pcmanfm-qt
+      pkgs.lagrange
+      pkgs.qpwgraph
+      pkgs.halloy
+      pkgs.fooyin
+
+      pkgs.river
+      inputs.self.packages.${pkgs.system}.beansprout
+      pkgs.fuzzel
+      pkgs.alacritty
+      pkgs.phinger-cursors
+      pkgs.playerctl
+      pkgs.wlr-randr
+      pkgs.kanshi
+      pkgs.waylock
+      pkgs.fnott
+      pkgs.fyi
+      pkgs.brightnessctl
+      pkgs.gammastep
+      pkgs.chayang
+      pkgs.grim
+      pkgs.slurp
+      pkgs.poweralertd
+      pkgs.wob
+    ];
 
     hardware.opentabletdriver.enable = true;
   };
