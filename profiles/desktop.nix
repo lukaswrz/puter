@@ -118,6 +118,8 @@ in
       pkgs.wob
     ];
 
+    security.pam.services.waylock = { };
+
     hardware.opentabletdriver.enable = true;
   };
 }
