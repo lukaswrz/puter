@@ -29,17 +29,10 @@ in
       }
     ];
 
-    boot.kernelParams = [
-      "quiet"
-      "loglevel=3"
-      "systemd.show_status=auto"
-      "rd.systemd.show_status=auto"
-      "rd.udev.log_level=3"
-    ];
-
     services = {
       greetd = {
         enable = true;
+        useTextGreeter = true;
         settings.default_session.command = "${lib.getExe pkgs.tuigreet} --time --asterisks --cmd 'uwsm start river-uwsm.desktop'";
       };
       flatpak.enable = true;
