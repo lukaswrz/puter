@@ -40,7 +40,7 @@ in
     services = {
       greetd = {
         enable = true;
-        settings.default_session.command = "${lib.getExe pkgs.tuigreet} --time --asterisks --cmd river";
+        settings.default_session.command = "${lib.getExe pkgs.tuigreet} --time --asterisks --cmd 'uwsm start river-uwsm.desktop'";
       };
       flatpak.enable = true;
       printing = {
@@ -50,7 +50,17 @@ in
       ivpn.enable = true;
     };
 
-    programs.dconf.enable = true;
+    programs = {
+      dconf.enable = true;
+      uwsm = {
+        enable = true;
+        waylandCompositors.river = {
+          prettyName = "River";
+          comment = "River compositor managed by UWSM";
+          binPath = lib.getExe pkgs.river;
+        };
+      };
+    };
 
     xdg.portal = {
       enable = true;
@@ -99,7 +109,6 @@ in
       pkgs.fooyin
       pkgs.zathura
 
-      pkgs.river
       inputs.self.packages.${pkgs.system}.beansprout
       pkgs.fuzzel
       pkgs.alacritty
