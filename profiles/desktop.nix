@@ -97,6 +97,7 @@ in
       pkgs.qpwgraph
       pkgs.halloy
       pkgs.fooyin
+      pkgs.zathura
 
       pkgs.river
       inputs.self.packages.${pkgs.system}.beansprout
