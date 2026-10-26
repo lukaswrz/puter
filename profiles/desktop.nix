@@ -90,6 +90,7 @@ in
       pkgs.gurk-rs
       pkgs.wiremix
       pkgs.aerc
+      pkgs.handlr-regex
       # pkgs.senpai
 
       inputs.self.packages.${pkgs.system}.gram
