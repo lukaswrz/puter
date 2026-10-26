@@ -106,7 +106,7 @@ in
       inputs.self.packages.${pkgs.system}.beansprout
       pkgs.fuzzel
       pkgs.alacritty
-      pkgs.phinger-cursors
+      pkgs.adwaita-icon-theme
       pkgs.playerctl
       pkgs.wlr-randr
       pkgs.kanshi
