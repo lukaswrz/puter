@@ -6,7 +6,6 @@
     steam-hardware.enable = true;
     xone.enable = true;
     xpadneo.enable = true;
-    gcadapter.enable = true;
     nitrokey.enable = true;
     enableAllFirmware = true;
   };
