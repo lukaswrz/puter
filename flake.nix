@@ -17,8 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mushrink.url = "git+https://hack.moontide.ink/lukas/mushrink.git";
     forgesync.url = "git+https://hack.moontide.ink/lukas/forgesync.git";
+    mushrink = {
+      url = "git+https://hack.moontide.ink/lukas/mushrink.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zap = {
       url = "git+https://hack.moontide.ink/lukas/zap.git";
       inputs.nixpkgs.follows = "nixpkgs";

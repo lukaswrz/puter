@@ -194,14 +194,16 @@
     },
     "mushrink": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1793214221,
-        "narHash": "sha256-P+7jXtOxycmGwfEJwMJUAvGFWj8BGSwV9ym5xtXrwv8=",
+        "lastModified": 1793215417,
+        "narHash": "sha256-4B8WjPlGIAN8clLWIEV2f2dSNNvkJKT4D0QdcXel85g=",
         "ref": "refs/heads/main",
-        "rev": "5fd0c088b4565f2de07cac367a6738b9e065aee0",
-        "revCount": 5,
+        "rev": "28015d561e70efac59bdad604a704a5949afa9a6",
+        "revCount": 6,
         "type": "git",
         "url": "https://hack.moontide.ink/lukas/mushrink.git"
       },
@@ -299,22 +301,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1786599213,
-        "narHash": "sha256-yNJd40f11EzXBjSByCB7IPpeFFAdeoSKKM67dGkfFoU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "0e251e24a4f24e036a084b6b4b2d2491af4167f4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1793110635,
         "narHash": "sha256-dhoW6VgFWlaodSY5jrBn+CF2FLmaUvDVgM7+C7T2+NM=",
         "owner": "NixOS",
@@ -410,7 +396,7 @@
         "mushrink": "mushrink",
         "nini": "nini",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "zap": "zap"
       }
     },
