@@ -5,7 +5,7 @@
       lib.genAttrs
         [
           "/srv/vault/music"
-          "/srv/compressed-music"
+          "/srv/maw/compressed-music"
         ]
         (_: {
           d = {
@@ -16,7 +16,7 @@
         });
 
     navidrome = {
-      "/srv/compressed-music".A.argument = "d:u:navidrome:rx";
+      "/srv/maw/compressed-music".A.argument = "d:u:navidrome:rx";
       "/srv/backup/navidrome".d = {
         user = "navidrome";
         group = "navidrome";
@@ -29,7 +29,7 @@
         [
           "/srv/vault"
           "/srv/void"
-          "/srv/compressed-music"
+          "/srv/maw"
         ]
         (_: {
           A.argument = "d:u:syncthing:rwx";
@@ -41,6 +41,7 @@
           "/srv/vault"
           "/srv/void"
           "/srv/media"
+          "/srv/maw"
           "/srv/old-media"
         ]
         (_: {
@@ -52,7 +53,6 @@
         [
           "/srv/media"
           "/srv/old-media"
-          "/srv/compressed-music"
         ]
         (_: {
           A.argument = "d:u:jellyfin:rwx";

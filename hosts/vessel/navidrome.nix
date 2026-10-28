@@ -4,7 +4,7 @@
     settings = {
       Address = "[::]";
       Port = 4533;
-      MusicFolder = "/srv/compressed-music";
+      MusicFolder = "/srv/maw/compressed-music";
       EnableSharing = true;
       Backup = {
         Path = "/srv/backup/navidrome";

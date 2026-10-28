@@ -12,3 +12,8 @@ includes = ["*.toml"]
 command = "prettier"
 options = ["--parser", "markdown", "--write", "--"]
 includes = ["*.md"]
+
+[formatter.json]
+command = "prettier"
+options = ["--parser", "json", "--write", "--"]
+includes = ["*.json"]

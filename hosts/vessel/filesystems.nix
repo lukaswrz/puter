@@ -4,6 +4,7 @@
     vault.device = "/dev/disk/by-label/cryptvault";
     void.device = "/dev/disk/by-label/cryptvoid";
     sync.device = "/dev/disk/by-label/cryptsync";
+    maw.device = "/dev/disk/by-label/cryptmaw";
   };
 
   fileSystems = {
@@ -30,6 +31,13 @@
     };
     "/srv/sync" = {
       device = "/dev/mapper/sync";
+      fsType = "ext4";
+      options = [
+        "noatime"
+      ];
+    };
+    "/srv/maw" = {
+      device = "/dev/mapper/maw";
       fsType = "ext4";
       options = [
         "noatime"
