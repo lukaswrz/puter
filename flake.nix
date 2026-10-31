@@ -98,7 +98,6 @@
           zap = zapPackages.default;
           gram = pkgs.callPackage ./packages/gram/package.nix { };
           yadal = pkgs.callPackage ./packages/yadal/package.nix { };
-          beansprout = pkgs.callPackage ./packages/beansprout/package.nix { };
         }
       );
 

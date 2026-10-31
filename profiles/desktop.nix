@@ -30,11 +30,8 @@ in
     ];
 
     services = {
-      greetd = {
-        enable = true;
-        useTextGreeter = true;
-        settings.default_session.command = "${lib.getExe pkgs.tuigreet} --time --asterisks --cmd 'uwsm start river-uwsm.desktop'";
-      };
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
       flatpak.enable = true;
       printing = {
         enable = true;
@@ -43,86 +40,19 @@ in
       ivpn.enable = true;
     };
 
-    programs = {
-      dconf.enable = true;
-      uwsm = {
-        enable = true;
-        waylandCompositors.river = {
-          prettyName = "River";
-          comment = "River compositor managed by UWSM";
-          binPath = lib.getExe pkgs.river;
-        };
-      };
-    };
-
-    xdg.portal = {
-      enable = true;
-      wlr = {
-        enable = true;
-        settings = {
-          screencast = {
-            # exec_before = "disable_notifications.sh";
-            # exec_after = "enable_notifications.sh";
-            chooser_type = "simple";
-            chooser_cmd = "${lib.getExe pkgs.slurp} -f 'Monitor: %o' -or";
-          };
-        };
-      };
-
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
+    environment = {
+      gnome.excludePackages = [
+        pkgs.gnome-music
+        pkgs.epiphany
       ];
 
-      config = {
-        common = {
-          default = [ "gtk" ];
-        };
-        river = {
-          "org.freedesktop.portal.ScreenCast" = [ "wlr" ];
-          "org.freedesktop.portal.Screenshot" = [ "wlr" ];
-        };
-      };
+      systemPackages = [
+        inputs.self.packages.${pkgs.system}.yadal
+        pkgs.yt-dlp
+        inputs.self.packages.${pkgs.system}.gram
+        pkgs.gnomeExtensions.appindicator
+      ];
     };
-
-    environment.systemPackages = [
-      inputs.self.packages.${pkgs.system}.yadal
-      pkgs.yt-dlp
-      pkgs.gurk-rs
-      pkgs.wiremix
-      pkgs.aerc
-      pkgs.handlr-regex
-      # pkgs.senpai
-
-      inputs.self.packages.${pkgs.system}.gram
-      pkgs.qutebrowser
-      pkgs.mpv
-      pkgs.pcmanfm-qt
-      pkgs.lagrange
-      pkgs.qpwgraph
-      pkgs.halloy
-      pkgs.fooyin
-      pkgs.zathura
-
-      inputs.self.packages.${pkgs.system}.beansprout
-      pkgs.fuzzel
-      pkgs.alacritty
-      pkgs.adwaita-icon-theme
-      pkgs.playerctl
-      pkgs.wlr-randr
-      pkgs.kanshi
-      pkgs.waylock
-      pkgs.fnott
-      pkgs.fyi
-      pkgs.brightnessctl
-      pkgs.gammastep
-      pkgs.chayang
-      pkgs.grim
-      pkgs.slurp
-      pkgs.poweralertd
-      pkgs.wob
-    ];
-
-    security.pam.services.waylock = { };
 
     hardware.opentabletdriver.enable = true;
   };
