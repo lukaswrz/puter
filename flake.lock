@@ -93,11 +93,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1788887452,
-        "narHash": "sha256-B3CUtfOPRqdbYZngCrU3gzbpKT773c9DOngyQsyA/4U=",
+        "lastModified": 1794160574,
+        "narHash": "sha256-dIK6Ktpg5mLiTFrYSyU9Pojs7Hudrjtt+P9cVHTTuwU=",
         "ref": "refs/heads/main",
-        "rev": "4e9dd03ad4f0927cbc89fc3ea389551751a7460f",
-        "revCount": 55,
+        "rev": "b93e7418f8a55e7059e971b5dbd07a2277de27da",
+        "revCount": 58,
         "type": "git",
         "url": "https://hack.moontide.ink/lukas/forgesync.git"
       },
@@ -239,11 +239,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793543282,
-        "narHash": "sha256-PHtGxKYM99f8WhGR5YD7iiCiwemKa2wUD4yVI2oALFg=",
+        "lastModified": 1794132860,
+        "narHash": "sha256-iGNtQnUZsi+v6/4NbtYr+dsmASa6GkzXtUcTpE8F3mE=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "cee0f879d338cf08f814210fa6c2b280594ade0a",
+        "rev": "af9249ca33bc2efaae5d071e4c67ddef19dcb681",
         "type": "github"
       },
       "original": {
@@ -301,11 +301,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1793540411,
-        "narHash": "sha256-fiPJ88izTVucjeo2EQ3jk4aWmLg03I1D4vxnX2QjEgE=",
+        "lastModified": 1794042290,
+        "narHash": "sha256-ziZn2PvCJE5JEEpqTdxXwJpPB+L3YqoCpTAMCzyaP3U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0bb2eedc20e4739f29e8045034f2828ad7054f8f",
+        "rev": "f4a03c008967841f2a0b3cb7c436fc6fc31671f6",
         "type": "github"
       },
       "original": {
